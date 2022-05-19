@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles/PortfolioCard.css';
 
-const PortfolioCard = ({ category, image, index, link }) => {
-  console.log(Object.values(image)[0]);
+const PortfolioCard = ({ category, image, index }) => {
+  let linkName = category.toLowerCase().replace(/\s/g, '');
   return (
     <div className="PortfolioCard">
       <p className="PortfolioCard__Index">{index}</p>
@@ -15,9 +16,9 @@ const PortfolioCard = ({ category, image, index, link }) => {
       </div>
       <h2 className="PortfolioCard__Header">{category}</h2>
       <div className="PortfolioCard__LinkContainer">
-        <a href="#" className="PortfolioCard__Link">
+        <Link to={`/portfolio/${linkName}`} className="PortfolioCard__Link">
           See More
-        </a>
+        </Link>
       </div>
     </div>
   );

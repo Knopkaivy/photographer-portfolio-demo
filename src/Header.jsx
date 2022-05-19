@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { BsBag } from 'react-icons/bs';
 import NavItem from './NavItem';
 import './styles/Header.css';
 
 const Header = () => {
   const navList = [
-    { name: 'Home' },
+    { name: 'home' },
     {
-      name: 'Portfolio',
-      menu: ['The Desert', 'High Sierra', 'Beach', 'Forests Wilderness'],
+      name: 'portfolio',
+      menu: ['the Desert', 'high sierra', 'beach', 'forests wilderness'],
     },
-    { name: 'Bio' },
-    { name: 'Store' },
+    { name: 'bio' },
+    { name: 'store' },
   ];
   const listItems = navList.map((item) => {
     return <NavItem item={item} />;
@@ -19,13 +20,13 @@ const Header = () => {
   return (
     <div className="Header__Fixed">
       <nav className="Header container">
-        <a href="#" className="Header__Logo">
+        <Link to="/" className="Header__Logo">
           A-W
-        </a>
+        </Link>
         {listItems}
-        <a href="#" className="Header__ListItem Header__ListItem-cart">
+        <Link to="/" className="Header__ListItem Header__ListItem-cart">
           <BsBag className="Header__ListItem-cartIcon" /> <span>0</span>
-        </a>
+        </Link>
       </nav>
     </div>
   );

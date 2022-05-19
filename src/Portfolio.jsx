@@ -11,18 +11,15 @@ const Portfolio = () => {
     {
       category: 'The Desert',
       image: { DesertCover },
-      link: 'desert',
     },
     {
       category: 'High Sierra',
       image: { SierraCover },
-      link: 'sierra',
     },
-    { category: 'Beach', image: { BeachCover }, link: 'beach' },
+    { category: 'Beach', image: { BeachCover } },
     {
       category: 'Forests Wilderness',
       image: { ForestCover },
-      link: 'forest',
     },
   ]);
 
