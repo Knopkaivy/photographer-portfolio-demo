@@ -1,0 +1,34 @@
+.PortfolioCard {
+  font-size: 1.2rem;
+  flex-basis: calc(50% - 5rem);
+}
+.PortfolioCard__Index {
+  margin-bottom: 0.8rem;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+}
+.PortfolioCard__ImageContainer {
+  overflow: hidden;
+}
+.PortfolioCard__Image {
+  width: 100%;
+}
+.PortfolioCard__Header {
+  font-size: 2.4rem;
+  font-weight: 400;
+  text-align: center;
+}
+.PortfolioCard__LinkContainer {
+  text-align: center;
+}
+.PortfolioCard__Link {
+  text-transform: uppercase;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.PortfolioCard__Link:link,
+.PortfolioCard__Link:visited {
+  color: inherit;
+  text-decoration: none;
+}

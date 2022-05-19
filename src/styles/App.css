@@ -1,0 +1,33 @@
+:root {
+  --color-primary: #414141;
+  --color-secondary: #8f6b54;
+  --color-white: #fff;
+  --color-footer: #dac7bc;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-primary);
+}
+.App {
+}
+.container {
+  width: calc(100vw - 2rem);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}

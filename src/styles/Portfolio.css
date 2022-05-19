@@ -1,0 +1,7 @@
+.Portfolio {
+  display: flex;
+  gap: 10rem;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10rem 0;
+}

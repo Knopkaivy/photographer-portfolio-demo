@@ -1,0 +1,29 @@
+.Footer {
+  background-color: var(--color-footer);
+  width: 100%;
+  height: 20rem;
+  margin: 0;
+  padding: 0;
+}
+.Footer__content {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Footer__copyright {
+  font-size: 1.6rem;
+}
+.Footer__copyrightLink:link,
+.Footer__copyrightLink:visited {
+  color: var(--color-primary);
+}
+.Footer__linkList {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 50%;
+}
+.Footer__link {
+  font-size: 2rem;
+}
