@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Home from './Home';
 import Portfolio from './Portfolio';
+import Gallery from './Gallery';
 import Bio from './Bio';
 import Store from './Store';
 
@@ -14,7 +15,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="portfolio" element={<Portfolio />}></Route>
+        <Route path="portfolio/:galleryName" element={<Gallery />} />
         <Route path="bio" element={<Bio />} />
         <Route path="store" element={<Store />} />
       </Routes>
