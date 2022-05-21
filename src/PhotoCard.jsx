@@ -4,7 +4,7 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { RiShareForwardLine } from 'react-icons/ri';
 import './styles/PhotoCard.css';
 
-const PhotoCard = ({ imageURL, imageTitle, imageDescription }) => {
+const PhotoCard = ({ imageURL, imageTitle, imageDescription, openOverlay }) => {
   const [liked, setLiked] = useState(false);
   let toggleLike = () => {
     setLiked(!liked);
@@ -23,7 +23,10 @@ const PhotoCard = ({ imageURL, imageTitle, imageDescription }) => {
             <AiOutlineHeart />
           )}
         </div>
-        <div className="PhotoCard__icon PhotoCard__icon-share">
+        <div
+          className="PhotoCard__icon PhotoCard__icon-share"
+          onClick={openOverlay}
+        >
           <RiShareForwardLine />
         </div>
       </div>

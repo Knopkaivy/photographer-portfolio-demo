@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ShareOverlay from './ShareOverlay';
 import PhotoCard from './PhotoCard';
 import Desert3Md from './images/desert-3-md.webp';
 
@@ -43,18 +44,30 @@ const Gallery = () => {
     ],
   };
 
+  const [overlayOpen, setOverlayOpen] = useState(false);
+
+  let openOverlay = () => {
+    setOverlayOpen(true);
+  };
+
+  let closeOverlay = () => {
+    setOverlayOpen(false);
+  };
+
   const galleryList = gallery.images.map((img) => {
     return (
       <PhotoCard
         imageURL={img.imageURL}
         imageTitle={img.imageTitle}
         imageDescription={img.imageDescription}
+        openOverlay={openOverlay}
       />
     );
   });
 
   return (
     <div className="Gallery">
+      {overlayOpen && <ShareOverlay closeOverlay={closeOverlay} />}
       <div className="Gallery__headingSection">
         <h1 className="Gallery__header">{gallery.category}</h1>
         <p className="Gallery__sub">{gallery.description}</p>
