@@ -1,0 +1,15 @@
+.Toolbar {
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Toolbar__iconsList {
+  display: flex;
+}
+.Toolbar__iconContainer {
+  padding: 2rem;
+}
+.Toolbar__icon {
+  font-size: 2.4rem;
+}

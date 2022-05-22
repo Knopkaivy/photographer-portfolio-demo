@@ -26,14 +26,14 @@ const ShareOverlay = ({ closeOverlay }) => {
           className="ShareOverlay__iconCloseContainer"
           onClick={handleCloseOverlay}
         >
-          <IoMdClose className="ShareOverlay__icon ShareOverlay__icon-close" />
+          <IoMdClose className="ShareOverlay__icon ShareOverlay__icon-close icon" />
         </div>
         <div className="ShareOverlay__iconContainer">
-          <BsFacebook className="ShareOverlay__icon" />
-          <BsTwitter className="ShareOverlay__icon" />
-          <BsPinterest className="ShareOverlay__icon" />
-          <FaTumblr className="ShareOverlay__icon" />
-          <MdEmail className="ShareOverlay__icon" />
+          <BsFacebook className="ShareOverlay__icon icon" />
+          <BsTwitter className="ShareOverlay__icon icon" />
+          <BsPinterest className="ShareOverlay__icon icon" />
+          <FaTumblr className="ShareOverlay__icon icon" />
+          <MdEmail className="ShareOverlay__icon icon" />
         </div>
         <div className="ShareOverlay__linkContainer">
           <p className="ShareOverlay__link">URL goes here</p>

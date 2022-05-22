@@ -1,0 +1,48 @@
+.PhotoCardDetailed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+  background-color: var(--color-white);
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.PhotoCardDetailed__main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem 0;
+}
+.PhotoCardDetailed__navigation {
+  flex-basis: 5%;
+  font-size: 4rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.PhotoCardDetailed__navigationIcon {
+  /* align-self: center; */
+}
+.PhotoCardDetailed__imageContainer {
+  width: 100rem;
+  flex: 1 1 60%;
+}
+.PhotoCardDetailed__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.PhotoCardDetailed__descriptionContainer {
+  flex: 1 1 30%;
+  height: 100%;
+  padding-top: 8rem;
+}
+.PhotoCardDetailed__title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}

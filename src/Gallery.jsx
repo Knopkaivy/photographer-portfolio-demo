@@ -12,31 +12,37 @@ const Gallery = () => {
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus nostrum laborum adipisci alias fuga culpa.',
     images: [
       {
+        imageId: 'desert-3-md',
         imageURL: { Desert3Md },
         imageTitle: 'Image Title Placeholder',
         imageDescription: 'Image Description Placeholder',
       },
       {
+        imageId: 'desert-3-md',
         imageURL: { Desert3Md },
         imageTitle: 'Image Title Placeholder',
         imageDescription: 'Image Description Placeholder',
       },
       {
+        imageId: 'desert-3-md',
         imageURL: { Desert3Md },
         imageTitle: 'Image Title Placeholder',
         imageDescription: 'Image Description Placeholder',
       },
       {
+        imageId: 'desert-3-md',
         imageURL: { Desert3Md },
         imageTitle: 'Image Title Placeholder',
         imageDescription: 'Image Description Placeholder',
       },
       {
+        imageId: 'desert-3-md',
         imageURL: { Desert3Md },
         imageTitle: 'Image Title Placeholder',
         imageDescription: 'Image Description Placeholder',
       },
       {
+        imageId: 'desert-3-md',
         imageURL: { Desert3Md },
         imageTitle: 'Image Title Placeholder',
         imageDescription: 'Image Description Placeholder',
@@ -57,6 +63,7 @@ const Gallery = () => {
   const galleryList = gallery.images.map((img) => {
     return (
       <PhotoCard
+        imageId={img.imageId}
         imageURL={img.imageURL}
         imageTitle={img.imageTitle}
         imageDescription={img.imageDescription}

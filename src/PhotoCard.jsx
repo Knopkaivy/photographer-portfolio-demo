@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { RiShareForwardLine } from 'react-icons/ri';
 import './styles/PhotoCard.css';
 
-const PhotoCard = ({ imageURL, imageTitle, imageDescription, openOverlay }) => {
+const PhotoCard = ({
+  imageId,
+  imageURL,
+  imageTitle,
+  imageDescription,
+  openOverlay,
+}) => {
   const [liked, setLiked] = useState(false);
   let toggleLike = () => {
     setLiked(!liked);
   };
+  let handleOpenOverlay = (event) => {
+    event.stopPropagation();
+    openOverlay();
+  };
   return (
-    <div className="PhotoCard">
-      <div className="PhotoCard__overlay"></div>
+    <div to={imageId} className="PhotoCard">
+      <Link to={imageId} className="PhotoCard__overlay"></Link>
       <div className="PhotoCard__iconContainer">
         <div className="PhotoCard__icon" onClick={toggleLike}>
           {liked ? (
@@ -25,7 +36,7 @@ const PhotoCard = ({ imageURL, imageTitle, imageDescription, openOverlay }) => {
         </div>
         <div
           className="PhotoCard__icon PhotoCard__icon-share"
-          onClick={openOverlay}
+          onClick={handleOpenOverlay}
         >
           <RiShareForwardLine />
         </div>

@@ -44,10 +44,7 @@
   cursor: pointer;
   transition: all 0.1s;
 }
-.ShareOverlay__icon:hover {
-  color: var(--color-secondary);
-  transform: scale(1.1);
-}
+
 .ShareOverlay__linkContainer {
   display: flex;
   justify-content: center;
@@ -80,5 +77,5 @@
   color: var(--color-white);
 }
 .ShareOverlay__icon-copy:hover {
-  color: var(--color-white);
+  transform: scale(1.1);
 }
