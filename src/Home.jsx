@@ -3,9 +3,9 @@ import { starter } from './starter';
 import Landing from './Landing';
 import Portfolio from './Portfolio';
 
-const Home = () => {
-  const [portfolio, setPortfolio] = useState(starter);
-  console.log('portfolio is ', portfolio);
+const Home = ({ portfolio }) => {
+  // const [portfolio, setPortfolio] = useState(starter);
+  // console.log('portfolio is ', portfolio);
   return (
     <React.Fragment>
       <Landing />
