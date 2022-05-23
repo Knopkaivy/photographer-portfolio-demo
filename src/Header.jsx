@@ -4,18 +4,21 @@ import { BsBag } from 'react-icons/bs';
 import NavItem from './NavItem';
 import './styles/Header.css';
 
-const Header = () => {
+const Header = ({ portfolio }) => {
+  const menu = portfolio.categories.map((cat) => {
+    return cat.categoryName;
+  });
   const navList = [
     { name: 'home' },
     {
       name: 'portfolio',
-      menu: ['the Desert', 'high sierra', 'beach', 'forests wilderness'],
+      menu,
     },
     { name: 'bio' },
     { name: 'store' },
   ];
   const listItems = navList.map((item) => {
-    return <NavItem item={item} />;
+    return <NavItem item={item} portfolio={portfolio} key={item.name} />;
   });
   return (
     <div className="Header__Fixed">

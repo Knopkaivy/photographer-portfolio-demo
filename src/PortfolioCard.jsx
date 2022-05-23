@@ -4,8 +4,8 @@ import { images } from './images';
 import './styles/PortfolioCard.css';
 
 const PortfolioCard = ({ obj, category, image, index }) => {
-  console.log('category is ', category);
   let linkName = category.toLowerCase().replace(/\s/g, '');
+  // console.log('obj ', obj);
   return (
     <div className="PortfolioCard">
       <p className="PortfolioCard__Index">{index}</p>

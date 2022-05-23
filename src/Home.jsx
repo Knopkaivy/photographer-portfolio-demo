@@ -4,8 +4,6 @@ import Landing from './Landing';
 import Portfolio from './Portfolio';
 
 const Home = ({ portfolio }) => {
-  // const [portfolio, setPortfolio] = useState(starter);
-  // console.log('portfolio is ', portfolio);
   return (
     <React.Fragment>
       <Landing />

@@ -2,14 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/NavItem.css';
 
-const NavItem = ({ item }) => {
+const NavItem = ({ item, portfolio }) => {
   let menuList;
+  let gallery;
   if (item.menu) {
     menuList = item.menu.map((menuItem) => {
       let linkName = menuItem.toLowerCase().replace(/\s/g, '');
+      for (let gal of portfolio.categories) {
+        if (gal.categoryName === menuItem) {
+          gallery = gal;
+        }
+      }
       return (
         <Link
           to={`${item.name}/${linkName}`}
+          state={{ gallery: gallery }}
+          key={linkName}
           className="NavItem NavItem__menuItem"
         >
           {menuItem}

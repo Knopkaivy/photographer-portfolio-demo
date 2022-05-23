@@ -29,6 +29,7 @@ const Gallery = () => {
         imageURL={url}
         imageTitle={item.photoTitle}
         imageDescription={item.photoDescription}
+        key={item.photoId}
         openOverlay={openOverlay}
       />
     );

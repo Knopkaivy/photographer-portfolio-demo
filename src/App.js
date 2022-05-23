@@ -16,7 +16,7 @@ function App() {
   const [portfolio, setPortfolio] = useState(starter);
   return (
     <div className="App">
-      <Header />
+      <Header portfolio={portfolio} />
       <Routes>
         <Route path="/" element={<Home portfolio={portfolio} />} />
         <Route
