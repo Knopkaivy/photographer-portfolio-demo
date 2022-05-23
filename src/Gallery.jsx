@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ShareOverlay from './ShareOverlay';
 import PhotoCard from './PhotoCard';
-import Desert3Md from './images/desert-3-md.webp';
 
 import './styles/Gallery.css';
 
