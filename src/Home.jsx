@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { starter } from './starter';
 import Landing from './Landing';
 import Portfolio from './Portfolio';
 
 const Home = () => {
+  const [portfolio, setPortfolio] = useState(starter);
+  console.log('portfolio is ', portfolio);
   return (
     <React.Fragment>
       <Landing />
-      <Portfolio />
+      <Portfolio portfolio={portfolio} />
     </React.Fragment>
   );
 };

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { RiShareForwardLine } from 'react-icons/ri';
+import { images } from './images';
 import './styles/PhotoCard.css';
 
 const PhotoCard = ({
@@ -16,6 +17,7 @@ const PhotoCard = ({
   let toggleLike = () => {
     setLiked(!liked);
   };
+  console.log('image url is', imageURL);
   let handleOpenOverlay = (event) => {
     event.stopPropagation();
     openOverlay();
@@ -43,7 +45,8 @@ const PhotoCard = ({
       </div>
       <div className="PhotoCard__imageContainer">
         <img
-          src={Object.values(imageURL)[0]}
+          // src={Object.values(imageURL)[0]}
+          src={images[imageURL]}
           alt={imageTitle}
           className="PhotoCard__image"
         />
