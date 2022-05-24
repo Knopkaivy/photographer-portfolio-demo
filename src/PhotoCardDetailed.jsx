@@ -1,12 +1,13 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { BsChevronLeft } from 'react-icons/bs';
 import { BsChevronRight } from 'react-icons/bs';
-import Desert3Md from './images/desert-3-md.webp';
-import Desert3Lg from './images/desert-3-lg.webp';
+import { images } from './images';
 import Toolbar from './Toolbar';
 import './styles/PhotoCardDetailed.css';
 
 const PhotoCardDetailed = () => {
+  const { state } = useLocation();
   return (
     <div className="PhotoCardDetailed">
       <Toolbar />
@@ -16,7 +17,7 @@ const PhotoCardDetailed = () => {
         </div>
         <div className="PhotoCardDetailed__imageContainer">
           <img
-            src={Desert3Md}
+            src={images[state.imageURL]}
             alt="title"
             className="PhotoCardDetailed__image"
           />
@@ -25,12 +26,9 @@ const PhotoCardDetailed = () => {
           <BsChevronRight className="PhotoCardDetailed__navigationIcon icon" />
         </div>
         <div className="PhotoCardDetailed__descriptionContainer">
-          <h2 className="PhotoCardDetailed__title">Title</h2>
+          <h2 className="PhotoCardDetailed__title">{state.imageTitle}</h2>
           <p className="PhotoCardDetailed__description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, eaque
-            distinctio. Possimus odit dicta accusamus doloremque quisquam
-            reiciendis, officiis vero quasi expedita autem amet deleniti vitae
-            sint esse blanditiis quod!
+            {state.imageDescription}
           </p>
         </div>
       </div>

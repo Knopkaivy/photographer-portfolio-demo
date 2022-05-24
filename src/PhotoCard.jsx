@@ -23,7 +23,16 @@ const PhotoCard = ({
   };
   return (
     <div to={imageId} className="PhotoCard">
-      <Link to={imageId} className="PhotoCard__overlay"></Link>
+      <Link
+        to={imageId}
+        className="PhotoCard__overlay"
+        state={{
+          imageId: imageId,
+          imageURL: imageURL,
+          imageTitle: imageTitle,
+          imageDescription: imageDescription,
+        }}
+      ></Link>
       <div className="PhotoCard__iconContainer">
         <div className="PhotoCard__icon" onClick={toggleLike}>
           {liked ? (
