@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { starter } from './starter';
 import Header from './Header';
 import Footer from './Footer';
@@ -30,6 +30,7 @@ function App() {
         />
         <Route path="bio" element={<Bio />} />
         <Route path="store" element={<Store />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
     </div>
