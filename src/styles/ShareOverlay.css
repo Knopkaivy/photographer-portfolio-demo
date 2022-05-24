@@ -8,7 +8,7 @@
   /* opacity: 0.2; */
   position: fixed;
   /* transform: scale(2); */
-  z-index: 3;
+  z-index: 4;
 }
 .ShareOverlay__menu {
   width: 100vw;

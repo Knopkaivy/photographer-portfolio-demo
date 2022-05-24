@@ -1,7 +1,7 @@
 .Header__Fixed {
   position: fixed;
   width: 100vw;
-  z-index: 1;
+  z-index: 3;
 }
 .Header {
   width: 100%;
