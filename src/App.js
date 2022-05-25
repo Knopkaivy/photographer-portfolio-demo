@@ -23,9 +23,13 @@ function App() {
           path="portfolio"
           element={<Portfolio portfolio={portfolio} />}
         ></Route>
-        <Route path="portfolio/:galleryName" element={<Gallery />} />
         <Route
-          path="portfolio/:galleryName/:imageId"
+          path="portfolio/:galleryId"
+          element={<Gallery portfolio={portfolio} />}
+        />
+
+        <Route
+          path="portfolio/:galleryId/:imageId"
           element={<PhotoCardDetailed />}
         />
         <Route path="bio" element={<Bio />} />

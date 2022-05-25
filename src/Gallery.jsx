@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import ShareOverlay from './ShareOverlay';
 import PhotoCard from './PhotoCard';
 
 import './styles/Gallery.css';
 
-const Gallery = () => {
+const Gallery = ({ portfolio }) => {
+  const [gallery, setGallery] = useState({
+    categoryName: '',
+    categoryId: '',
+    categoryDescription: '',
+    categoryCover: '',
+    photos: [],
+  });
+  let params = useParams();
+  useEffect(() => {
+    for (let gal of portfolio.categories) {
+      if (gal.categoryId === params.galleryId) {
+        setGallery(gal);
+      }
+    }
+  }, [gallery]);
+
   const { state } = useLocation();
 
   const [overlayOpen, setOverlayOpen] = useState(false);
@@ -18,11 +34,10 @@ const Gallery = () => {
     setOverlayOpen(false);
   };
 
-  const galleryList = state.gallery.photos.map((item) => {
+  const galleryList = gallery.photos.map((item) => {
     const url = `${item.photoId.charAt(0).toUpperCase()}${item.photoId
       .slice(1)
       .replace('-', '')}md`;
-    // console.log(url);
     return (
       <PhotoCard
         imageId={item.photoId}
@@ -39,8 +54,8 @@ const Gallery = () => {
     <div className="Gallery">
       {overlayOpen && <ShareOverlay closeOverlay={closeOverlay} />}
       <div className="Gallery__headingSection">
-        <h1 className="Gallery__header">{state.gallery.categoryName}</h1>
-        <p className="Gallery__sub">{state.gallery.categoryDescription}</p>
+        <h1 className="Gallery__header">{gallery.categoryName}</h1>
+        <p className="Gallery__sub">{gallery.categoryDescription}</p>
       </div>
       <main className="Gallery__main">{galleryList}</main>
     </div>

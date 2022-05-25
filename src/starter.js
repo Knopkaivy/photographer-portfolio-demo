@@ -2,6 +2,7 @@ export const starter = {
   categories: [
     {
       categoryName: 'The Desert',
+      categoryId: 'thedesert',
       categoryDescription:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus nostrum laborum adipisci alias fuga culpa.',
       categoryCover: 'DesertCover',
@@ -46,6 +47,7 @@ export const starter = {
     },
     {
       categoryName: 'High Sierra',
+      categoryId: 'highsierra',
       categoryDescription:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus nostrum laborum adipisci alias fuga culpa.',
       categoryCover: 'SierraCover',
@@ -102,6 +104,7 @@ export const starter = {
     },
     {
       categoryName: 'Beach',
+      categoryId: 'beach',
       categoryDescription:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus nostrum laborum adipisci alias fuga culpa.',
       categoryCover: 'BeachCover',
@@ -146,6 +149,7 @@ export const starter = {
     },
     {
       categoryName: 'Forests Wilderness',
+      categoryId: 'forestswilderness',
       categoryDescription:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus nostrum laborum adipisci alias fuga culpa.',
       categoryCover: 'ForestCover',
