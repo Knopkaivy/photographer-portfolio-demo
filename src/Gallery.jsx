@@ -20,6 +20,7 @@ const Gallery = ({ portfolio }) => {
         setGallery(gal);
       }
     }
+    window.scrollTo(0, 0);
   }, [gallery]);
 
   const { state } = useLocation();
