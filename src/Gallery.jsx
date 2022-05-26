@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ShareOverlay from './ShareOverlay';
 import PhotoCard from './PhotoCard';
 
 import './styles/Gallery.css';
 
-const Gallery = ({ portfolio }) => {
+const Gallery = ({ portfolio, toggleLike }) => {
   const [gallery, setGallery] = useState({
     categoryName: '',
     categoryId: '',
@@ -22,8 +22,6 @@ const Gallery = ({ portfolio }) => {
     }
     window.scrollTo(0, 0);
   }, [gallery]);
-
-  const { state } = useLocation();
 
   const [overlayOpen, setOverlayOpen] = useState(false);
 
@@ -45,8 +43,11 @@ const Gallery = ({ portfolio }) => {
         imageURL={url}
         imageTitle={item.photoTitle}
         imageDescription={item.photoDescription}
+        isLiked={item.liked}
         key={item.photoId}
         openOverlay={openOverlay}
+        toggleLike={toggleLike}
+        galleryName={gallery.categoryName}
       />
     );
   });

@@ -5,7 +5,6 @@ import './styles/PortfolioCard.css';
 
 const PortfolioCard = ({ obj, category, image, index }) => {
   let linkName = category.toLowerCase().replace(/\s/g, '');
-  // console.log('obj ', obj);
   return (
     <div className="PortfolioCard">
       <p className="PortfolioCard__Index">{index}</p>
@@ -18,11 +17,7 @@ const PortfolioCard = ({ obj, category, image, index }) => {
       </div>
       <h2 className="PortfolioCard__Header">{category}</h2>
       <div className="PortfolioCard__LinkContainer">
-        <Link
-          to={`/portfolio/${linkName}`}
-          state={{ gallery: obj }}
-          className="PortfolioCard__Link"
-        >
+        <Link to={`/portfolio/${linkName}`} className="PortfolioCard__Link">
           See More
         </Link>
       </div>

@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PortfolioCard from './PortfolioCard';
 
 import './styles/Portfolio.css';
 
 const Portfolio = ({ portfolio }) => {
-  const [categories, setCategories] = useState(portfolio.categories);
-
-  const categoryList = categories.map((element, index) => {
+  const categoryList = portfolio.categories.map((element, index) => {
     const ind = `0${index + 1}`;
     return (
       <PortfolioCard
-        obj={element}
         category={element.categoryName}
         image={element.categoryCover}
         index={ind}

@@ -14,6 +14,19 @@ import './styles/App.css';
 
 function App() {
   const [portfolio, setPortfolio] = useState(starter);
+  let toggleLike = (galleryName, photoId) => {
+    let newState = { ...portfolio };
+    for (let gal of newState.categories) {
+      if (gal.categoryName === galleryName) {
+        for (let pht of gal.photos) {
+          if (pht.photoId === photoId) {
+            pht.liked = !pht.liked;
+          }
+        }
+      }
+    }
+    setPortfolio(newState);
+  };
   return (
     <div className="App">
       <Header portfolio={portfolio} />
@@ -25,12 +38,12 @@ function App() {
         ></Route>
         <Route
           path="portfolio/:galleryId"
-          element={<Gallery portfolio={portfolio} />}
+          element={<Gallery portfolio={portfolio} toggleLike={toggleLike} />}
         />
 
         <Route
           path="portfolio/:galleryId/:imageId"
-          element={<PhotoCardDetailed />}
+          element={<PhotoCardDetailed portfolio={portfolio} />}
         />
         <Route path="bio" element={<Bio />} />
         <Route path="store" element={<Store />} />

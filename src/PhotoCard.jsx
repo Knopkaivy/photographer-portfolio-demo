@@ -11,11 +11,13 @@ const PhotoCard = ({
   imageURL,
   imageTitle,
   imageDescription,
+  isLiked,
   openOverlay,
+  galleryName,
+  toggleLike,
 }) => {
-  const [liked, setLiked] = useState(false);
-  let toggleLike = () => {
-    setLiked(!liked);
+  let handleToggleLike = () => {
+    toggleLike(galleryName, imageId);
   };
   let handleOpenOverlay = (event) => {
     event.stopPropagation();
@@ -34,8 +36,8 @@ const PhotoCard = ({
         }}
       ></Link>
       <div className="PhotoCard__iconContainer">
-        <div className="PhotoCard__icon" onClick={toggleLike}>
-          {liked ? (
+        <div className="PhotoCard__icon" onClick={handleToggleLike}>
+          {isLiked ? (
             <div className="PhotoCard__icon-like-container">
               <AiFillHeart className="PhotoCard__icon-like" />
               <span className="PhotoCard__icon-span">1</span>
