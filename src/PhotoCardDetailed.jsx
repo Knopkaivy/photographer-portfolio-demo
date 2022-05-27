@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { BsChevronLeft } from 'react-icons/bs';
 import { BsChevronRight } from 'react-icons/bs';
 import { images } from './images';
@@ -8,7 +8,6 @@ import './styles/PhotoCardDetailed.css';
 
 const PhotoCardDetailed = ({ portfolio }) => {
   let params = useParams();
-  // console.log('Detailed params', params);
   const [photo, setPhoto] = useState({
     photoId: '',
     photoTitle: '',
@@ -40,8 +39,6 @@ const PhotoCardDetailed = ({ portfolio }) => {
     console.log('imageUrl is', imageUrl);
     window.scrollTo(0, 0);
   }, [photo]);
-
-  const { state } = useLocation();
 
   return (
     <div className="PhotoCardDetailed">

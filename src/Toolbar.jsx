@@ -11,7 +11,11 @@ const Toolbar = ({ photo }) => {
   let navigate = useNavigate();
   let params = useParams();
 
-  console.log('params', params);
+  // console.log('params', params);
+
+  let handleLike = () => {
+    console.log('liked');
+  };
 
   let handleCloseDetail = () => {
     let url = `/portfolio/${params.galleryId}`;
@@ -27,7 +31,7 @@ const Toolbar = ({ photo }) => {
         <div className="Toolbar__iconContainer">
           <RiShareForwardLine className="Toolbar__icon icon" />
         </div>
-        <div className="Toolbar__iconContainer">
+        <div className="Toolbar__iconContainer" onClick={handleLike}>
           {photo.liked ? (
             <div className="PhotoCard__icon-like-container">
               <AiFillHeart className="PhotoCard__icon-like Toolbar__icon icon" />
