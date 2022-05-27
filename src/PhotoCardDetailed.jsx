@@ -6,7 +6,7 @@ import { images } from './images';
 import Toolbar from './Toolbar';
 import './styles/PhotoCardDetailed.css';
 
-const PhotoCardDetailed = ({ portfolio }) => {
+const PhotoCardDetailed = ({ portfolio, toggleLike }) => {
   let params = useParams();
   const [photo, setPhoto] = useState({
     photoId: '',
@@ -42,7 +42,7 @@ const PhotoCardDetailed = ({ portfolio }) => {
 
   return (
     <div className="PhotoCardDetailed">
-      <Toolbar photo={photo} />
+      <Toolbar photo={photo} toggleLike={toggleLike} />
       <div className="PhotoCardDetailed__main">
         <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">
           <BsChevronLeft className="PhotoCardDetailed__navigationIcon icon" />

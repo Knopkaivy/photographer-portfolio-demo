@@ -7,14 +7,14 @@ import { RiShareForwardLine } from 'react-icons/ri';
 import { IoMdClose } from 'react-icons/io';
 import './styles/Toolbar.css';
 
-const Toolbar = ({ photo }) => {
+const Toolbar = ({ photo, toggleLike }) => {
   let navigate = useNavigate();
   let params = useParams();
 
   // console.log('params', params);
 
   let handleLike = () => {
-    console.log('liked');
+    toggleLike(params.galleryId, params.imageId);
   };
 
   let handleCloseDetail = () => {

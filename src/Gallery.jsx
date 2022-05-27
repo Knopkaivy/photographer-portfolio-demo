@@ -48,6 +48,7 @@ const Gallery = ({ portfolio, toggleLike }) => {
         openOverlay={openOverlay}
         toggleLike={toggleLike}
         galleryName={gallery.categoryName}
+        galleryId={gallery.categoryId}
       />
     );
   });

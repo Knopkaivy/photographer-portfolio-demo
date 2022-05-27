@@ -14,10 +14,11 @@ const PhotoCard = ({
   isLiked,
   openOverlay,
   galleryName,
+  galleryId,
   toggleLike,
 }) => {
   let handleToggleLike = () => {
-    toggleLike(galleryName, imageId);
+    toggleLike(galleryId, imageId);
   };
   let handleOpenOverlay = (event) => {
     event.stopPropagation();
