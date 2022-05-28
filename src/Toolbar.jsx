@@ -7,7 +7,7 @@ import { RiShareForwardLine } from 'react-icons/ri';
 import { IoMdClose } from 'react-icons/io';
 import './styles/Toolbar.css';
 
-const Toolbar = ({ photo, toggleLike }) => {
+const Toolbar = ({ photo, toggleLike, openOverlay }) => {
   let navigate = useNavigate();
   let params = useParams();
 
@@ -29,7 +29,10 @@ const Toolbar = ({ photo, toggleLike }) => {
           <MdOpenInFull className="Toolbar__icon icon" />
         </div>
         <div className="Toolbar__iconContainer">
-          <RiShareForwardLine className="Toolbar__icon icon" />
+          <RiShareForwardLine
+            className="Toolbar__icon icon"
+            onClick={openOverlay}
+          />
         </div>
         <div className="Toolbar__iconContainer" onClick={handleLike}>
           {photo.liked ? (

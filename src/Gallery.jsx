@@ -5,7 +5,13 @@ import PhotoCard from './PhotoCard';
 
 import './styles/Gallery.css';
 
-const Gallery = ({ portfolio, toggleLike }) => {
+const Gallery = ({
+  portfolio,
+  toggleLike,
+  overlayIsOpen,
+  openOverlay,
+  closeOverlay,
+}) => {
   const [gallery, setGallery] = useState({
     categoryName: '',
     categoryId: '',
@@ -22,16 +28,6 @@ const Gallery = ({ portfolio, toggleLike }) => {
     }
     window.scrollTo(0, 0);
   }, [gallery]);
-
-  const [overlayOpen, setOverlayOpen] = useState(false);
-
-  let openOverlay = () => {
-    setOverlayOpen(true);
-  };
-
-  let closeOverlay = () => {
-    setOverlayOpen(false);
-  };
 
   const galleryList = gallery.photos.map((item) => {
     const url = `${item.photoId.charAt(0).toUpperCase()}${item.photoId
@@ -55,7 +51,7 @@ const Gallery = ({ portfolio, toggleLike }) => {
 
   return (
     <div className="Gallery">
-      {overlayOpen && <ShareOverlay closeOverlay={closeOverlay} />}
+      {overlayIsOpen && <ShareOverlay closeOverlay={closeOverlay} />}
       <div className="Gallery__headingSection">
         <h1 className="Gallery__header">{gallery.categoryName}</h1>
         <p className="Gallery__sub">{gallery.categoryDescription}</p>

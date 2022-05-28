@@ -2,11 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BsChevronLeft } from 'react-icons/bs';
 import { BsChevronRight } from 'react-icons/bs';
+import ShareOverlay from './ShareOverlay';
 import { images } from './images';
 import Toolbar from './Toolbar';
 import './styles/PhotoCardDetailed.css';
 
-const PhotoCardDetailed = ({ portfolio, toggleLike }) => {
+const PhotoCardDetailed = ({
+  portfolio,
+  toggleLike,
+  overlayIsOpen,
+  openOverlay,
+  closeOverlay,
+}) => {
   let params = useParams();
   const [photo, setPhoto] = useState({
     photoId: '',
@@ -42,7 +49,12 @@ const PhotoCardDetailed = ({ portfolio, toggleLike }) => {
 
   return (
     <div className="PhotoCardDetailed">
-      <Toolbar photo={photo} toggleLike={toggleLike} />
+      {overlayIsOpen && <ShareOverlay closeOverlay={closeOverlay} />}
+      <Toolbar
+        photo={photo}
+        toggleLike={toggleLike}
+        openOverlay={openOverlay}
+      />
       <div className="PhotoCardDetailed__main">
         <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">
           <BsChevronLeft className="PhotoCardDetailed__navigationIcon icon" />

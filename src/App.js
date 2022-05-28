@@ -14,6 +14,17 @@ import './styles/App.css';
 
 function App() {
   const [portfolio, setPortfolio] = useState(starter);
+
+  const [overlayIsOpen, setOverlayIsOpen] = useState(false);
+
+  let openOverlay = () => {
+    setOverlayIsOpen(true);
+  };
+
+  let closeOverlay = () => {
+    setOverlayIsOpen(false);
+  };
+
   let toggleLike = (galleryId, photoId) => {
     let newState = { ...portfolio };
     for (let gal of newState.categories) {
@@ -38,13 +49,27 @@ function App() {
         ></Route>
         <Route
           path="portfolio/:galleryId"
-          element={<Gallery portfolio={portfolio} toggleLike={toggleLike} />}
+          element={
+            <Gallery
+              portfolio={portfolio}
+              toggleLike={toggleLike}
+              overlayIsOpen={overlayIsOpen}
+              openOverlay={openOverlay}
+              closeOverlay={closeOverlay}
+            />
+          }
         />
 
         <Route
           path="portfolio/:galleryId/:imageId"
           element={
-            <PhotoCardDetailed portfolio={portfolio} toggleLike={toggleLike} />
+            <PhotoCardDetailed
+              portfolio={portfolio}
+              toggleLike={toggleLike}
+              overlayIsOpen={overlayIsOpen}
+              openOverlay={openOverlay}
+              closeOverlay={closeOverlay}
+            />
           }
         />
         <Route path="bio" element={<Bio />} />
