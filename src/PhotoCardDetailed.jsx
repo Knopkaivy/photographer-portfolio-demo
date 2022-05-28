@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { BsChevronLeft } from 'react-icons/bs';
 import { BsChevronRight } from 'react-icons/bs';
 import ShareOverlay from './ShareOverlay';
@@ -15,6 +15,8 @@ const PhotoCardDetailed = ({
   closeOverlay,
 }) => {
   let params = useParams();
+  // console.log('params are', params);
+
   const [photo, setPhoto] = useState({
     photoId: '',
     photoTitle: '',
@@ -23,6 +25,15 @@ const PhotoCardDetailed = ({
   });
 
   const [imageUrl, setImageUrl] = useState('');
+  const [photosCount, setPhotosCount] = useState(0);
+  const [ind, setInd] = useState(0);
+
+  let navigate = useNavigate();
+
+  let calculateInd = (id) => {
+    let index = id.replace(/^\D+/g, '');
+    setInd(index);
+  };
 
   useEffect(() => {
     let gallery;
@@ -30,6 +41,8 @@ const PhotoCardDetailed = ({
     for (let gal of portfolio.categories) {
       if (gal.categoryId === params.galleryId) {
         gallery = gal;
+        setPhotosCount(gallery.photos.length);
+        // console.log('photosCount is', photosCount);
         break;
       }
     }
@@ -43,9 +56,28 @@ const PhotoCardDetailed = ({
         break;
       }
     }
-    console.log('imageUrl is', imageUrl);
-    window.scrollTo(0, 0);
-  }, [photo]);
+    calculateInd(photo.photoId);
+    // console.log('imageUrl is', imageUrl);
+    // window.scrollTo(0, 0);
+    console.log('PhotoCardDetailed useEffect');
+  });
+
+  let navigateLeft = () => {
+    let indPrev = ind - 1;
+    let photoIdPrev = `${photo.photoId.split('-')[0]}-${indPrev}`;
+    // console.log(photoIdPrev);
+    let url = `/portfolio/${params.galleryId}/${photoIdPrev}`;
+    navigate(url);
+  };
+  let navigateRight = () => {
+    // console.log('ind is', ind);
+    let indNext = Number(ind) + 1;
+    // console.log('indNext is', indNext);
+    let photoIdNext = `${photo.photoId.split('-')[0]}-${indNext}`;
+    // console.log(photoIdNext);
+    let url = `/portfolio/${params.galleryId}/${photoIdNext}`;
+    navigate(url);
+  };
 
   return (
     <div className="PhotoCardDetailed">
@@ -57,7 +89,12 @@ const PhotoCardDetailed = ({
       />
       <div className="PhotoCardDetailed__main">
         <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">
-          <BsChevronLeft className="PhotoCardDetailed__navigationIcon icon" />
+          {ind > 1 && (
+            <BsChevronLeft
+              className="PhotoCardDetailed__navigationIcon icon"
+              onClick={navigateLeft}
+            />
+          )}
         </div>
         <div className="PhotoCardDetailed__imageContainer">
           <img
@@ -67,7 +104,12 @@ const PhotoCardDetailed = ({
           />
         </div>
         <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-right">
-          <BsChevronRight className="PhotoCardDetailed__navigationIcon icon" />
+          {ind < photosCount && (
+            <BsChevronRight
+              className="PhotoCardDetailed__navigationIcon icon"
+              onClick={navigateRight}
+            />
+          )}
         </div>
         <div className="PhotoCardDetailed__descriptionContainer">
           <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
