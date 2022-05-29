@@ -13,6 +13,11 @@ const Toolbar = ({ photo, toggleLike, openOverlay }) => {
 
   // console.log('params', params);
 
+  let requestFullscreen = () => {
+    console.log('requesting fullscreen');
+    document.querySelector('.PhotoCardDetailed').requestFullscreen();
+  };
+
   let handleLike = () => {
     toggleLike(params.galleryId, params.imageId);
   };
@@ -26,22 +31,25 @@ const Toolbar = ({ photo, toggleLike, openOverlay }) => {
     <div className="Toolbar">
       <div className="Toolbar__iconsList">
         <div className="Toolbar__iconContainer">
-          <MdOpenInFull className="Toolbar__icon icon" />
+          <MdOpenInFull
+            className="Toolbar__icon icon"
+            onClick={requestFullscreen}
+          />
         </div>
         <div className="Toolbar__iconContainer">
           <RiShareForwardLine
-            className="Toolbar__icon icon"
+            className="Toolbar__icon Toolbar__icon-secondary icon"
             onClick={openOverlay}
           />
         </div>
         <div className="Toolbar__iconContainer" onClick={handleLike}>
           {photo.liked ? (
             <div className="PhotoCard__icon-like-container">
-              <AiFillHeart className="PhotoCard__icon-like Toolbar__icon icon" />
+              <AiFillHeart className="PhotoCard__icon-like Toolbar__icon Toolbar__icon-secondary icon" />
               <span className="Toolbar__icon-span">1</span>
             </div>
           ) : (
-            <AiOutlineHeart className="Toolbar__icon icon" />
+            <AiOutlineHeart className="Toolbar__icon Toolbar__icon-secondary icon" />
           )}
         </div>
       </div>

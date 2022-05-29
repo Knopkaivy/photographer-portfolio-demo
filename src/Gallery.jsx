@@ -26,7 +26,7 @@ const Gallery = ({
         setGallery(gal);
       }
     }
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     console.log('Gallery useEffect');
   });
 
