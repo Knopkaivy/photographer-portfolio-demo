@@ -51,7 +51,7 @@ const PhotoCardDetailed = ({
         setPhoto(img);
         newImageUrl = `${img.photoId.charAt(0).toUpperCase()}${img.photoId
           .slice(1)
-          .replace('-', '')}md`;
+          .replace('-', '')}lg`;
         setImageUrl(newImageUrl);
         break;
       }
