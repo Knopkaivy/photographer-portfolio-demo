@@ -28,9 +28,7 @@
   max-width: 90vw;
   max-height: 100vh;
 }
-.PhotoCardDetailed:fullscreen .PhotoCardDetailed__image {
-  object-fit: contain;
-}
+
 .PhotoCardDetailed:fullscreen .PhotoCardDetailed__descriptionContainer {
   display: none;
 }
@@ -56,8 +54,8 @@
 .PhotoCardDetailed__image {
   width: 100%;
   height: auto;
-  max-height: 90vh;
-  object-fit: cover;
+  max-height: 70vh;
+  object-fit: contain;
 }
 .PhotoCardDetailed__descriptionContainer {
   flex: 1 1 30%;
