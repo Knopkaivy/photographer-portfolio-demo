@@ -8,7 +8,7 @@ import { FiCopy } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 import './styles/ShareOverlay.css';
 
-const ShareOverlay = ({ closeOverlay }) => {
+const ShareOverlay = ({ location, closeOverlay }) => {
   let handleCloseOverlay = (event) => {
     event.stopPropagation();
     closeOverlay();
@@ -36,7 +36,7 @@ const ShareOverlay = ({ closeOverlay }) => {
           <MdEmail className="ShareOverlay__icon icon" />
         </div>
         <div className="ShareOverlay__linkContainer">
-          <p className="ShareOverlay__link">URL goes here</p>
+          <p className="ShareOverlay__link">{location}</p>
           <button className="ShareOverlay__copyBtn">
             <FiCopy className="ShareOverlay__icon ShareOverlay__icon-copy" />
           </button>

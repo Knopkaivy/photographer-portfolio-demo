@@ -9,6 +9,7 @@ const Gallery = ({
   portfolio,
   toggleLike,
   overlayIsOpen,
+  overlayInputVal,
   openOverlay,
   closeOverlay,
 }) => {
@@ -52,7 +53,9 @@ const Gallery = ({
 
   return (
     <div className="Gallery">
-      {overlayIsOpen && <ShareOverlay closeOverlay={closeOverlay} />}
+      {overlayIsOpen && (
+        <ShareOverlay closeOverlay={closeOverlay} location={overlayInputVal} />
+      )}
       <div className="Gallery__headingSection">
         <h1 className="Gallery__header">{gallery.categoryName}</h1>
         <p className="Gallery__sub">{gallery.categoryDescription}</p>

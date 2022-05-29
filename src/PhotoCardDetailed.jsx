@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { BsChevronLeft } from 'react-icons/bs';
 import { BsChevronRight } from 'react-icons/bs';
 import ShareOverlay from './ShareOverlay';
@@ -15,7 +15,8 @@ const PhotoCardDetailed = ({
   closeOverlay,
 }) => {
   let params = useParams();
-  // console.log('params are', params);
+
+  let location = useLocation();
 
   const [photo, setPhoto] = useState({
     photoId: '',
@@ -42,7 +43,6 @@ const PhotoCardDetailed = ({
       if (gal.categoryId === params.galleryId) {
         gallery = gal;
         setPhotosCount(gallery.photos.length);
-        // console.log('photosCount is', photosCount);
         break;
       }
     }
@@ -65,23 +65,24 @@ const PhotoCardDetailed = ({
   let navigateLeft = () => {
     let indPrev = ind - 1;
     let photoIdPrev = `${photo.photoId.split('-')[0]}-${indPrev}`;
-    // console.log(photoIdPrev);
     let url = `/portfolio/${params.galleryId}/${photoIdPrev}`;
     navigate(url);
   };
   let navigateRight = () => {
-    // console.log('ind is', ind);
     let indNext = Number(ind) + 1;
-    // console.log('indNext is', indNext);
     let photoIdNext = `${photo.photoId.split('-')[0]}-${indNext}`;
-    // console.log(photoIdNext);
     let url = `/portfolio/${params.galleryId}/${photoIdNext}`;
     navigate(url);
   };
 
   return (
     <div className="PhotoCardDetailed">
-      {overlayIsOpen && <ShareOverlay closeOverlay={closeOverlay} />}
+      {overlayIsOpen && (
+        <ShareOverlay
+          location={location.pathname}
+          closeOverlay={closeOverlay}
+        />
+      )}
       <Toolbar
         photo={photo}
         toggleLike={toggleLike}

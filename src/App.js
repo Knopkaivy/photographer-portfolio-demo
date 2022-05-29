@@ -17,11 +17,15 @@ function App() {
 
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
 
-  let openOverlay = () => {
+  const [overlayInputVal, setOverlayInputVal] = useState('/');
+
+  let openOverlay = (val) => {
+    setOverlayInputVal(val);
     setOverlayIsOpen(true);
   };
 
   let closeOverlay = () => {
+    setOverlayInputVal('/');
     setOverlayIsOpen(false);
   };
 
@@ -54,6 +58,7 @@ function App() {
               portfolio={portfolio}
               toggleLike={toggleLike}
               overlayIsOpen={overlayIsOpen}
+              overlayInputVal={overlayInputVal}
               openOverlay={openOverlay}
               closeOverlay={closeOverlay}
             />
@@ -67,6 +72,7 @@ function App() {
               portfolio={portfolio}
               toggleLike={toggleLike}
               overlayIsOpen={overlayIsOpen}
+              overlayInputVal={overlayInputVal}
               openOverlay={openOverlay}
               closeOverlay={closeOverlay}
             />
