@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { MdOpenInFull } from 'react-icons/md';
+import { MdCloseFullscreen } from 'react-icons/md';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { RiShareForwardLine } from 'react-icons/ri';
@@ -13,10 +14,29 @@ const Toolbar = ({ photo, toggleLike, openOverlay }) => {
 
   // console.log('params', params);
 
-  let requestFullscreen = () => {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  let handleRequestFullscreen = () => {
     console.log('requesting fullscreen');
     document.querySelector('.PhotoCardDetailed').requestFullscreen();
+    setIsFullscreen(true);
   };
+
+  let handleExitFullscreen = () => {
+    document.exitFullscreen();
+    setIsFullscreen(false);
+  };
+
+  useEffect(() => {
+    function onFullscreenChange() {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    }
+
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+
+    return () =>
+      document.removeEventListener('fullscreenchange', onFullscreenChange);
+  }, []);
 
   let handleLike = () => {
     toggleLike(params.galleryId, params.imageId);
@@ -31,10 +51,17 @@ const Toolbar = ({ photo, toggleLike, openOverlay }) => {
     <div className="Toolbar">
       <div className="Toolbar__iconsList">
         <div className="Toolbar__iconContainer">
-          <MdOpenInFull
-            className="Toolbar__icon icon"
-            onClick={requestFullscreen}
-          />
+          {isFullscreen ? (
+            <MdCloseFullscreen
+              className="Toolbar__icon icon"
+              onClick={handleExitFullscreen}
+            />
+          ) : (
+            <MdOpenInFull
+              className="Toolbar__icon icon"
+              onClick={handleRequestFullscreen}
+            />
+          )}
         </div>
         <div className="Toolbar__iconContainer">
           <RiShareForwardLine
