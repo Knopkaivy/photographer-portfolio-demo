@@ -60,7 +60,7 @@ const PhotoCardDetailed = ({
     // console.log('imageUrl is', imageUrl);
     // window.scrollTo(0, 0);
     console.log('PhotoCardDetailed useEffect');
-  });
+  }, [params, photo.photoId, portfolio.categories]);
 
   let navigateLeft = () => {
     let indPrev = ind - 1;
