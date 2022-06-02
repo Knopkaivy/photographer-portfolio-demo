@@ -26,10 +26,25 @@ const PhotoCardDetailed = ({
   });
 
   const [imageUrl, setImageUrl] = useState('');
+  const [gallery, setGallery] = useState({
+    categoryName: '',
+    categoryId: '',
+    categoryDescription: '',
+    categoryCover: '',
+    photos: [],
+  });
   const [photosCount, setPhotosCount] = useState(0);
   const [ind, setInd] = useState(0);
 
   let navigate = useNavigate();
+
+  let findGallery = () => {
+    for (let gal of portfolio.categories) {
+      if (gal.categoryId === params.galleryId) {
+        return gal;
+      }
+    }
+  };
 
   let calculateInd = (id) => {
     let index = id.replace(/^\D+/g, '');
@@ -37,15 +52,10 @@ const PhotoCardDetailed = ({
   };
 
   useEffect(() => {
-    let gallery;
+    let newGal = findGallery();
+    setGallery(newGal);
+    setPhotosCount(gallery.photos.length);
     let newImageUrl;
-    for (let gal of portfolio.categories) {
-      if (gal.categoryId === params.galleryId) {
-        gallery = gal;
-        setPhotosCount(gallery.photos.length);
-        break;
-      }
-    }
     for (let img of gallery.photos) {
       if (img.photoId === params.imageId) {
         setPhoto(img);
@@ -57,10 +67,9 @@ const PhotoCardDetailed = ({
       }
     }
     calculateInd(photo.photoId);
-    // console.log('imageUrl is', imageUrl);
     // window.scrollTo(0, 0);
     console.log('PhotoCardDetailed useEffect');
-  }, [params, photo.photoId, portfolio.categories]);
+  }, [params, photo.photoId, portfolio.categories, gallery]);
 
   let navigateLeft = () => {
     let indPrev = ind - 1;
@@ -105,6 +114,7 @@ const PhotoCardDetailed = ({
           />
         </div>
         <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-right">
+          {/* {ind < gallery.photos.length && ( */}
           {ind < photosCount && (
             <BsChevronRight
               className="PhotoCardDetailed__navigationIcon icon"
