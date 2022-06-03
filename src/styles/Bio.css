@@ -1,0 +1,38 @@
+.Bio {
+  padding: 12rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Bio__header {
+  font-size: 3.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.6rem;
+}
+.Bio__section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(199, 199, 199, 0.42);
+}
+.Bio__sectionHeader {
+  flex-basis: 30%;
+}
+.Bio__sectionHeader h3 {
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+.Bio__sectionContent {
+  flex-basis: 60%;
+  font-size: 1.6rem;
+}
+.Bio__sectionContent-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.Bio__sectionListItem {
+  flex-basis: 45%;
+}

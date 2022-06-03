@@ -57,7 +57,7 @@ const Gallery = ({
         <ShareOverlay closeOverlay={closeOverlay} location={overlayInputVal} />
       )}
       <div className="Gallery__headingSection">
-        <h1 className="Gallery__header">{gallery.categoryName}</h1>
+        <h2 className="Gallery__header">{gallery.categoryName}</h2>
         <p className="Gallery__sub">{gallery.categoryDescription}</p>
       </div>
       <main className="Gallery__main">{galleryList}</main>

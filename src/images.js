@@ -64,6 +64,7 @@ import Forest5lg from './images/forest-5-lg.webp';
 import Forest6lg from './images/forest-6-lg.webp';
 import Forest7lg from './images/forest-7-lg.webp';
 import Forest8lg from './images/forest-8-lg.webp';
+import Self from './images/self.webp';
 
 export const images = {
   Landing1,
@@ -132,4 +133,5 @@ export const images = {
   Forest6lg,
   Forest7lg,
   Forest8lg,
+  Self,
 };
