@@ -45,7 +45,7 @@ const Bio = () => {
         <p>
           {exhb.venue}, {exhb.city}
         </p>
-        <p>
+        <p className="Bio__sectionListItemDate">
           {exhb.start} - {exhb.end} - {exhb.year}
         </p>
       </div>
@@ -67,7 +67,7 @@ const Bio = () => {
     return (
       <div className="Bio__sectionListItem" key={award.name}>
         <h4>{award.name}</h4>
-        <p>
+        <p className="Bio__sectionListItemDate">
           {award.city} - {award.year}
         </p>
       </div>
@@ -78,20 +78,24 @@ const Bio = () => {
     <div className="Bio container">
       <h2 className="Bio__header">Bio</h2>
       <div className="Bio__imageContainer">
-        <img src={images.Self} alt="portrait of photographer" />
+        <img
+          src={images.Self}
+          alt="portrait of photographer"
+          className="Bio__image"
+        />
       </div>
-      <section className="Bio__section">
+      <section className="Bio__section ">
         <div className="Bio__sectionHeader">
           <h3>Details</h3>
         </div>
         <div className="Bio__sectionContent">
-          <p>
+          <p className="Bio__sectionDetails">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Necessitatibus quae sed maxime ipsum odit, delectus soluta dolor
             exercitationem ducimus expedita sequi ea porro nobis, aspernatur
             sunt ipsam nam? Vero, sapiente.
           </p>
-          <p>
+          <p className="Bio__sectionDetails">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Necessitatibus quae sed maxime ipsum odit, delectus soluta dolor
             exercitationem ducimus expedita sequi ea porro nobis, aspernatur
@@ -99,7 +103,7 @@ const Bio = () => {
           </p>
         </div>
       </section>
-      <section className="Bio__section">
+      <section className="Bio__section Bio__section-border">
         <div className="Bio__sectionHeader">
           <h3>Exhibitions</h3>
         </div>
@@ -107,7 +111,7 @@ const Bio = () => {
           {exhibitionList}
         </div>
       </section>
-      <section className="Bio__section">
+      <section className="Bio__section Bio__section-border">
         <div className="Bio__sectionHeader">
           <h3>Awards</h3>
         </div>
@@ -115,8 +119,8 @@ const Bio = () => {
           {awardList}
         </div>
       </section>
-      <section className="Bio__section">
-        <div className="Bio__sectionHeader">
+      <section className="Bio__section Bio__section-border">
+        <div className="Bio__sectionHeader Bio__sectionHeader-contacts">
           <h3>Contact Me</h3>
           <p>E - info@mysite.com</p>
           <p>T - 123-456-7890</p>

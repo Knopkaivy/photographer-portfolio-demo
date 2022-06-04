@@ -11,12 +11,23 @@
   letter-spacing: 2px;
   margin-bottom: 1.6rem;
 }
+.Bio__imageContainer {
+  width: 100%;
+}
+.Bio__image {
+  width: 100%;
+  object-fit: cover;
+}
 .Bio__section {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 5rem 0 2rem 0;
+}
+.Bio__section-border {
   border-top: 1px solid rgba(199, 199, 199, 0.42);
 }
+
 .Bio__sectionHeader {
   flex-basis: 30%;
 }
@@ -35,4 +46,21 @@
 }
 .Bio__sectionListItem {
   flex-basis: 45%;
+  margin-bottom: 2rem;
+}
+.Bio__sectionListItem h4 {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.Bio__sectionListItemDate {
+  font-family: 'Nunito Sans', sans-serif;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-top: 1rem;
+}
+.Bio__sectionDetails {
+  margin-bottom: 2rem;
+}
+.Bio__sectionHeader-contacts p {
+  font-size: 1.6rem;
 }
