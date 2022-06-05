@@ -33,7 +33,7 @@ const ContactForm = () => {
 
   return (
     <form className="ContactForm" onSubmit={handleSubmit}>
-      <div className="ContactForm__item">
+      <div className="ContactForm__item ContactForm__item-credentials">
         <label htmlFor="name" className="ContactForm__itemLabel">
           Name<span>*</span>
         </label>
@@ -45,7 +45,7 @@ const ContactForm = () => {
           onChange={handleChangeName}
         />
       </div>
-      <div className="ContactForm__item">
+      <div className="ContactForm__item ContactForm__item-credentials">
         <label htmlFor="email" className="ContactForm__itemLabel">
           Email<span>*</span>
         </label>
@@ -57,14 +57,14 @@ const ContactForm = () => {
           onChange={handleChangeEmail}
         />
       </div>
-      <div className="ContactForm__item">
+      <div className="ContactForm__item ContactForm__item-message">
         <label htmlFor="message" className="ContactForm__itemLabel">
           Message
         </label>
-        <input
+        <textarea
           id="message"
           type="text"
-          className="ContactForm__itemInput"
+          className="ContactForm__itemInput ContactForm__itemInput-message"
           value={formMessage}
           onChange={handleChangeMessage}
         />
@@ -79,7 +79,7 @@ const ContactForm = () => {
       <div className="ContactForm__item">
         {showSubmittedMessage && (
           <div className="ContactForm__successMessage">
-            Thanks For Submitting!
+            Thank you for submitting!
           </div>
         )}
       </div>

@@ -1,13 +1,65 @@
+.ContactForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 1.6rem;
+}
 .ContactForm__item {
   min-height: 3.2rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.ContactForm__item-credentials {
+  flex-basis: 45%;
+}
+.ContactForm__item-message {
+  flex-basis: 100%;
+}
+.ContactForm__itemLabel span {
+  padding-left: 0.5rem;
+}
+.ContactForm__itemInput {
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  line-height: 2.4rem;
+  padding: 1rem;
+  border: none;
+  border-bottom: 1px solid var(--color-primary);
+  outline: none;
+  border-radius: 0;
+}
+.ContactForm__itemInput:hover,
+.ContactForm__itemInput:active,
+.ContactForm__itemInput:focus {
+  border: 1px solid var(--color-primary);
+}
+.ContactForm__itemInput:hover {
+  background-color: rgb(236, 226, 226);
+}
+.ContactForm__itemInput:active,
+.ContactForm__itemInput:focus {
+  background-color: var(--color-white);
+}
+.ContactForm__itemInput-message {
+  height: 12rem;
+  resize: none;
 }
 .ContactForm__itemButton {
+  display: inline-block;
+  width: 100%;
+  height: 4rem;
   border: none;
   background-color: var(--color-white);
   font-family: inherit;
-  font-size: inherit;
+  font-size: 2rem;
   cursor: pointer;
+  align-self: center;
 }
 .ContactForm__itemButton:hover {
+  color: var(--color-secondary);
+}
+.ContactForm__successMessage {
+  text-align: center;
   color: var(--color-secondary);
 }
