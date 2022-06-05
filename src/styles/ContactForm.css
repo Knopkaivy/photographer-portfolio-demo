@@ -1,0 +1,13 @@
+.ContactForm__item {
+  min-height: 3.2rem;
+}
+.ContactForm__itemButton {
+  border: none;
+  background-color: var(--color-white);
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+.ContactForm__itemButton:hover {
+  color: var(--color-secondary);
+}

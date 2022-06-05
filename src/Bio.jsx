@@ -1,5 +1,6 @@
 import React from 'react';
 import { images } from './images';
+import ContactForm from './ContactForm';
 import './styles/Bio.css';
 
 const Bio = () => {
@@ -125,7 +126,9 @@ const Bio = () => {
           <p>E - info@mysite.com</p>
           <p>T - 123-456-7890</p>
         </div>
-        <div className="Bio__sectionContent">Content</div>
+        <div className="Bio__sectionContent">
+          <ContactForm />
+        </div>
       </section>
     </div>
   );
