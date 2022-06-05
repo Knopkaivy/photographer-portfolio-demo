@@ -41,6 +41,10 @@
 .ContactForm__itemInput:focus {
   background-color: var(--color-white);
 }
+.ContactForm__itemInput:focus:invalid {
+  background-color: pink;
+  border: 1px solid red;
+}
 .ContactForm__itemInput-message {
   height: 12rem;
   resize: none;

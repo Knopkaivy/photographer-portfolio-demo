@@ -40,6 +40,7 @@ const ContactForm = () => {
         <input
           id="name"
           type="text"
+          required
           className="ContactForm__itemInput"
           value={formName}
           onChange={handleChangeName}
@@ -51,7 +52,8 @@ const ContactForm = () => {
         </label>
         <input
           id="email"
-          type="text"
+          type="email"
+          required
           className="ContactForm__itemInput"
           value={formEmail}
           onChange={handleChangeEmail}
