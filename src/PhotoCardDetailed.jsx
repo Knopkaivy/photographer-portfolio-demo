@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { BsChevronLeft } from 'react-icons/bs';
 import { BsChevronRight } from 'react-icons/bs';
 import ShareOverlay from './ShareOverlay';
+import PurchaseForm from './PurchaseForm';
 import { images } from './images';
 import Toolbar from './Toolbar';
 import './styles/PhotoCardDetailed.css';
@@ -125,7 +126,7 @@ const PhotoCardDetailed = ({
         <div className="PhotoCardDetailed__descriptionContainer">
           <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
           <p className="PhotoCardDetailed__description">
-            {photo.photoDescription}
+            <PurchaseForm />
           </p>
         </div>
       </div>
