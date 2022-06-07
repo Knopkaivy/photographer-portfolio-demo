@@ -1,0 +1,52 @@
+.PurchaseForm {
+  width: 100%;
+  max-width: 44rem;
+  display: flex;
+  flex-direction: column;
+}
+.PurchaseForm__header {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.PurchaseForm__radioItem {
+  width: 100%;
+  min-height: 8rem;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.PurchaseForm__radioItem:not(:last-child) {
+  border-bottom: 1px solid var(--color-gray);
+}
+.PurchaseForm__radioItemDescription {
+  flex-grow: 1;
+  margin-left: 2rem;
+  line-height: 1.6;
+}
+.PurchaseForm__radioItemDescription p {
+  color: var(--color-gray);
+}
+.PurchaseForm__buttonContainer {
+  margin: 5.2rem 0 2.4rem 0;
+}
+.PurchaseForm__button {
+  width: 100%;
+  height: 6rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s 0.05s;
+}
+.PurchaseForm__button:hover {
+  background-color: var(--color-secondary);
+}
+.PurchaseForm__checkoutLink {
+  width: 100%;
+  text-align: center;
+}
