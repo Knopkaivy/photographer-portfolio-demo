@@ -125,9 +125,9 @@ const PhotoCardDetailed = ({
         </div>
         <div className="PhotoCardDetailed__descriptionContainer">
           <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
-          <p className="PhotoCardDetailed__description">
+          <div className="PhotoCardDetailed__description">
             <PurchaseForm />
-          </p>
+          </div>
         </div>
       </div>
     </div>

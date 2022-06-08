@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles/PurchaseForm.css';
 
 const PurchaseForm = () => {
+  const [currentOption, setCurrentOption] = useState(null);
+
   const purchaseOptions = [
     {
       id: 'commercialWR',
@@ -32,12 +34,38 @@ const PurchaseForm = () => {
       memo: 'This license offers images, illustrations and photos for commercial use. With this license, content can be used in promotional campaigns such as advertising, as well as on websites and blogs. Permissions are for web and digital use only and does not require the owner to be credited.',
     },
   ];
+
+  let handleSubmitPurchase = (event) => {
+    event.preventDefault();
+    if (currentOption !== null) {
+      console.log('submitting', currentOption);
+    } else {
+      console.log('no item selected');
+    }
+  };
+  let handleSelectOption = (event) => {
+    let newId = event.target.id;
+    let newOption = {};
+    for (let option of purchaseOptions) {
+      if (option.id === newId) {
+        newOption = { ...option };
+        setCurrentOption(newOption);
+        break;
+      }
+    }
+  };
+
   const purchaseList = purchaseOptions.map((option) => {
     return (
       <div className="PurchaseForm__radioItem" key={option.id}>
-        <input type="radio" id={option.id} name="license" value="" />
+        <input
+          type="radio"
+          id={option.id}
+          name="license"
+          onClick={handleSelectOption}
+        />
         <div className="PurchaseForm__radioItemDescription">
-          <label for={option.id}>{option.label}</label>
+          <label htmlFor={option.id}>{option.label}</label>
           <p>{option.detail}</p>
         </div>
         <div className="PurchaseForm__radioItemPrice">{option.price}</div>
@@ -45,7 +73,7 @@ const PurchaseForm = () => {
     );
   });
   return (
-    <form className="PurchaseForm">
+    <form className="PurchaseForm" onSubmit={handleSubmitPurchase}>
       <h3 className="PurchaseForm__header">Select License</h3>
       <div className="PurchaseForm__radioGroup">{purchaseList}</div>
       <div className="PurchaseForm__buttonContainer">
