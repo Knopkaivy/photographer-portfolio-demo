@@ -65,7 +65,10 @@ const PurchaseForm = () => {
           onClick={handleSelectOption}
         />
         <div className="PurchaseForm__radioItemDescription">
-          <label htmlFor={option.id}>{option.label}</label>
+          <label className="PurchaseForm__radioItemLabel" htmlFor={option.id}>
+            {option.label}
+            <div className="PurchaseForm__radioItemMemo">{option.memo}</div>
+          </label>
           <p>{option.detail}</p>
         </div>
         <div className="PurchaseForm__radioItemPrice">{option.price}</div>
