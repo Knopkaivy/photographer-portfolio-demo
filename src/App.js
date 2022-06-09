@@ -79,7 +79,6 @@ function App() {
           }
         />
         <Route path="bio" element={<Bio />} />
-        <Route path="store" element={<Store />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

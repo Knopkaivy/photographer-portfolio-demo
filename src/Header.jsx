@@ -15,7 +15,6 @@ const Header = ({ portfolio }) => {
       menu,
     },
     { name: 'bio' },
-    { name: 'store' },
   ];
   const listItems = navList.map((item) => {
     return <NavItem item={item} portfolio={portfolio} key={item.name} />;
