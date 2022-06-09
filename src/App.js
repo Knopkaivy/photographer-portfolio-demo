@@ -8,7 +8,6 @@ import Portfolio from './Portfolio';
 import Gallery from './Gallery';
 import PhotoCardDetailed from './PhotoCardDetailed';
 import Bio from './Bio';
-import Store from './Store';
 
 import './styles/App.css';
 
