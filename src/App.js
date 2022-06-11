@@ -27,6 +27,15 @@ function App() {
     setOverlayInputVal('/');
     setOverlayIsOpen(false);
   };
+  const [cartIsOpen, setCartIsOpen] = useState(false);
+
+  let openCart = (val) => {
+    setCartIsOpen(true);
+  };
+
+  let closeCart = () => {
+    setCartIsOpen(false);
+  };
 
   let toggleLike = (galleryId, photoId) => {
     let newState = { ...portfolio };
@@ -43,7 +52,12 @@ function App() {
   };
   return (
     <div className="App">
-      <Header portfolio={portfolio} />
+      <Header
+        portfolio={portfolio}
+        cartIsOpen={cartIsOpen}
+        openCart={openCart}
+        closeCart={closeCart}
+      />
       <Routes>
         <Route path="/" element={<Home portfolio={portfolio} />} />
         <Route
