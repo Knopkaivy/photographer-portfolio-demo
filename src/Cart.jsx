@@ -1,28 +1,37 @@
 import React, { useState } from 'react';
 import { BsChevronRight } from 'react-icons/bs';
+import CartItem from './CartItem';
 import './styles/Cart.css';
 
 const Cart = ({ closeCart }) => {
-  const purchaseItems = [
+  const purchaseItemsStarter = [
     {
       imgURL: '',
       name: 'Image 1',
-      label: '',
+      label: 'Commercial Use - Web Ready',
       detail: '1200px x 798px / 16.6 x 11" @72dpi',
     },
     {
       imgURL: '',
       name: 'Image 2',
-      label: '',
-      detail: '4256px x 2832px / 14.1 x 9.4" @300dpi',
+      label: 'Commercial Use - Original File',
+      detail: '1920px x 1000px / 6.4" x 3.3" @300dpi',
     },
     {
       imgURL: '',
       name: 'Image 3',
-      label: '',
-      detail: '1200px x 798px / 16.6 x 11" @72dpi',
+      label: 'Extended Use - Web Ready',
+      detail: '1200px x 625px / 16.6" x 8.6" @72dpi',
+    },
+    {
+      imgURL: '',
+      name: 'Image 4',
+      label: 'Extended Use - Original File',
+      detail: '1920px x 1000px / 6.4" x 3.3" @300dpi',
     },
   ];
+
+  const [purchaseItems, setPurchaseItems] = useState(purchaseItemsStarter);
 
   let handleCloseCart = (event) => {
     event.stopPropagation();
@@ -34,6 +43,18 @@ const Cart = ({ closeCart }) => {
     }
     return;
   };
+
+  let purchaseList = purchaseItems.map((item) => {
+    return (
+      <CartItem
+        imageURL={item.imgURL}
+        name={item.name}
+        label={item.label}
+        detail={item.detail}
+      />
+    );
+  });
+
   return (
     <div id="Cart" className="Cart" onClick={clickAway}>
       <div className="Cart__menu">
@@ -43,10 +64,7 @@ const Cart = ({ closeCart }) => {
           </div>
           <h2 className="Cart__header">Cart (2)</h2>
         </div>
-        <div className="Cart__list">
-          <div className="Cart__listItem">Item 1</div>
-          <div className="Cart__listItem">Item 2</div>
-        </div>
+        <div className="Cart__list">{purchaseList}</div>
 
         <div className="Cart__checkoutSection">
           <div className="Cart__subtotal">

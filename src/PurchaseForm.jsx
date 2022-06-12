@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { licenseOptions } from './licenseOption';
 import './styles/PurchaseForm.css';
 
 const PurchaseForm = () => {
