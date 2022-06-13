@@ -22,15 +22,18 @@ const Header = ({ portfolio, cartIsOpen, openCart, closeCart }) => {
   });
   return (
     <div className="Header__Fixed">
-      {cartIsOpen && <Cart closeCart={closeCart} />}
+      {/* {cartIsOpen && <Cart closeCart={closeCart} />} */}
       <nav className="Header container">
         <Link to="/" className="Header__Logo">
           A-W
         </Link>
         {listItems}
-        <Link to="/" className="Header__ListItem Header__ListItem-cart">
+        <div
+          className="Header__ListItem Header__ListItem-cart"
+          onClick={openCart}
+        >
           <BsBag className="Header__ListItem-cartIcon" /> <span>0</span>
-        </Link>
+        </div>
       </nav>
     </div>
   );

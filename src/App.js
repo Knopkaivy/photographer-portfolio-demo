@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { starter } from './starter';
 import Header from './Header';
+import Cart from './Cart';
 import Footer from './Footer';
 import Home from './Home';
 import Portfolio from './Portfolio';
@@ -27,7 +28,7 @@ function App() {
     setOverlayInputVal('/');
     setOverlayIsOpen(false);
   };
-  const [cartIsOpen, setCartIsOpen] = useState(true);
+  const [cartIsOpen, setCartIsOpen] = useState(false);
 
   let openCart = (val) => {
     setCartIsOpen(true);
@@ -35,7 +36,6 @@ function App() {
 
   let closeCart = () => {
     setCartIsOpen(false);
-    console.log('cart is now closed');
   };
 
   let toggleLike = (galleryId, photoId) => {
@@ -59,6 +59,7 @@ function App() {
         openCart={openCart}
         closeCart={closeCart}
       />
+      {cartIsOpen && <Cart closeCart={closeCart} />}
       <Routes>
         <Route path="/" element={<Home portfolio={portfolio} />} />
         <Route
@@ -89,6 +90,7 @@ function App() {
               overlayInputVal={overlayInputVal}
               openOverlay={openOverlay}
               closeOverlay={closeOverlay}
+              openCart={openCart}
             />
           }
         />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { licenseOptions } from './licenseOption';
 import './styles/PurchaseForm.css';
 
-const PurchaseForm = () => {
+const PurchaseForm = ({ openCart }) => {
   const [currentOption, setCurrentOption] = useState(null);
 
   const purchaseOptions = [
@@ -40,6 +40,7 @@ const PurchaseForm = () => {
     event.preventDefault();
     if (currentOption !== null) {
       console.log('submitting', currentOption);
+      openCart();
     } else {
       console.log('no item selected');
     }

@@ -20,6 +20,7 @@
   font-size: 1.2rem;
   text-transform: uppercase;
   padding: 0 1.6rem;
+  cursor: pointer;
 }
 .Header__Logo:link,
 .Header__Logo:visited,

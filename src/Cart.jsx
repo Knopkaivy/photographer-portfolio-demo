@@ -34,7 +34,6 @@ const Cart = ({ closeCart }) => {
   const [purchaseItems, setPurchaseItems] = useState(purchaseItemsStarter);
 
   let handleCloseCart = (event) => {
-    console.log('closing cart');
     event.stopPropagation();
     closeCart();
   };
