@@ -27,7 +27,7 @@ function App() {
     setOverlayInputVal('/');
     setOverlayIsOpen(false);
   };
-  const [cartIsOpen, setCartIsOpen] = useState(false);
+  const [cartIsOpen, setCartIsOpen] = useState(true);
 
   let openCart = (val) => {
     setCartIsOpen(true);
@@ -35,6 +35,7 @@ function App() {
 
   let closeCart = () => {
     setCartIsOpen(false);
+    console.log('cart is now closed');
   };
 
   let toggleLike = (galleryId, photoId) => {

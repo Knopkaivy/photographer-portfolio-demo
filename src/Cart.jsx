@@ -34,6 +34,7 @@ const Cart = ({ closeCart }) => {
   const [purchaseItems, setPurchaseItems] = useState(purchaseItemsStarter);
 
   let handleCloseCart = (event) => {
+    console.log('closing cart');
     event.stopPropagation();
     closeCart();
   };
@@ -58,8 +59,8 @@ const Cart = ({ closeCart }) => {
   return (
     <div id="Cart" className="Cart" onClick={clickAway}>
       <div className="Cart__menu">
-        <div className="Cart__headerSection" onClick={handleCloseCart}>
-          <div className="Cart__close">
+        <div className="Cart__headerSection">
+          <div className="Cart__close" onClick={handleCloseCart}>
             <BsChevronRight />
           </div>
           <h2 className="Cart__header">Cart (2)</h2>

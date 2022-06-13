@@ -22,7 +22,7 @@ const Header = ({ portfolio, cartIsOpen, openCart, closeCart }) => {
   });
   return (
     <div className="Header__Fixed">
-      <Cart closeCart={closeCart} />
+      {cartIsOpen && <Cart closeCart={closeCart} />}
       <nav className="Header container">
         <Link to="/" className="Header__Logo">
           A-W
