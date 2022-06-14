@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsBag } from 'react-icons/bs';
-import Cart from './Cart';
 import NavItem from './NavItem';
 import './styles/Header.css';
 
@@ -22,7 +21,6 @@ const Header = ({ portfolio, cartIsOpen, openCart, closeCart }) => {
   });
   return (
     <div className="Header__Fixed">
-      {/* {cartIsOpen && <Cart closeCart={closeCart} />} */}
       <nav className="Header container">
         <Link to="/" className="Header__Logo">
           A-W

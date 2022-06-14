@@ -2,18 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { MdOpenInFull } from 'react-icons/md';
 import { MdCloseFullscreen } from 'react-icons/md';
+import { BsBag } from 'react-icons/bs';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { RiShareForwardLine } from 'react-icons/ri';
 import { IoMdClose } from 'react-icons/io';
 import './styles/Toolbar.css';
 
-const Toolbar = ({ photo, toggleLike, openOverlay }) => {
+const Toolbar = ({ photo, toggleLike, openOverlay, openCart }) => {
   let location = useLocation();
   let navigate = useNavigate();
   let params = useParams();
-
-  // console.log('params', params);
 
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -69,6 +68,13 @@ const Toolbar = ({ photo, toggleLike, openOverlay }) => {
           )}
         </div>
         <div className="Toolbar__iconContainer">
+          <BsBag
+            className="Toolbar__icon Toolbar__icon-secondary icon"
+            onClick={openCart}
+          />{' '}
+          <span className="Toolbar__icon-span">0</span>
+        </div>
+        <div className="Toolbar__iconContainer">
           <RiShareForwardLine
             className="Toolbar__icon Toolbar__icon-secondary icon"
             onClick={handleOpenOverlay}
@@ -76,10 +82,10 @@ const Toolbar = ({ photo, toggleLike, openOverlay }) => {
         </div>
         <div className="Toolbar__iconContainer" onClick={handleLike}>
           {photo.liked ? (
-            <div className="PhotoCard__icon-like-container">
-              <AiFillHeart className="PhotoCard__icon-like Toolbar__icon Toolbar__icon-secondary icon" />
+            <React.Fragment>
+              <AiFillHeart className="Toolbar__icon Toolbar__icon-secondary icon icon-like" />
               <span className="Toolbar__icon-span">1</span>
-            </div>
+            </React.Fragment>
           ) : (
             <AiOutlineHeart className="Toolbar__icon Toolbar__icon-secondary icon" />
           )}

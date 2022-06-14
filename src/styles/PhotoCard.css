@@ -47,9 +47,9 @@
   display: flex;
   align-items: center;
 }
-.PhotoCard__icon-like {
+/* .PhotoCard__icon-like {
   fill: red;
-}
+} */
 .PhotoCard__icon-span {
   display: inline-block;
   padding: 0 1rem;

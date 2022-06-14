@@ -64,6 +64,10 @@
 .PurchaseForm__button:hover {
   background-color: var(--color-secondary);
 }
+.PurchaseForm__button:disabled {
+  background-color: var(--color-gray-light);
+  cursor: default;
+}
 .PurchaseForm__checkoutLink {
   width: 100%;
   text-align: center;

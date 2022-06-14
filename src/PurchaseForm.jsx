@@ -82,7 +82,11 @@ const PurchaseForm = ({ openCart }) => {
       <h3 className="PurchaseForm__header">Select License</h3>
       <div className="PurchaseForm__radioGroup">{purchaseList}</div>
       <div className="PurchaseForm__buttonContainer">
-        <button type="submit" className="PurchaseForm__button">
+        <button
+          type="submit"
+          className="PurchaseForm__button"
+          disabled={currentOption === null}
+        >
           Add to Cart
         </button>
       </div>

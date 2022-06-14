@@ -35,7 +35,7 @@ const PhotoCard = ({
         <div className="PhotoCard__icon" onClick={handleToggleLike}>
           {isLiked ? (
             <div className="PhotoCard__icon-like-container">
-              <AiFillHeart className="PhotoCard__icon-like" />
+              <AiFillHeart className="icon-like" />
               <span className="PhotoCard__icon-span">1</span>
             </div>
           ) : (
