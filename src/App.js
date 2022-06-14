@@ -59,7 +59,7 @@ function App() {
         openCart={openCart}
         closeCart={closeCart}
       />
-      {cartIsOpen && <Cart closeCart={closeCart} />}
+      <Cart cartIsOpen={cartIsOpen} closeCart={closeCart} />
       <Routes>
         <Route path="/" element={<Home portfolio={portfolio} />} />
         <Route

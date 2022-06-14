@@ -3,31 +3,35 @@ import { BsChevronRight } from 'react-icons/bs';
 import CartItem from './CartItem';
 import './styles/Cart.css';
 
-const Cart = ({ closeCart }) => {
+const Cart = ({ cartIsOpen, closeCart }) => {
   const purchaseItemsStarter = [
     {
       imgURL: '',
       name: 'Image 1',
       label: 'Commercial Use - Web Ready',
       detail: '1200px x 798px / 16.6 x 11" @72dpi',
+      id: '1',
     },
     {
       imgURL: '',
       name: 'Image 2',
       label: 'Commercial Use - Original File',
       detail: '1920px x 1000px / 6.4" x 3.3" @300dpi',
+      id: '12',
     },
     {
       imgURL: '',
       name: 'Image 3',
       label: 'Extended Use - Web Ready',
       detail: '1200px x 625px / 16.6" x 8.6" @72dpi',
+      id: '123',
     },
     {
       imgURL: '',
       name: 'Image 4',
       label: 'Extended Use - Original File',
       detail: '1920px x 1000px / 6.4" x 3.3" @300dpi',
+      id: '1234',
     },
   ];
 
@@ -51,13 +55,19 @@ const Cart = ({ closeCart }) => {
         name={item.name}
         label={item.label}
         detail={item.detail}
+        id={item.id}
+        key={item.id}
       />
     );
   });
 
   return (
-    <div id="Cart" className="Cart" onClick={clickAway}>
-      <div className="Cart__menu">
+    <div
+      id="Cart"
+      className={`Cart ${cartIsOpen && 'Cart-isOpen'}`}
+      onClick={clickAway}
+    >
+      <div className={`Cart__menu ${cartIsOpen && 'Cart__menu-isOpen'}`}>
         <div className="Cart__headerSection">
           <div className="Cart__close" onClick={handleCloseCart}>
             <BsChevronRight />

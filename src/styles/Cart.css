@@ -6,6 +6,11 @@
   background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   z-index: 5;
+  transform: scale(0);
+  transition: all 2s ease-in;
+}
+.Cart-isOpen {
+  transform: scale(1);
 }
 .Cart__menu {
   width: 100vw;
@@ -14,13 +19,17 @@
   background-color: var(--color-white);
   position: absolute;
   top: 0;
-  right: 0;
+  right: -64rem;
   z-index: 5;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  transition: all 2s ease-in;
+}
+.Cart__menu-isOpen {
+  right: 0;
 }
 .Cart__headerSection {
   width: 100%;
