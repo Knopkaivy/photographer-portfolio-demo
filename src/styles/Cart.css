@@ -1,16 +1,20 @@
 .Cart {
+}
+.Cart__backdrop {
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
-  z-index: 5;
+  z-index: 4;
   transform: scale(0);
-  transition: all 2s ease-in;
+  opacity: 0;
+  transition: all 0.01s ease;
 }
-.Cart-isOpen {
+.Cart__backdrop-isOpen {
   transform: scale(1);
+  opacity: 1;
 }
 .Cart__menu {
   width: 100vw;
@@ -26,7 +30,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  transition: all 2s ease-in;
+  transition: all 0.3s ease;
 }
 .Cart__menu-isOpen {
   right: 0;

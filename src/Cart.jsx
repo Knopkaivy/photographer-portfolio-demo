@@ -62,11 +62,11 @@ const Cart = ({ cartIsOpen, closeCart }) => {
   });
 
   return (
-    <div
-      id="Cart"
-      className={`Cart ${cartIsOpen && 'Cart-isOpen'}`}
-      onClick={clickAway}
-    >
+    <div id="Cart" className="Cart" onClick={clickAway}>
+      <div
+        className={`Cart__backdrop ${cartIsOpen && 'Cart__backdrop-isOpen'}`}
+        onClick={clickAway}
+      ></div>
       <div className={`Cart__menu ${cartIsOpen && 'Cart__menu-isOpen'}`}>
         <div className="Cart__headerSection">
           <div className="Cart__close" onClick={handleCloseCart}>
