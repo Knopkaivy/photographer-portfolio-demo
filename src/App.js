@@ -15,8 +15,9 @@ import './styles/App.css';
 function App() {
   const [portfolio, setPortfolio] = useState(starter);
 
-  const [overlayIsOpen, setOverlayIsOpen] = useState(false);
+  const [cartSubtotal, setCartSubtotal] = useState(0);
 
+  const [overlayIsOpen, setOverlayIsOpen] = useState(false);
   const [overlayInputVal, setOverlayInputVal] = useState('/');
 
   let openOverlay = (val) => {
@@ -59,7 +60,11 @@ function App() {
         openCart={openCart}
         closeCart={closeCart}
       />
-      <Cart cartIsOpen={cartIsOpen} closeCart={closeCart} />
+      <Cart
+        cartSubtotal={cartSubtotal}
+        cartIsOpen={cartIsOpen}
+        closeCart={closeCart}
+      />
       <Routes>
         <Route path="/" element={<Home portfolio={portfolio} />} />
         <Route

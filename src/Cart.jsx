@@ -3,7 +3,7 @@ import { BsChevronRight } from 'react-icons/bs';
 import CartItem from './CartItem';
 import './styles/Cart.css';
 
-const Cart = ({ cartIsOpen, closeCart }) => {
+const Cart = ({ cartSubtotal, cartIsOpen, closeCart }) => {
   const purchaseItemsStarter = [
     {
       imgURL: '',
@@ -36,7 +36,6 @@ const Cart = ({ cartIsOpen, closeCart }) => {
   ];
 
   const [purchaseItems, setPurchaseItems] = useState(purchaseItemsStarter);
-  const [subtotal, setSubtotal] = useState(0);
 
   let handleCloseCart = (event) => {
     event.stopPropagation();
@@ -82,7 +81,7 @@ const Cart = ({ cartIsOpen, closeCart }) => {
         <div className="Cart__checkoutSection">
           <div className="Cart__subtotal">
             <div>Subtotal</div>
-            <div>{`$${subtotal}.00`}</div>
+            <div>{`$${cartSubtotal}.00`}</div>
           </div>
           <button className="Cart__checkoutBtn btn">Checkout</button>
         </div>
