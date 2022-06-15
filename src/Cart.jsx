@@ -36,6 +36,7 @@ const Cart = ({ cartIsOpen, closeCart }) => {
   ];
 
   const [purchaseItems, setPurchaseItems] = useState(purchaseItemsStarter);
+  const [subtotal, setSubtotal] = useState(0);
 
   let handleCloseCart = (event) => {
     event.stopPropagation();
@@ -72,14 +73,16 @@ const Cart = ({ cartIsOpen, closeCart }) => {
           <div className="Cart__close" onClick={handleCloseCart}>
             <BsChevronRight />
           </div>
-          <h2 className="Cart__header">Cart (2)</h2>
+          <h2 className="Cart__header">
+            Cart {purchaseItems.length > 0 && purchaseItems.length}
+          </h2>
         </div>
         <div className="Cart__list">{purchaseList}</div>
 
         <div className="Cart__checkoutSection">
           <div className="Cart__subtotal">
             <div>Subtotal</div>
-            <div>$20.00</div>
+            <div>{`$${subtotal}.00`}</div>
           </div>
           <button className="Cart__checkoutBtn btn">Checkout</button>
         </div>
