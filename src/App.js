@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { starter } from './starter';
 import Header from './Header';
@@ -26,6 +26,16 @@ function App() {
     let newState = [...purchaseItems, item];
     setPurchaseItems(newState);
   };
+
+  useEffect(() => {
+    if (purchaseItems.length > 0) {
+      let newSubtotal = 0;
+      purchaseItems.forEach((item) => {
+        newSubtotal = newSubtotal + item.price;
+      });
+      setCartSubtotal(newSubtotal);
+    }
+  }, [purchaseItems]);
 
   let openOverlay = (val) => {
     setOverlayInputVal(val);

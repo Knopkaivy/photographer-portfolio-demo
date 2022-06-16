@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BsChevronRight } from 'react-icons/bs';
 import CartItem from './CartItem';
 import './styles/Cart.css';

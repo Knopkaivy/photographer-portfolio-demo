@@ -13,7 +13,7 @@ const CartItem = ({ imageURL, name, label, detail }) => {
         className="CartItem__licenseOption"
       >
         {item.label}
-        <span> - {item.price}</span>
+        <span>{` - $${item.price}.00`}</span>
       </option>
     );
   });

@@ -52,7 +52,7 @@ const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
           </label>
           <p>{option.detail}</p>
         </div>
-        <div className="PurchaseForm__radioItemPrice">{option.price}</div>
+        <div className="PurchaseForm__radioItemPrice">{`$${option.price}.00`}</div>
       </div>
     );
   });
