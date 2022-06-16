@@ -11,14 +11,21 @@ import PhotoCardDetailed from './PhotoCardDetailed';
 import Bio from './Bio';
 
 import './styles/App.css';
+import { RiContactsBookLine } from 'react-icons/ri';
 
 function App() {
   const [portfolio, setPortfolio] = useState(starter);
 
+  const [purchaseItems, setPurchaseItems] = useState([]);
   const [cartSubtotal, setCartSubtotal] = useState(0);
 
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
   const [overlayInputVal, setOverlayInputVal] = useState('/');
+
+  let addItemToCart = (item) => {
+    let newState = [...purchaseItems, item];
+    setPurchaseItems(newState);
+  };
 
   let openOverlay = (val) => {
     setOverlayInputVal(val);
@@ -64,6 +71,7 @@ function App() {
         cartSubtotal={cartSubtotal}
         cartIsOpen={cartIsOpen}
         closeCart={closeCart}
+        purchaseItems={purchaseItems}
       />
       <Routes>
         <Route path="/" element={<Home portfolio={portfolio} />} />
@@ -96,6 +104,8 @@ function App() {
               openOverlay={openOverlay}
               closeOverlay={closeOverlay}
               openCart={openCart}
+              purchaseItems={purchaseItems}
+              addItemToCart={addItemToCart}
             />
           }
         />

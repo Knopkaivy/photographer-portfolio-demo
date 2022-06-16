@@ -3,39 +3,8 @@ import { BsChevronRight } from 'react-icons/bs';
 import CartItem from './CartItem';
 import './styles/Cart.css';
 
-const Cart = ({ cartSubtotal, cartIsOpen, closeCart }) => {
-  const purchaseItemsStarter = [
-    {
-      imgURL: '',
-      name: 'Image 1',
-      label: 'Commercial Use - Web Ready',
-      detail: '1200px x 798px / 16.6 x 11" @72dpi',
-      id: '1',
-    },
-    {
-      imgURL: '',
-      name: 'Image 2',
-      label: 'Commercial Use - Original File',
-      detail: '1920px x 1000px / 6.4" x 3.3" @300dpi',
-      id: '12',
-    },
-    {
-      imgURL: '',
-      name: 'Image 3',
-      label: 'Extended Use - Web Ready',
-      detail: '1200px x 625px / 16.6" x 8.6" @72dpi',
-      id: '123',
-    },
-    {
-      imgURL: '',
-      name: 'Image 4',
-      label: 'Extended Use - Original File',
-      detail: '1920px x 1000px / 6.4" x 3.3" @300dpi',
-      id: '1234',
-    },
-  ];
-
-  const [purchaseItems, setPurchaseItems] = useState(purchaseItemsStarter);
+const Cart = ({ cartSubtotal, cartIsOpen, closeCart, purchaseItems }) => {
+  // const [purchaseItems, setPurchaseItems] = useState(purchaseItemsStarter);
 
   let handleCloseCart = (event) => {
     event.stopPropagation();
@@ -73,10 +42,12 @@ const Cart = ({ cartSubtotal, cartIsOpen, closeCart }) => {
             <BsChevronRight />
           </div>
           <h2 className="Cart__header">
-            Cart {purchaseItems.length > 0 && purchaseItems.length}
+            {`Cart (${purchaseItems.length > 0 && purchaseItems.length})`}
           </h2>
         </div>
-        <div className="Cart__list">{purchaseList}</div>
+        <div className="Cart__list">
+          {purchaseItems.length > 0 && purchaseList}
+        </div>
 
         <div className="Cart__checkoutSection">
           <div className="Cart__subtotal">

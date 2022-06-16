@@ -15,6 +15,8 @@ const PhotoCardDetailed = ({
   openOverlay,
   closeOverlay,
   openCart,
+  purchaseItems,
+  addItemToCart,
 }) => {
   let params = useParams();
 
@@ -128,7 +130,12 @@ const PhotoCardDetailed = ({
         <div className="PhotoCardDetailed__descriptionContainer">
           <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
           <div className="PhotoCardDetailed__description">
-            <PurchaseForm openCart={openCart} />
+            <PurchaseForm
+              photoId={photo.photoId}
+              openCart={openCart}
+              purchaseItems={purchaseItems}
+              addItemToCart={addItemToCart}
+            />
           </div>
         </div>
       </div>

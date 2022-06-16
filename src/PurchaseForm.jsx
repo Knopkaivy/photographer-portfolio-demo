@@ -1,45 +1,21 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { licenseOptions } from './licenseOption';
 import './styles/PurchaseForm.css';
 
-const PurchaseForm = ({ openCart }) => {
+const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
   const [currentOption, setCurrentOption] = useState(null);
-
-  const purchaseOptions = [
-    {
-      id: 'commercialWR',
-      label: 'Commercial Use - Web Ready',
-      detail: '1200px x 625px / 16.6" x 8.6" @72dpi',
-      price: '$10.00',
-      memo: 'This license offers images, illustrations and photos for commercial use. With this license, content can be used in promotional campaigns such as advertising, as well as on websites and blogs. Permissions are for web and digital use only and does not require the owner to be credited.',
-    },
-    {
-      id: 'commercialOF',
-      label: 'Commercial Use - Original File',
-      detail: '1920px x 1000px / 6.4" x 3.3" @300dpi',
-      price: '$15.00',
-      memo: 'This license offers images, illustrations and photos for commercial use. With this license, content can be used in promotional campaigns such as advertising, as well as on websites and blogs. Permissions are for web and digital use only and does not require the owner to be credited.',
-    },
-    {
-      id: 'extendedWR',
-      label: 'Extended Use - Web Ready',
-      detail: '1200px x 625px / 16.6" x 8.6" @72dpi',
-      price: '$20.00',
-      memo: 'This license offers images, illustrations and photos for commercial use. With this license, content can be used in promotional campaigns such as advertising, as well as on websites and blogs. Permissions are for web and digital use only and does not require the owner to be credited.',
-    },
-    {
-      id: 'extendedOF',
-      label: 'Extended Use - Original File',
-      detail: '1920px x 1000px / 6.4" x 3.3" @300dpi',
-      price: '$25.00',
-      memo: 'This license offers images, illustrations and photos for commercial use. With this license, content can be used in promotional campaigns such as advertising, as well as on websites and blogs. Permissions are for web and digital use only and does not require the owner to be credited.',
-    },
-  ];
 
   let handleSubmitPurchase = (event) => {
     event.preventDefault();
     if (currentOption !== null) {
       console.log('submitting', currentOption);
+      let item = { ...currentOption };
+      item.id = uuidv4();
+      item.imageUrl = `${photoId.charAt(0).toUpperCase()}${photoId
+        .slice(1)
+        .replace('-', '')}md`;
+      addItemToCart(item);
       openCart();
     } else {
       console.log('no item selected');
@@ -48,8 +24,8 @@ const PurchaseForm = ({ openCart }) => {
   let handleSelectOption = (event) => {
     let newId = event.target.id;
     let newOption = {};
-    for (let option of purchaseOptions) {
-      if (option.id === newId) {
+    for (let option of licenseOptions) {
+      if (option.licenseId === newId) {
         newOption = { ...option };
         setCurrentOption(newOption);
         break;
@@ -57,17 +33,20 @@ const PurchaseForm = ({ openCart }) => {
     }
   };
 
-  const purchaseList = purchaseOptions.map((option) => {
+  const purchaseList = licenseOptions.map((option) => {
     return (
-      <div className="PurchaseForm__radioItem" key={option.id}>
+      <div className="PurchaseForm__radioItem" key={option.licenseId}>
         <input
           type="radio"
-          id={option.id}
+          id={option.licenseId}
           name="license"
           onClick={handleSelectOption}
         />
         <div className="PurchaseForm__radioItemDescription">
-          <label className="PurchaseForm__radioItemLabel" htmlFor={option.id}>
+          <label
+            className="PurchaseForm__radioItemLabel"
+            htmlFor={option.licenseId}
+          >
             {option.label}
             <div className="PurchaseForm__radioItemMemo">{option.memo}</div>
           </label>
@@ -90,7 +69,10 @@ const PurchaseForm = ({ openCart }) => {
           Add to Cart
         </button>
       </div>
-      <div className="PurchaseForm__checkoutLink">Continue to Checkout (1)</div>
+      <div className="PurchaseForm__checkoutLink">
+        {purchaseItems.length > 0 &&
+          `Continue to Checkout (${purchaseItems.length})`}
+      </div>
     </form>
   );
 };
