@@ -4,7 +4,13 @@ import { BsBag } from 'react-icons/bs';
 import NavItem from './NavItem';
 import './styles/Header.css';
 
-const Header = ({ portfolio, cartIsOpen, openCart, closeCart }) => {
+const Header = ({
+  portfolio,
+  cartIsOpen,
+  openCart,
+  closeCart,
+  purchaseItems,
+}) => {
   const menu = portfolio.categories.map((cat) => {
     return cat.categoryName;
   });
@@ -30,7 +36,8 @@ const Header = ({ portfolio, cartIsOpen, openCart, closeCart }) => {
           className="Header__ListItem Header__ListItem-cart"
           onClick={openCart}
         >
-          <BsBag className="Header__ListItem-cartIcon" /> <span>0</span>
+          <BsBag className="Header__ListItem-cartIcon" />{' '}
+          <span>{purchaseItems.length}</span>
         </div>
       </nav>
     </div>

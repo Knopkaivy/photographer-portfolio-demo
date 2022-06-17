@@ -101,6 +101,7 @@ const PhotoCardDetailed = ({
         toggleLike={toggleLike}
         openOverlay={openOverlay}
         openCart={openCart}
+        purchaseItems={purchaseItems}
       />
       <div className="PhotoCardDetailed__main">
         <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">

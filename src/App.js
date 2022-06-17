@@ -11,7 +11,7 @@ import PhotoCardDetailed from './PhotoCardDetailed';
 import Bio from './Bio';
 
 import './styles/App.css';
-import { RiContactsBookLine } from 'react-icons/ri';
+// import { RiContactsBookLine } from 'react-icons/ri';
 
 function App() {
   const [portfolio, setPortfolio] = useState(starter);
@@ -76,6 +76,7 @@ function App() {
         cartIsOpen={cartIsOpen}
         openCart={openCart}
         closeCart={closeCart}
+        purchaseItems={purchaseItems}
       />
       <Cart
         cartSubtotal={cartSubtotal}

@@ -9,7 +9,13 @@ import { RiShareForwardLine } from 'react-icons/ri';
 import { IoMdClose } from 'react-icons/io';
 import './styles/Toolbar.css';
 
-const Toolbar = ({ photo, toggleLike, openOverlay, openCart }) => {
+const Toolbar = ({
+  photo,
+  toggleLike,
+  openOverlay,
+  openCart,
+  purchaseItems,
+}) => {
   let location = useLocation();
   let navigate = useNavigate();
   let params = useParams();
@@ -72,7 +78,7 @@ const Toolbar = ({ photo, toggleLike, openOverlay, openCart }) => {
             className="Toolbar__icon Toolbar__icon-secondary icon"
             onClick={openCart}
           />{' '}
-          <span className="Toolbar__icon-span">0</span>
+          <span className="Toolbar__icon-span">{purchaseItems.length}</span>
         </div>
         <div className="Toolbar__iconContainer">
           <RiShareForwardLine
