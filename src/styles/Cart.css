@@ -63,6 +63,7 @@
 }
 .Cart__list {
   width: 100%;
+  flex-grow: 1;
   padding: 0 4.8rem;
   overflow-y: auto;
 }
