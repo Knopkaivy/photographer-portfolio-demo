@@ -50,7 +50,7 @@ const CartItem = ({
       </div>
       <div className="CartItem__descriptionContainer">
         <div className="CartItem__delete" onClick={handleRemoveItemFromCart}>
-          <IoMdClose />
+          <IoMdClose className="icon" />
         </div>
         <h3 className="CartItem__name">{name}</h3>
         <p className="CartItem__detail">{detail}</p>
