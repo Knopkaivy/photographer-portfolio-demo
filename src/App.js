@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { starter } from './starter';
+import { licenseOptions } from './licenseOption';
 import Header from './Header';
 import Cart from './Cart';
 import Footer from './Footer';
@@ -22,19 +23,55 @@ function App() {
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
   const [overlayInputVal, setOverlayInputVal] = useState('/');
 
+  let calculateSubtotal = () => {
+    if (purchaseItems.length === 0) {
+      setCartSubtotal(0);
+    } else if (purchaseItems.length > 0) {
+      let newSubtotal = 0;
+      purchaseItems.forEach((item) => {
+        newSubtotal = newSubtotal + item.price;
+      });
+      if (cartSubtotal !== newSubtotal) {
+        setCartSubtotal(newSubtotal);
+      }
+    }
+  };
+
   let addItemToCart = (item) => {
     let newState = [...purchaseItems, item];
     setPurchaseItems(newState);
   };
 
-  useEffect(() => {
-    if (purchaseItems.length > 0) {
-      let newSubtotal = 0;
-      purchaseItems.forEach((item) => {
-        newSubtotal = newSubtotal + item.price;
-      });
-      setCartSubtotal(newSubtotal);
+  let removeItemFromCart = (itemId) => {
+    console.log('removing item from cart. Bye Felicia!', itemId);
+    let newList = purchaseItems.filter((item) => item.id !== itemId);
+    setPurchaseItems(newList);
+  };
+
+  let updateItemInCart = (itemId, newLicenseId) => {
+    let newList = [...purchaseItems];
+    let newLicense;
+    for (let license of licenseOptions) {
+      if (license.licenseId === newLicenseId) {
+        newLicense = license;
+        break;
+      }
     }
+    for (let item of newList) {
+      if (item.id === itemId) {
+        item.licenseId = newLicense.licenseId;
+        item.label = newLicense.label;
+        item.detail = newLicense.detail;
+        item.price = newLicense.price;
+        item.memo = newLicense.memo;
+        break;
+      }
+    }
+    setPurchaseItems(newList);
+  };
+
+  useEffect(() => {
+    calculateSubtotal();
   }, [purchaseItems]);
 
   let openOverlay = (val) => {
@@ -83,6 +120,8 @@ function App() {
         cartIsOpen={cartIsOpen}
         closeCart={closeCart}
         purchaseItems={purchaseItems}
+        removeItemFromCart={removeItemFromCart}
+        updateItemInCart={updateItemInCart}
       />
       <Routes>
         <Route path="/" element={<Home portfolio={portfolio} />} />

@@ -4,13 +4,40 @@ import { images } from './images';
 import { licenseOptions } from './licenseOption';
 import './styles/CartItem.css';
 
-const CartItem = ({ imageURL, name, label, detail }) => {
+const CartItem = ({
+  imageURL,
+  name,
+  label,
+  licenseId,
+  detail,
+  id,
+  removeItemFromCart,
+  updateItemInCart,
+}) => {
   const [currentLicenseOption, setCurrentLicenseOption] = useState(label);
+
+  let handleRemoveItemFromCart = () => {
+    removeItemFromCart(id);
+  };
+
+  let handleUpdateLicenseOption = (event) => {
+    let newOptionLabel;
+    for (let option of licenseOptions) {
+      if (option.licenseId === event.target.value) {
+        newOptionLabel = option.label;
+        setCurrentLicenseOption(newOptionLabel);
+      }
+    }
+    console.log(event.target.value);
+    updateItemInCart(id, event.target.value);
+  };
+
   let optionsList = licenseOptions.map((item) => {
     return (
       <option
         selected={item.label === currentLicenseOption}
         className="CartItem__licenseOption"
+        value={item.licenseId}
       >
         {item.label}
         <span>{` - $${item.price}.00`}</span>
@@ -23,7 +50,7 @@ const CartItem = ({ imageURL, name, label, detail }) => {
         <img src={images.Forest1md} alt="preview" className="CartItem__image" />
       </div>
       <div className="CartItem__descriptionContainer">
-        <div className="CartItem__delete">
+        <div className="CartItem__delete" onClick={handleRemoveItemFromCart}>
           <IoMdClose />
         </div>
         <h3 className="CartItem__name">{name}</h3>
@@ -33,6 +60,7 @@ const CartItem = ({ imageURL, name, label, detail }) => {
             name="license"
             id="licenseSelect"
             className="CartItem__licenseSelect"
+            onChange={handleUpdateLicenseOption}
           >
             {optionsList}
           </select>
