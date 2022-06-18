@@ -12,6 +12,7 @@ const Cart = ({
   updateItemInCart,
 }) => {
   // const [purchaseItems, setPurchaseItems] = useState(purchaseItemsStarter);
+  // console.log('purchaseItems', purchaseItems);
 
   let handleCloseCart = (event) => {
     event.stopPropagation();
@@ -29,7 +30,7 @@ const Cart = ({
     return (
       <CartItem
         key={item.id}
-        imageURL={item.imgURL}
+        imageUrl={item.imageUrl}
         name={item.name}
         label={item.label}
         licenseId={item.licenseId}

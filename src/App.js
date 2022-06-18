@@ -12,7 +12,6 @@ import PhotoCardDetailed from './PhotoCardDetailed';
 import Bio from './Bio';
 
 import './styles/App.css';
-// import { RiContactsBookLine } from 'react-icons/ri';
 
 function App() {
   const [portfolio, setPortfolio] = useState(starter);
@@ -43,7 +42,6 @@ function App() {
   };
 
   let removeItemFromCart = (itemId) => {
-    console.log('removing item from cart. Bye Felicia!', itemId);
     let newList = purchaseItems.filter((item) => item.id !== itemId);
     setPurchaseItems(newList);
   };

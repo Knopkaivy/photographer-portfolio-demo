@@ -9,16 +9,14 @@ const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
   let handleSubmitPurchase = (event) => {
     event.preventDefault();
     if (currentOption !== null) {
-      // console.log('submitting', currentOption);
       let item = { ...currentOption };
       item.id = uuidv4();
       item.imageUrl = `${photoId.charAt(0).toUpperCase()}${photoId
         .slice(1)
         .replace('-', '')}md`;
       addItemToCart(item);
+      // setCurrentOption(null);
       openCart();
-    } else {
-      // console.log('no item selected');
     }
   };
   let handleSelectOption = (event) => {

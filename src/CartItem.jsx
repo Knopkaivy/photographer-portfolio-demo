@@ -5,7 +5,7 @@ import { licenseOptions } from './licenseOption';
 import './styles/CartItem.css';
 
 const CartItem = ({
-  imageURL,
+  imageUrl,
   name,
   label,
   licenseId,
@@ -28,7 +28,6 @@ const CartItem = ({
         setCurrentLicenseOption(newOptionLabel);
       }
     }
-    console.log(event.target.value);
     updateItemInCart(id, event.target.value);
   };
 
@@ -47,7 +46,7 @@ const CartItem = ({
   return (
     <div className="CartItem">
       <div className="CartItem__imageContainer">
-        <img src={images.Forest1md} alt="preview" className="CartItem__image" />
+        <img src={images[imageUrl]} alt="preview" className="CartItem__image" />
       </div>
       <div className="CartItem__descriptionContainer">
         <div className="CartItem__delete" onClick={handleRemoveItemFromCart}>
