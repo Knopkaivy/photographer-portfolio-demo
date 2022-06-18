@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { licenseOptions } from './licenseOption';
 import './styles/PurchaseForm.css';
@@ -15,7 +15,7 @@ const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
         .slice(1)
         .replace('-', '')}md`;
       addItemToCart(item);
-      // setCurrentOption(null);
+      setCurrentOption(null);
       openCart();
     }
   };
@@ -31,6 +31,12 @@ const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
     }
   };
 
+  useEffect(() => {
+    if (currentOption !== null) {
+      setCurrentOption(null);
+    }
+  }, [photoId]);
+
   const purchaseList = licenseOptions.map((option) => {
     return (
       <div className="PurchaseForm__radioItem" key={option.licenseId}>
@@ -39,6 +45,10 @@ const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
           id={option.licenseId}
           name="license"
           onClick={handleSelectOption}
+          checked={
+            currentOption !== null &&
+            option.licenseId === currentOption.licenseId
+          }
         />
         <div className="PurchaseForm__radioItemDescription">
           <label
