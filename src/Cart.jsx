@@ -11,9 +11,6 @@ const Cart = ({
   removeItemFromCart,
   updateItemInCart,
 }) => {
-  // const [purchaseItems, setPurchaseItems] = useState(purchaseItemsStarter);
-  // console.log('purchaseItems', purchaseItems);
-
   let handleCloseCart = (event) => {
     event.stopPropagation();
     closeCart();
@@ -64,7 +61,12 @@ const Cart = ({
             <div>Subtotal</div>
             <div>{`$${cartSubtotal}.00`}</div>
           </div>
-          <button className="Cart__checkoutBtn btn">Checkout</button>
+          <button
+            className="Cart__checkoutBtn btn"
+            disabled={cartSubtotal === 0}
+          >
+            Checkout
+          </button>
         </div>
       </div>
     </div>
