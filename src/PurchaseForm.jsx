@@ -4,7 +4,7 @@ import { licenseOptions } from './licenseOption';
 import './styles/PurchaseForm.css';
 
 const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
-  const [currentOption, setCurrentOption] = useState(null);
+  const [currentOption, setCurrentOption] = useState(licenseOptions[0]);
 
   let handleSubmitPurchase = (event) => {
     event.preventDefault();
@@ -15,7 +15,6 @@ const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
         .slice(1)
         .replace('-', '')}md`;
       addItemToCart(item);
-      setCurrentOption(null);
       openCart();
     }
   };
@@ -32,9 +31,7 @@ const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
   };
 
   useEffect(() => {
-    if (currentOption !== null) {
-      setCurrentOption(null);
-    }
+    setCurrentOption(licenseOptions[0]);
   }, [photoId]);
 
   const purchaseList = licenseOptions.map((option) => {
@@ -69,7 +66,7 @@ const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
       <h3 className="PurchaseForm__header">Select License</h3>
       <div className="PurchaseForm__radioGroup">{purchaseList}</div>
       <div className="PurchaseForm__buttonContainer">
-        <button type="submit" className="btn" disabled={currentOption === null}>
+        <button type="submit" className="btn">
           Add to Cart
         </button>
       </div>
