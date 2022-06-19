@@ -12,7 +12,7 @@ import PhotoCardDetailed from './PhotoCardDetailed';
 import Checkout from './Checkout';
 import Bio from './Bio';
 
-import './styles/App.css';
+import './styles/global.css';
 
 function App() {
   const [portfolio, setPortfolio] = useState(starter);

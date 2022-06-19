@@ -18,7 +18,7 @@ const Cart = ({
   };
 
   let clickAway = (event) => {
-    if (event.target.id === 'Cart') {
+    if (event.target.id === 'Cart__backdrop') {
       closeCart();
     }
     return;
@@ -41,8 +41,9 @@ const Cart = ({
   });
 
   return (
-    <div id="Cart" className="Cart" onClick={clickAway}>
+    <div className="Cart" onClick={clickAway}>
       <div
+        id="Cart__backdrop"
         className={`Cart__backdrop ${cartIsOpen && 'Cart__backdrop-isOpen'}`}
         onClick={clickAway}
       ></div>
@@ -63,7 +64,7 @@ const Cart = ({
             <div>{`$${cartSubtotal}.00`}</div>
           </div>
           <button
-            className="Cart__checkoutBtn btn"
+            className="btn"
             disabled={cartSubtotal === 0}
             onClick={goToCheckout}
           >

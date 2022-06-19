@@ -26,7 +26,7 @@
   padding: 5rem 0 2rem 0;
 }
 .Bio__section-border {
-  border-top: 1px solid rgba(199, 199, 199, 0.42);
+  border-top: var(--border-gray-light);
 }
 
 .Bio__sectionHeader {

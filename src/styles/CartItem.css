@@ -7,7 +7,7 @@
   display: flex;
   gap: 2.8rem;
   box-sizing: content-box;
-  border-bottom: 1px solid var(--color-gray-light);
+  border-bottom: var(--border-gray-light);
 }
 
 .CartItem__imageContainer {

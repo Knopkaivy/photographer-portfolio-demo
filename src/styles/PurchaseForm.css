@@ -17,7 +17,7 @@
   align-items: center;
 }
 .PurchaseForm__radioItem:not(:last-child) {
-  border-bottom: 1px solid var(--color-gray);
+  border-bottom: var(--border-gray-light);
 }
 .PurchaseForm__radioItemDescription {
   flex-grow: 1;
@@ -38,7 +38,7 @@
   width: 36rem;
   font-weight: 300;
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray);
+  border: var(--border-gray-light);
   padding: 2rem;
   display: none;
 }
