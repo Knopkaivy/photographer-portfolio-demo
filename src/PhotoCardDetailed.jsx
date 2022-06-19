@@ -133,6 +133,7 @@ const PhotoCardDetailed = ({
           <div className="PhotoCardDetailed__description">
             <PurchaseForm
               photoId={photo.photoId}
+              photoTitle={photo.photoTitle}
               openCart={openCart}
               purchaseItems={purchaseItems}
               addItemToCart={addItemToCart}

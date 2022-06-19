@@ -1,0 +1,47 @@
+.Checkout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+.Checkout__headerBar {
+  height: 12rem;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+.Checkout__headerContainer {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Checkout__header {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--color-gray);
+  text-transform: uppercase;
+}
+.Checkout__shoppingLink {
+  font-size: 1.6rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.Checkout__shoppingLink:hover {
+}
+.Checkout__main {
+  display: flex;
+  gap: 3.2rem;
+  padding-top: 3.2rem;
+  align-items: flex-start;
+}
+.Checkout__message {
+  background-color: var(--color-gray-light);
+  font-size: 1.6rem;
+  padding: 2.4rem 3.2rem;
+  flex-basis: 50%;
+}

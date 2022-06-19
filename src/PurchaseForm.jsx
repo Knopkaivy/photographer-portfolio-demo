@@ -3,7 +3,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { licenseOptions } from './licenseOption';
 import './styles/PurchaseForm.css';
 
-const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
+const PurchaseForm = ({
+  photoId,
+  photoTitle,
+  openCart,
+  purchaseItems,
+  addItemToCart,
+}) => {
   const [currentOption, setCurrentOption] = useState(licenseOptions[0]);
 
   let handleSubmitPurchase = (event) => {
@@ -11,6 +17,7 @@ const PurchaseForm = ({ photoId, openCart, purchaseItems, addItemToCart }) => {
     if (currentOption !== null) {
       let item = { ...currentOption };
       item.id = uuidv4();
+      item.name = photoTitle;
       item.imageUrl = `${photoId.charAt(0).toUpperCase()}${photoId
         .slice(1)
         .replace('-', '')}md`;

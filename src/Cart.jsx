@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BsChevronRight } from 'react-icons/bs';
 import CartItem from './CartItem';
 import './styles/Cart.css';
@@ -11,6 +12,8 @@ const Cart = ({
   removeItemFromCart,
   updateItemInCart,
 }) => {
+  let navigate = useNavigate();
+
   let handleCloseCart = (event) => {
     event.stopPropagation();
     closeCart();
@@ -21,6 +24,11 @@ const Cart = ({
       closeCart();
     }
     return;
+  };
+
+  let goToCart = () => {
+    closeCart();
+    navigate('checkout', { replace: true });
   };
 
   let purchaseList = purchaseItems.map((item) => {
@@ -64,6 +72,7 @@ const Cart = ({
           <button
             className="Cart__checkoutBtn btn"
             disabled={cartSubtotal === 0}
+            onClick={goToCart}
           >
             Checkout
           </button>

@@ -9,6 +9,7 @@ import Home from './Home';
 import Portfolio from './Portfolio';
 import Gallery from './Gallery';
 import PhotoCardDetailed from './PhotoCardDetailed';
+import Checkout from './Checkout';
 import Bio from './Bio';
 
 import './styles/App.css';
@@ -158,6 +159,16 @@ function App() {
           }
         />
         <Route path="bio" element={<Bio />} />
+        <Route
+          path="checkout"
+          element={
+            <Checkout
+              purchaseItems={purchaseItems}
+              cartSubtotal={cartSubtotal}
+              openCart={openCart}
+            />
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
