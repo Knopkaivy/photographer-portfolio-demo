@@ -9,6 +9,7 @@ const PurchaseForm = ({
   openCart,
   purchaseItems,
   addItemToCart,
+  goToCheckout,
 }) => {
   const [currentOption, setCurrentOption] = useState(licenseOptions[0]);
 
@@ -77,7 +78,7 @@ const PurchaseForm = ({
           Add to Cart
         </button>
       </div>
-      <div className="PurchaseForm__checkoutLink">
+      <div className="PurchaseForm__checkoutLink link" onClick={goToCheckout}>
         {purchaseItems.length > 0 &&
           `Continue to Checkout (${purchaseItems.length})`}
       </div>

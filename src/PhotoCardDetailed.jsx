@@ -17,6 +17,7 @@ const PhotoCardDetailed = ({
   openCart,
   purchaseItems,
   addItemToCart,
+  goToCheckout,
 }) => {
   let params = useParams();
 
@@ -137,6 +138,7 @@ const PhotoCardDetailed = ({
               openCart={openCart}
               purchaseItems={purchaseItems}
               addItemToCart={addItemToCart}
+              goToCheckout={goToCheckout}
             />
           </div>
         </div>

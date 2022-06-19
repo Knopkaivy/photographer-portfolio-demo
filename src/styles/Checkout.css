@@ -28,8 +28,6 @@
 }
 .Checkout__shoppingLink {
   font-size: 1.6rem;
-  text-decoration: underline;
-  cursor: pointer;
 }
 .Checkout__shoppingLink:hover {
 }

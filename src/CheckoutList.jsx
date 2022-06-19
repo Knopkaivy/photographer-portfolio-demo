@@ -15,7 +15,13 @@ const CheckoutList = ({ purchaseItems, cartSubtotal, editCart }) => {
         </div>
         <div className="CheckoutList__itemDescription">
           <div className="CheckoutList__itemName">{item.name}</div>
-          <div className="CheckoutList__itemDetails">+ More Details</div>
+          <div className="CheckoutList__itemDetails">
+            + More Details
+            <div className="CheckoutList__itemDetailMessage">
+              <p>{item.label}</p>
+              <p>{item.detail}</p>
+            </div>
+          </div>
         </div>
         <div className="CheckoutList__itemPrice">{`$${item.price}.00`}</div>
       </div>
@@ -28,7 +34,7 @@ const CheckoutList = ({ purchaseItems, cartSubtotal, editCart }) => {
         <h3 className="CheckoutList__header">
           {`Order Items (${purchaseItems.length})`}
         </h3>
-        <div className="CheckoutList__editLink" onClick={editCart}>
+        <div className="CheckoutList__editLink link" onClick={editCart}>
           Edit Cart
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
 import { starter } from './starter';
 import { licenseOptions } from './licenseOption';
 import Header from './Header';
@@ -22,6 +22,8 @@ function App() {
 
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
   const [overlayInputVal, setOverlayInputVal] = useState('/');
+
+  let navigate = useNavigate();
 
   let calculateSubtotal = () => {
     if (purchaseItems.length === 0) {
@@ -73,6 +75,11 @@ function App() {
     calculateSubtotal();
   }, [purchaseItems]);
 
+  let goToCheckout = () => {
+    closeCart();
+    navigate('checkout');
+  };
+
   let openOverlay = (val) => {
     setOverlayInputVal(val);
     setOverlayIsOpen(true);
@@ -121,6 +128,7 @@ function App() {
         purchaseItems={purchaseItems}
         removeItemFromCart={removeItemFromCart}
         updateItemInCart={updateItemInCart}
+        goToCheckout={goToCheckout}
       />
       <Routes>
         <Route path="/" element={<Home portfolio={portfolio} />} />
@@ -155,6 +163,7 @@ function App() {
               openCart={openCart}
               purchaseItems={purchaseItems}
               addItemToCart={addItemToCart}
+              goToCheckout={goToCheckout}
             />
           }
         />

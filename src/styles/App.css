@@ -63,3 +63,7 @@ body {
   background-color: var(--color-gray-light);
   cursor: default;
 }
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+}

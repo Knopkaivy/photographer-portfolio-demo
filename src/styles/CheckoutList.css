@@ -18,10 +18,7 @@
   font-size: 2rem;
   font-weight: 500;
 }
-.CheckoutList__editLink {
-  text-decoration: underline;
-  cursor: pointer;
-}
+
 .CheckoutList__list {
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--color-gray);
@@ -46,17 +43,35 @@
 .CheckoutList__itemDescription {
   flex-grow: 1;
 }
-.CheckoutList__itemName {
-}
+
 .CheckoutList__itemDetails {
+  position: relative;
+  cursor: pointer;
 }
-.CheckoutList__itemPrice {
+.CheckoutList__itemDetails:hover .CheckoutList__itemDetailMessage {
+  display: block;
 }
+.CheckoutList__itemDetailMessage {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 1.2rem;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: -6rem;
+}
+.CheckoutList__itemDetailMessage::after {
+  content: '';
+  position: absolute;
+  border: solid 6px;
+  border-color: var(--color-primary) transparent transparent transparent;
+  bottom: -12px;
+  right: calc(50% - 3px);
+}
+
 .CheckoutList__totalSection {
   font-size: 2rem;
   font-weight: 600;
-}
-.CheckoutList__totalHeader {
-}
-.CheckoutList__totalAmount {
 }
