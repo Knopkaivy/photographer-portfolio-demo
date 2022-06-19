@@ -27,9 +27,14 @@ const Gallery = ({
         setGallery(gal);
       }
     }
-    // window.scrollTo(0, 0);
+
     console.log('Gallery useEffect');
   }, [params, portfolio.categories]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    console.log('Gallery useEffect for window');
+  }, [gallery]);
 
   const galleryList = gallery.photos.map((item) => {
     const url = `${item.photoId.charAt(0).toUpperCase()}${item.photoId
