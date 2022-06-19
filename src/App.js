@@ -84,7 +84,7 @@ function App() {
   };
   const [cartIsOpen, setCartIsOpen] = useState(false);
 
-  let openCart = (val) => {
+  let openCart = () => {
     setCartIsOpen(true);
   };
 

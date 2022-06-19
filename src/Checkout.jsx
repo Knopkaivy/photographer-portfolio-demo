@@ -1,14 +1,30 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import CheckoutList from './CheckoutList';
 import './styles/Checkout.css';
 
 const Checkout = ({ purchaseItems, cartSubtotal, openCart }) => {
+  const navigate = useNavigate();
+
+  let continueShopping = () => {
+    console.log('going back to shopping with cart closed');
+    navigate(-1);
+  };
+
+  let editCart = () => {
+    console.log('going back to editing cart');
+    navigate(-1);
+    openCart();
+  };
+
   return (
     <div className="Checkout">
       <div className="Checkout__headerBar">
         <div className="Checkout__headerContainer container">
           <h2 className="Checkout__header">Checkout</h2>
-          <div className="Checkout__shoppingLink">Continue Shopping</div>
+          <div className="Checkout__shoppingLink" onClick={continueShopping}>
+            Continue Shopping
+          </div>
         </div>
       </div>
       <div className="Checkout__main container">
@@ -19,6 +35,7 @@ const Checkout = ({ purchaseItems, cartSubtotal, openCart }) => {
         <CheckoutList
           purchaseItems={purchaseItems}
           cartSubtotal={cartSubtotal}
+          editCart={editCart}
         />
       </div>
     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { images } from './images';
 import './styles/CheckoutList.css';
 
-const CheckoutList = ({ purchaseItems, cartSubtotal }) => {
+const CheckoutList = ({ purchaseItems, cartSubtotal, editCart }) => {
   let itemList = purchaseItems.map((item) => {
     return (
       <div className="CheckoutList__item" key={item.id}>
@@ -28,7 +28,9 @@ const CheckoutList = ({ purchaseItems, cartSubtotal }) => {
         <h3 className="CheckoutList__header">
           {`Order Items (${purchaseItems.length})`}
         </h3>
-        <div className="CheckoutList__editLink">Edit Cart</div>
+        <div className="CheckoutList__editLink" onClick={editCart}>
+          Edit Cart
+        </div>
       </div>
       <div className="CheckoutList__list">
         {purchaseItems.length > 0 && itemList}

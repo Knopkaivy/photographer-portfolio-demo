@@ -28,7 +28,7 @@ const Cart = ({
 
   let goToCart = () => {
     closeCart();
-    navigate('checkout', { replace: true });
+    navigate('checkout');
   };
 
   let purchaseList = purchaseItems.map((item) => {
