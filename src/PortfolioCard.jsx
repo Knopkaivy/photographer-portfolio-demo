@@ -1,14 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { images } from './images';
 import './styles/PortfolioCard.css';
 
 const PortfolioCard = ({ obj, category, image, index }) => {
+  let navigate = useNavigate();
   let linkName = category.toLowerCase().replace(/\s/g, '');
+
   return (
     <div className="PortfolioCard">
       <p className="PortfolioCard__Index">{index}</p>
-      <div className="PortfolioCard__ImageContainer">
+      <div
+        className="PortfolioCard__ImageContainer"
+        onClick={() => navigate(`/portfolio/${linkName}`)}
+      >
         <img
           src={images[image]}
           alt={`${category} cover`}
