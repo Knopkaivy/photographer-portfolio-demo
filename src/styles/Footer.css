@@ -26,6 +26,13 @@
 }
 .Footer__link {
   font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+.Footer__link:hover,
+.Footer__link:active,
+.Footer__link:focus {
+  transform: scale(1.05);
 }
 @media screen and (max-width: 576px) {
   .Footer__content {
