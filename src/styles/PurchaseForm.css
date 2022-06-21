@@ -1,6 +1,6 @@
 .PurchaseForm {
   width: 100%;
-  max-width: 44rem;
+  max-width: 375px;
   display: flex;
   flex-direction: column;
 }
@@ -9,7 +9,6 @@
   font-weight: 600;
 }
 .PurchaseForm__radioItem {
-  width: 100%;
   min-height: 8rem;
   padding: 2rem 0;
   display: flex;
@@ -52,4 +51,15 @@
 .PurchaseForm__checkoutLink {
   width: 100%;
   text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .PurchaseForm {
+    margin: 0 auto;
+  }
+  .PurchaseForm__header {
+    text-align: center;
+  }
+  .PurchaseForm__buttonContainer {
+    margin: 2.4rem 0;
+  }
 }

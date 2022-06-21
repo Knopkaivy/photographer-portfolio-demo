@@ -121,10 +121,14 @@ const Bio = () => {
         </div>
       </section>
       <section className="Bio__section Bio__section-border">
-        <div className="Bio__sectionHeader Bio__sectionHeader-contacts">
-          <h3>Contact Me</h3>
-          <p>E - info@mysite.com</p>
-          <p>T - 123-456-7890</p>
+        <div>
+          <div className="Bio__sectionHeader Bio__sectionHeader-contacts">
+            <h3>Contact Me</h3>
+          </div>
+          <div className="Bio__contacts">
+            <p>E - info@mysite.com</p>
+            <p>T - 123-456-7890</p>
+          </div>
         </div>
         <div className="Bio__sectionContent">
           <ContactForm />

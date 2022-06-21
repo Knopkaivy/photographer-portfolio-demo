@@ -32,14 +32,20 @@
   display: none;
 }
 .PhotoCardDetailed__main {
+  width: 100%;
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8rem 0;
+  /* padding: 8rem 0; */
+}
+.PhotoCardDetailed__imageAndNavigationContainer {
+  display: flex;
+  align-items: center;
+  flex: 1 1 70%;
 }
 .PhotoCardDetailed__navigation {
-  flex-basis: 5%;
+  flex-basis: 8%;
   font-size: 4rem;
   color: var(--color-primary);
   text-align: center;
@@ -47,8 +53,10 @@
 
 .PhotoCardDetailed__imageContainer {
   width: 100%;
-  max-width: 100rem;
-  flex: 1 1 60%;
+  max-width: 120rem;
+  flex: 1 1 84%;
+  display: flex;
+  align-items: center;
 }
 .PhotoCardDetailed__image {
   width: 100%;
@@ -57,21 +65,41 @@
   object-fit: contain;
 }
 .PhotoCardDetailed__descriptionContainer {
+  width: 100%;
+
   flex: 1 1 30%;
   height: 100%;
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-right: auto;
 }
-/* :fullscreen. PhotoCardDetailed__descriptionContainer {
-  display: none;
-} */
+
 .PhotoCardDetailed__title {
   font-size: 2.4rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 .PhotoCardDetailed__description {
   font-size: 1.6rem;
+}
+@media screen and (max-width: 992px) {
+  .PhotoCardDetailed__main {
+    /* padding: 0; */
+  }
+}
+@media screen and (max-width: 768px) {
+  .PhotoCardDetailed__main {
+    flex-direction: column;
+    align-items: center;
+  }
+  .PhotoCardDetailed__title {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 450px) {
+  .PhotoCardDetailed__descriptionContainer {
+    padding: 0;
+  }
 }

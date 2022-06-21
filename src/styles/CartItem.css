@@ -53,3 +53,14 @@
   box-sizing: border-box;
   outline: none;
 }
+@media screen and (max-width: 576px) {
+  .CartItem {
+    height: 9.6rem;
+    gap: 2.4rem;
+    padding: 2.4rem 0;
+  }
+  .CartItem__imageContainer {
+    width: 9.6rem;
+    height: 9.6rem;
+  }
+}

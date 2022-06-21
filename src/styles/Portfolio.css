@@ -2,6 +2,18 @@
   display: flex;
   gap: 10rem;
   flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
-  padding: 12rem 0;
+  padding: 12rem 2rem;
+}
+@media screen and (max-width: 992px) {
+  .Portfolio {
+    gap: 4rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .Portfolio {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
 }

@@ -9,7 +9,7 @@
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 8rem;
+  margin-top: 6rem;
   margin-bottom: 3.2rem;
 }
 .Bio__imageContainer {
@@ -30,7 +30,7 @@
 }
 
 .Bio__sectionHeader {
-  flex-basis: 30%;
+  flex-shrink: 2;
 }
 .Bio__sectionHeader h3 {
   font-size: 2.4rem;
@@ -39,6 +39,7 @@
 .Bio__sectionContent {
   flex-basis: 60%;
   font-size: 1.6rem;
+  width: 100%;
 }
 .Bio__sectionContent-list {
   display: flex;
@@ -62,6 +63,51 @@
 .Bio__sectionDetails {
   margin-bottom: 2rem;
 }
-.Bio__sectionHeader-contacts p {
+
+.Bio__contacts {
   font-size: 1.6rem;
+}
+
+@media screen and (max-width: 768px) {
+  .Bio {
+    padding: 6rem 0;
+  }
+  .Bio__header {
+    margin-top: 4rem;
+  }
+  .Bio__section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .Bio__sectionHeader {
+    margin-bottom: 4rem;
+  }
+  .Bio__sectionContent {
+    flex-basis: auto;
+  }
+  .Bio__sectionContent-list {
+    justify-content: space-around;
+  }
+  .Bio__sectionHeader {
+    text-align: center;
+  }
+  .Bio__contacts {
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    margin-top: -2rem;
+    margin-bottom: 4rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .Bio__sectionContent-list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .Bio__sectionListItem {
+    flex-basis: auto;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
 }

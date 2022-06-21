@@ -105,29 +105,31 @@ const PhotoCardDetailed = ({
         purchaseItems={purchaseItems}
       />
       <div className="PhotoCardDetailed__main">
-        <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">
-          {ind > 1 && (
-            <BsChevronLeft
-              className="PhotoCardDetailed__navigationIcon icon"
-              onClick={navigateLeft}
+        <div className="PhotoCardDetailed__imageAndNavigationContainer">
+          <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">
+            {ind > 1 && (
+              <BsChevronLeft
+                className="PhotoCardDetailed__navigationIcon icon"
+                onClick={navigateLeft}
+              />
+            )}
+          </div>
+          <div className="PhotoCardDetailed__imageContainer">
+            <img
+              src={images[imageUrl]}
+              alt="title"
+              className="PhotoCardDetailed__image"
             />
-          )}
-        </div>
-        <div className="PhotoCardDetailed__imageContainer">
-          <img
-            src={images[imageUrl]}
-            alt="title"
-            className="PhotoCardDetailed__image"
-          />
-        </div>
-        <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-right">
-          {/* {ind < gallery.photos.length && ( */}
-          {ind < photosCount && (
-            <BsChevronRight
-              className="PhotoCardDetailed__navigationIcon icon"
-              onClick={navigateRight}
-            />
-          )}
+          </div>
+          <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-right">
+            {/* {ind < gallery.photos.length && ( */}
+            {ind < photosCount && (
+              <BsChevronRight
+                className="PhotoCardDetailed__navigationIcon icon"
+                onClick={navigateRight}
+              />
+            )}
+          </div>
         </div>
         <div className="PhotoCardDetailed__descriptionContainer">
           <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>

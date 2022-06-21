@@ -43,3 +43,9 @@
   padding: 2.4rem 3.2rem;
   flex-basis: 50%;
 }
+@media screen and (max-width: 576px) {
+  .Checkout__main {
+    flex-direction: column-reverse;
+  }
+}
+/* on 1024px see if rem adjustemnt works. Otherwise do flex-direction: column-reverse */

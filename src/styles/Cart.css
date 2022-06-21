@@ -85,3 +85,20 @@
   justify-content: space-between;
   margin-bottom: 2rem;
 }
+@media screen and (max-width: 576px) {
+  .Cart__menu {
+    max-width: 72rem;
+    right: -72rem;
+  }
+  .Cart__menu-isOpen {
+    right: 0;
+  }
+}
+@media screen and (max-width: 450px) {
+  .Cart__list {
+    padding: 0 2.4rem;
+  }
+  .Cart__checkoutSection {
+    padding: 2.4rem;
+  }
+}
