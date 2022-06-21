@@ -26,6 +26,7 @@
 .PhotoCardDetailed:fullscreen .PhotoCardDetailed__imageContainer {
   max-width: 90vw;
   max-height: 100vh;
+  margin: 0 auto;
 }
 
 .PhotoCardDetailed:fullscreen .PhotoCardDetailed__descriptionContainer {
@@ -40,28 +41,52 @@
   /* padding: 8rem 0; */
 }
 .PhotoCardDetailed__imageAndNavigationContainer {
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   flex: 1 1 70%;
 }
 .PhotoCardDetailed__navigation {
-  flex-basis: 8%;
-  font-size: 4rem;
+  position: absolute;
+  top: calc(50%-4rem);
+  /* left: 0; */
+  /* flex-basis: 8%; */
   color: var(--color-primary);
   text-align: center;
+  background-color: hsla(210, 14%, 97%, 0.4);
+  border-radius: 50px;
+  opacity: 0;
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
-
+.PhotoCardDetailed__navigation:hover {
+  background-color: hsla(210, 14%, 97%, 0.5);
+}
+.PhotoCardDetailed__navigation-left {
+  left: 4rem;
+}
+.PhotoCardDetailed__navigation-right {
+  right: 4rem;
+}
+.PhotoCardDetailed__navigationIcon {
+  width: 8rem;
+  height: 8rem;
+  padding: 2rem;
+}
 .PhotoCardDetailed__imageContainer {
+  position: relative;
   width: 100%;
   max-width: 120rem;
   flex: 1 1 84%;
   display: flex;
   align-items: center;
 }
+.PhotoCardDetailed__imageContainer:hover .PhotoCardDetailed__navigation {
+  opacity: 1;
+}
 .PhotoCardDetailed__image {
   width: 100%;
   height: auto;
-  max-height: 70vh;
+  max-height: 85vh;
   object-fit: contain;
 }
 .PhotoCardDetailed__descriptionContainer {
