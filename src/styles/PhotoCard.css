@@ -1,14 +1,8 @@
 .PhotoCard {
-  flex: 1 1 40vw;
+  flex: 1 1 45vw;
   position: relative;
 }
-.PhotoCard__imageContainer {
-  width: 100%;
-  max-height: 50vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
+
 .PhotoCard__overlay {
   width: 100%;
   height: 100%;
@@ -51,13 +45,19 @@
   display: flex;
   align-items: center;
 }
-/* .PhotoCard__icon-like {
-  fill: red;
-} */
+
 .PhotoCard__icon-span {
   display: inline-block;
   padding: 0 1rem;
   font-size: 1.2rem;
+}
+.PhotoCard__imageContainer {
+  width: 100%;
+  height: 25vw;
+  max-height: 50vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .PhotoCard__image {
   width: 100%;
@@ -77,5 +77,8 @@
 @media screen and (max-width: 576px) {
   .PhotoCard {
     flex-basis: auto;
+  }
+  .PhotoCard__imageContainer {
+    height: 52vw;
   }
 }
