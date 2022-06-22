@@ -43,6 +43,10 @@
 .PhotoCard__icon:hover {
   transform: scale(1.2);
 }
+.PhotoCard__icon:active,
+.PhotoCard__icon:focus {
+  outline: none;
+}
 .PhotoCard__icon-like-container {
   display: flex;
   align-items: center;
