@@ -17,7 +17,11 @@ import './styles/global.css';
 function App() {
   const [portfolio, setPortfolio] = useState(starter);
 
-  const [purchaseItems, setPurchaseItems] = useState([]);
+  const [purchaseItems, setPurchaseItems] = useState(() => {
+    const saved = localStorage.getItem('cart');
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
   const [cartSubtotal, setCartSubtotal] = useState(0);
 
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
@@ -42,11 +46,14 @@ function App() {
   let addItemToCart = (item) => {
     let newState = [...purchaseItems, item];
     setPurchaseItems(newState);
+    console.log('adding to local storage');
+    localStorage.setItem('cart', JSON.stringify(newState));
   };
 
   let removeItemFromCart = (itemId) => {
     let newList = purchaseItems.filter((item) => item.id !== itemId);
     setPurchaseItems(newList);
+    localStorage.setItem('cart', JSON.stringify(newList));
   };
 
   let updateItemInCart = (itemId, newLicenseId) => {
@@ -69,6 +76,7 @@ function App() {
       }
     }
     setPurchaseItems(newList);
+    localStorage.setItem('cart', JSON.stringify(newList));
   };
 
   useEffect(() => {
