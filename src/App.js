@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { starter } from './starter';
 import { licenseOptions } from './licenseOption';
 import Header from './Header';
@@ -46,7 +46,6 @@ function App() {
   let addItemToCart = (item) => {
     let newState = [...purchaseItems, item];
     setPurchaseItems(newState);
-    console.log('adding to local storage');
     localStorage.setItem('cart', JSON.stringify(newState));
   };
 

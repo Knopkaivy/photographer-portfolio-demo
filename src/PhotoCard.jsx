@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -10,16 +10,13 @@ const PhotoCard = ({
   imageId,
   imageURL,
   imageTitle,
-  imageDescription,
   isLiked,
   openOverlay,
-  galleryName,
   galleryId,
   toggleLike,
 }) => {
   let location = useLocation();
   let shareUrl = `${location.pathname}/${imageId}`;
-  // console.log('shareUrl is', shareUrl);
 
   let handleToggleLike = () => {
     toggleLike(galleryId, imageId);

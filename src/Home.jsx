@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { starter } from './starter';
+import React, { useEffect } from 'react';
 import Landing from './Landing';
 import Portfolio from './Portfolio';
 

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { images } from './images';
 import './styles/PortfolioCard.css';
 
-const PortfolioCard = ({ obj, category, image, index }) => {
+const PortfolioCard = ({ category, image, index }) => {
   let navigate = useNavigate();
   let linkName = category.toLowerCase().replace(/\s/g, '');
 

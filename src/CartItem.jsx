@@ -8,7 +8,6 @@ const CartItem = ({
   imageUrl,
   name,
   label,
-  licenseId,
   detail,
   id,
   removeItemFromCart,
