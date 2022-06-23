@@ -20,23 +20,19 @@ const CartItem = ({
   };
 
   let handleUpdateLicenseOption = (event) => {
-    let newOptionLabel;
+    setCurrentLicenseOption(event.target.value);
+    let newLicenseId;
     for (let option of licenseOptions) {
-      if (option.licenseId === event.target.value) {
-        newOptionLabel = option.label;
-        setCurrentLicenseOption(newOptionLabel);
+      if (option.label === event.target.value) {
+        newLicenseId = option.licenseId;
       }
     }
-    updateItemInCart(id, event.target.value);
+    updateItemInCart(id, newLicenseId);
   };
 
   let optionsList = licenseOptions.map((item) => {
     return (
-      <option
-        selected={item.label === currentLicenseOption}
-        className="CartItem__licenseOption"
-        value={item.licenseId}
-      >
+      <option className="CartItem__licenseOption" value={item.label}>
         {item.label}
         <span>{` - $${item.price}.00`}</span>
       </option>
@@ -57,6 +53,7 @@ const CartItem = ({
           <select
             name="license"
             id="licenseSelect"
+            defaultValue={currentLicenseOption}
             className="CartItem__licenseSelect"
             onChange={handleUpdateLicenseOption}
           >
