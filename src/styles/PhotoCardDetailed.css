@@ -38,18 +38,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: 8rem 0; */
 }
 .PhotoCardDetailed__imageAndNavigationContainer {
-  /* display: flex; */
-  /* align-items: center; */
-  flex: 1 1 70%;
+  flex-basis: 65%;
 }
 .PhotoCardDetailed__navigation {
   position: absolute;
   top: calc(50%-4rem);
-  /* left: 0; */
-  /* flex-basis: 8%; */
   color: var(--color-primary);
   text-align: center;
   background-color: hsla(210, 14%, 97%, 0.4);
@@ -91,8 +86,7 @@
 }
 .PhotoCardDetailed__descriptionContainer {
   width: 100%;
-
-  flex: 1 1 30%;
+  flex-basis: 35%;
   height: 100%;
   padding: 0 2rem;
   display: flex;
@@ -109,11 +103,7 @@
 .PhotoCardDetailed__description {
   font-size: 1.6rem;
 }
-@media screen and (max-width: 992px) {
-  .PhotoCardDetailed__main {
-    /* padding: 0; */
-  }
-}
+
 @media screen and (max-width: 768px) {
   .PhotoCardDetailed__main {
     flex-direction: column;

@@ -13,6 +13,18 @@ const PurchaseForm = ({
 }) => {
   const [currentOption, setCurrentOption] = useState(licenseOptions[0]);
 
+  let handleChangeOption = (event) => {
+    let newId = event.target.id;
+    let newOption = {};
+    for (let option of licenseOptions) {
+      if (option.licenseId === newId) {
+        newOption = { ...option };
+        setCurrentOption(newOption);
+        break;
+      }
+    }
+  };
+
   let handleSubmitPurchase = (event) => {
     event.preventDefault();
     if (currentOption !== null) {
@@ -24,17 +36,6 @@ const PurchaseForm = ({
         .replace('-', '')}md`;
       addItemToCart(item);
       openCart();
-    }
-  };
-  let handleSelectOption = (event) => {
-    let newId = event.target.id;
-    let newOption = {};
-    for (let option of licenseOptions) {
-      if (option.licenseId === newId) {
-        newOption = { ...option };
-        setCurrentOption(newOption);
-        break;
-      }
     }
   };
 
@@ -49,8 +50,7 @@ const PurchaseForm = ({
           type="radio"
           id={option.licenseId}
           name="license"
-          onClick={handleSelectOption}
-          checked={
+          defaultChecked={
             currentOption !== null &&
             option.licenseId === currentOption.licenseId
           }
@@ -70,7 +70,11 @@ const PurchaseForm = ({
     );
   });
   return (
-    <form className="PurchaseForm" onSubmit={handleSubmitPurchase}>
+    <form
+      className="PurchaseForm"
+      onChange={handleChangeOption}
+      onSubmit={handleSubmitPurchase}
+    >
       <h3 className="PurchaseForm__header">Select License</h3>
       <div className="PurchaseForm__radioGroup">{purchaseList}</div>
       <div className="PurchaseForm__buttonContainer">

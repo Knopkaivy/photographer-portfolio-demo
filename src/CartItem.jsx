@@ -32,9 +32,12 @@ const CartItem = ({
 
   let optionsList = licenseOptions.map((item) => {
     return (
-      <option className="CartItem__licenseOption" value={item.label}>
-        {item.label}
-        <span>{` - $${item.price}.00`}</span>
+      <option
+        className="CartItem__licenseOption"
+        value={item.label}
+        key={item.licenseId}
+      >
+        {`${item.label} - $${item.price}.00`}
       </option>
     );
   });
