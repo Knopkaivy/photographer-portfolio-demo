@@ -39,7 +39,7 @@ body {
   box-sizing: border-box;
 }
 .icon:hover {
-  color: var(--color-secondary);
+  /* color: var(--color-secondary); */
   transform: scale(1.1);
 }
 .icon-like {

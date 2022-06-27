@@ -1,14 +1,26 @@
 import React from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { BsFacebook } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
 import { BsPinterest } from 'react-icons/bs';
 import { FaTumblr } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { FiCopy } from 'react-icons/fi';
+import { FiCheck } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 import './styles/ShareOverlay.css';
+import { useState } from 'react';
 
 const ShareOverlay = ({ location, closeOverlay }) => {
+  const [copied, setCopied] = useState(false);
+
+  let handleCopy = () => {
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1500);
+  };
+
   let handleCloseOverlay = (event) => {
     event.stopPropagation();
     closeOverlay();
@@ -37,9 +49,15 @@ const ShareOverlay = ({ location, closeOverlay }) => {
         </div>
         <div className="ShareOverlay__linkContainer">
           <p className="ShareOverlay__link">{location}</p>
-          <button className="ShareOverlay__copyBtn">
-            <FiCopy className="ShareOverlay__icon ShareOverlay__icon-copy" />
-          </button>
+          <CopyToClipboard text={location} onCopy={handleCopy}>
+            <button className="ShareOverlay__copyBtn">
+              {copied ? (
+                <FiCheck className="ShareOverlay__icon ShareOverlay__icon-copy" />
+              ) : (
+                <FiCopy className="ShareOverlay__icon ShareOverlay__icon-copy icon" />
+              )}
+            </button>
+          </CopyToClipboard>
         </div>
       </div>
     </div>

@@ -70,12 +70,7 @@
   cursor: pointer;
   outline: none;
 }
-.ShareOverlay__copyBtn:hover {
-  background-color: var(--color-secondary);
-}
+
 .ShareOverlay__icon-copy {
   color: var(--color-white);
-}
-.ShareOverlay__icon-copy:hover {
-  transform: scale(1.1);
 }

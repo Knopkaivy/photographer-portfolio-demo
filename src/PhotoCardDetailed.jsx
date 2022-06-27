@@ -110,7 +110,7 @@ const PhotoCardDetailed = ({
             <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">
               {ind > 1 && (
                 <BsChevronLeft
-                  className="PhotoCardDetailed__navigationIcon"
+                  className="PhotoCardDetailed__navigationIcon icon"
                   onClick={navigateLeft}
                 />
               )}
@@ -123,7 +123,7 @@ const PhotoCardDetailed = ({
             <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-right">
               {ind < photosCount && (
                 <BsChevronRight
-                  className="PhotoCardDetailed__navigationIcon"
+                  className="PhotoCardDetailed__navigationIcon icon"
                   onClick={navigateRight}
                 />
               )}
