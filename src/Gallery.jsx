@@ -22,7 +22,7 @@ const Gallery = ({
         return gal;
       }
     }
-    navigate('/portfolio', { replace: true });
+    return portfolio.categories[0];
   };
 
   const [gallery, setGallery] = useState(findGallery());

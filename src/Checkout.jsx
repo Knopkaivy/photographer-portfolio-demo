@@ -7,12 +7,10 @@ const Checkout = ({ purchaseItems, cartSubtotal, openCart }) => {
   const navigate = useNavigate();
 
   let continueShopping = () => {
-    console.log('going back to shopping with cart closed');
     navigate(-1);
   };
 
   let editCart = () => {
-    console.log('going back to editing cart');
     navigate(-1);
     openCart();
   };
