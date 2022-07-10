@@ -13,19 +13,21 @@ const Gallery = ({
   openOverlay,
   closeOverlay,
 }) => {
-  const [gallery, setGallery] = useState(undefined);
   let params = useParams();
-  useEffect(() => {
-    if (!gallery || gallery.categoryId !== params.galleryId) {
-      for (let gal of portfolio.categories) {
-        if (gal.categoryId === params.galleryId) {
-          setGallery(gal);
-        }
+
+  let findGallery = () => {
+    for (let gal of portfolio.categories) {
+      if (gal.categoryId === params.galleryId) {
+        return gal;
       }
     }
-  }, [params.galleryId, portfolio.categories]);
+  };
 
+  const [gallery, setGallery] = useState(findGallery());
   useEffect(() => {
+    if (!gallery || gallery.categoryId !== params.galleryId) {
+      setGallery(findGallery());
+    }
     window.scrollTo(0, 0);
   }, [params.galleryId]);
 

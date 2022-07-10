@@ -75,7 +75,6 @@ const PhotoCardDetailed = ({
       setImageUrl(newImageUrl);
       setInd(calculateInd());
     }
-    console.log('PhotoCardDetailed useEffect');
   }, [params]);
 
   let navigateLeft = () => {
