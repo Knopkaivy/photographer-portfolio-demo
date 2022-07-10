@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ShareOverlay from './ShareOverlay';
 import PhotoCard from './PhotoCard';
-import Error from './Error';
 
 import './styles/Gallery.css';
 
@@ -14,6 +13,7 @@ const Gallery = ({
   openOverlay,
   closeOverlay,
 }) => {
+  let navigate = useNavigate();
   let params = useParams();
 
   let findGallery = () => {
@@ -22,6 +22,7 @@ const Gallery = ({
         return gal;
       }
     }
+    navigate('/portfolio', { replace: true });
   };
 
   const [gallery, setGallery] = useState(findGallery());
@@ -68,8 +69,6 @@ const Gallery = ({
         <main className="Gallery__main">{galleryList}</main>
       </div>
     );
-  } else {
-    return <Error />;
   }
 };
 

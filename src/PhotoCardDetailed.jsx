@@ -6,7 +6,6 @@ import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
 import { images } from './images';
 import Toolbar from './Toolbar';
-import Error from './Error';
 import './styles/PhotoCardDetailed.css';
 
 const PhotoCardDetailed = ({
@@ -32,6 +31,7 @@ const PhotoCardDetailed = ({
         return gal;
       }
     }
+    return portfolio.categories[0];
   };
 
   const [gallery, setGallery] = useState(findGallery());
@@ -42,6 +42,7 @@ const PhotoCardDetailed = ({
         return pht;
       }
     }
+    navigate(`/portfolio/${gallery.categoryId}`, { replace: true });
   };
 
   const [photo, setPhoto] = useState(findPhoto());
@@ -66,7 +67,6 @@ const PhotoCardDetailed = ({
     if (!gallery || params.galleryId !== gallery.categoryId) {
       let newGal = findGallery();
       setGallery(newGal);
-      console.log('just set new gallery up');
       setPhotosCount(newGal.photos.length);
     }
     if (!photo || params.imageId !== photo.photoId) {
@@ -150,8 +150,6 @@ const PhotoCardDetailed = ({
         </div>
       </div>
     );
-  } else {
-    return <Error />;
   }
 };
 
