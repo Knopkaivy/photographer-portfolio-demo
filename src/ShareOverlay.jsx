@@ -48,8 +48,11 @@ const ShareOverlay = ({ location, closeOverlay }) => {
           <MdEmail className="ShareOverlay__icon icon" />
         </div>
         <div className="ShareOverlay__linkContainer">
-          <p className="ShareOverlay__link">{location}</p>
-          <CopyToClipboard text={location} onCopy={handleCopy}>
+          <p className="ShareOverlay__link">{`https://photographer-portfolio-demo.web.app${location}`}</p>
+          <CopyToClipboard
+            text={`https://photographer-portfolio-demo.web.app${location}`}
+            onCopy={handleCopy}
+          >
             <button className="ShareOverlay__copyBtn">
               {copied ? (
                 <FiCheck className="ShareOverlay__icon ShareOverlay__icon-copy" />

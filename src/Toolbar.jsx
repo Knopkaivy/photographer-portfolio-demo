@@ -77,7 +77,9 @@ const Toolbar = ({
             className="Toolbar__icon Toolbar__icon-secondary icon"
             onClick={openCart}
           />{' '}
-          <span className="Toolbar__icon-span">{purchaseItems.length}</span>
+          <span className="Toolbar__icon-secondary Toolbar__icon-span">
+            {purchaseItems.length}
+          </span>
         </div>
         <div className="Toolbar__iconContainer">
           <RiShareForwardLine

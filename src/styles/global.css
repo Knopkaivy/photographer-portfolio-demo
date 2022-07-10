@@ -39,6 +39,9 @@ body {
   padding-right: 2rem;
   box-sizing: border-box;
 }
+.icon {
+  cursor: pointer;
+}
 .icon:hover {
   /* color: var(--color-secondary); */
   transform: scale(1.1);
