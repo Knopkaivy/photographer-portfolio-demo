@@ -23,7 +23,6 @@ const Toolbar = ({
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   let handleRequestFullscreen = () => {
-    console.log('requesting fullscreen');
     document.querySelector('.PhotoCardDetailed').requestFullscreen();
     setIsFullscreen(true);
   };

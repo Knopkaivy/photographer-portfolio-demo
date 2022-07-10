@@ -23,24 +23,6 @@ const PhotoCardDetailed = ({
 
   let location = useLocation();
 
-  const [photo, setPhoto] = useState({
-    photoId: '',
-    photoTitle: '',
-    photoDescription: '',
-    liked: false,
-  });
-
-  const [imageUrl, setImageUrl] = useState('');
-  const [gallery, setGallery] = useState({
-    categoryName: '',
-    categoryId: '',
-    categoryDescription: '',
-    categoryCover: '',
-    photos: [],
-  });
-  const [photosCount, setPhotosCount] = useState(0);
-  const [ind, setInd] = useState(0);
-
   let navigate = useNavigate();
 
   let findGallery = () => {
@@ -51,30 +33,50 @@ const PhotoCardDetailed = ({
     }
   };
 
-  let calculateInd = (id) => {
-    let index = id.replace(/^\D+/g, '');
-    setInd(index);
-  };
+  const [gallery, setGallery] = useState(findGallery());
 
-  useEffect(() => {
-    let newGal = findGallery();
-    setGallery(newGal);
-    setPhotosCount(gallery.photos.length);
-    let newImageUrl;
-    for (let img of gallery.photos) {
-      if (img.photoId === params.imageId) {
-        setPhoto(img);
-        newImageUrl = `${img.photoId.charAt(0).toUpperCase()}${img.photoId
-          .slice(1)
-          .replace('-', '')}lg`;
-        setImageUrl(newImageUrl);
-        break;
+  let findPhoto = () => {
+    for (let pht of gallery.photos) {
+      if (pht.photoId === params.imageId) {
+        return pht;
       }
     }
-    calculateInd(photo.photoId);
-    // window.scrollTo(0, 0);
+  };
+
+  const [photo, setPhoto] = useState(findPhoto());
+
+  let generateImageUrl = () => {
+    let newImageUrl = `${params.imageId.charAt(0).toUpperCase()}${params.imageId
+      .slice(1)
+      .replace('-', '')}lg`;
+    return newImageUrl;
+  };
+
+  const [imageUrl, setImageUrl] = useState(generateImageUrl());
+  const [photosCount, setPhotosCount] = useState(gallery.photos.length);
+
+  let calculateInd = () => {
+    return params.imageId.replace(/^\D+/g, '');
+  };
+
+  const [ind, setInd] = useState(calculateInd());
+
+  useEffect(() => {
+    if (!gallery || params.galleryId !== gallery.categoryId) {
+      let newGal = findGallery();
+      setGallery(newGal);
+      console.log('just set new gallery up');
+      setPhotosCount(newGal.photos.length);
+    }
+    if (!photo || params.imageId !== photo.photoId) {
+      let newPht = findPhoto();
+      setPhoto(newPht);
+      let newImageUrl = generateImageUrl();
+      setImageUrl(newImageUrl);
+      setInd(calculateInd());
+    }
     console.log('PhotoCardDetailed useEffect');
-  }, [params, photo.photoId, portfolio.categories, gallery]);
+  }, [params]);
 
   let navigateLeft = () => {
     let indPrev = ind - 1;
@@ -89,63 +91,66 @@ const PhotoCardDetailed = ({
     navigate(url);
   };
 
-  return (
-    <div className="PhotoCardDetailed">
-      {overlayIsOpen && (
-        <ShareOverlay
-          location={location.pathname}
-          closeOverlay={closeOverlay}
+  if (gallery && photo) {
+    return (
+      <div className="PhotoCardDetailed">
+        {overlayIsOpen && (
+          <ShareOverlay
+            location={location.pathname}
+            closeOverlay={closeOverlay}
+          />
+        )}
+        <Toolbar
+          photo={photo}
+          toggleLike={toggleLike}
+          openOverlay={openOverlay}
+          openCart={openCart}
+          purchaseItems={purchaseItems}
         />
-      )}
-      <Toolbar
-        photo={photo}
-        toggleLike={toggleLike}
-        openOverlay={openOverlay}
-        openCart={openCart}
-        purchaseItems={purchaseItems}
-      />
-      <div className="PhotoCardDetailed__main">
-        <div className="PhotoCardDetailed__imageAndNavigationContainer">
-          <div className="PhotoCardDetailed__imageContainer">
-            <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">
-              {ind > 1 && (
-                <BsChevronLeft
-                  className="PhotoCardDetailed__navigationIcon icon"
-                  onClick={navigateLeft}
-                />
-              )}
-            </div>
-            <img
-              src={images[imageUrl]}
-              alt="title"
-              className="PhotoCardDetailed__image"
-            />
-            <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-right">
-              {ind < photosCount && (
-                <BsChevronRight
-                  className="PhotoCardDetailed__navigationIcon icon"
-                  onClick={navigateRight}
-                />
-              )}
+        <div className="PhotoCardDetailed__main">
+          <div className="PhotoCardDetailed__imageAndNavigationContainer">
+            <div className="PhotoCardDetailed__imageContainer">
+              <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">
+                {ind > 1 && (
+                  <BsChevronLeft
+                    className="PhotoCardDetailed__navigationIcon icon"
+                    onClick={navigateLeft}
+                  />
+                )}
+              </div>
+              <img
+                src={images[imageUrl]}
+                alt="title"
+                className="PhotoCardDetailed__image"
+              />
+              <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-right">
+                {ind < photosCount && (
+                  <BsChevronRight
+                    className="PhotoCardDetailed__navigationIcon icon"
+                    onClick={navigateRight}
+                  />
+                )}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="PhotoCardDetailed__descriptionContainer">
-          <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
-          <div className="PhotoCardDetailed__description">
-            <PurchaseForm
-              photoId={photo.photoId}
-              photoTitle={photo.photoTitle}
-              openCart={openCart}
-              purchaseItems={purchaseItems}
-              addItemToCart={addItemToCart}
-              goToCheckout={goToCheckout}
-            />
+
+          <div className="PhotoCardDetailed__descriptionContainer">
+            <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
+            <div className="PhotoCardDetailed__description">
+              <PurchaseForm
+                photoId={photo.photoId}
+                photoTitle={photo.photoTitle}
+                openCart={openCart}
+                purchaseItems={purchaseItems}
+                addItemToCart={addItemToCart}
+                goToCheckout={goToCheckout}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default PhotoCardDetailed;

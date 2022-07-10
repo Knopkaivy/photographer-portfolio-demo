@@ -5,7 +5,6 @@ import Portfolio from './Portfolio';
 const Home = ({ portfolio }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log('useEffect Home');
   }, []);
   return (
     <React.Fragment>
