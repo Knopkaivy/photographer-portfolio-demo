@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ShareOverlay from './ShareOverlay';
 import PhotoCard from './PhotoCard';
+import Error from './Error';
 
 import './styles/Gallery.css';
 
@@ -67,6 +68,8 @@ const Gallery = ({
         <main className="Gallery__main">{galleryList}</main>
       </div>
     );
+  } else {
+    return <Error />;
   }
 };
 

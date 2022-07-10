@@ -30,6 +30,11 @@ body {
 }
 .App {
 }
+.Error {
+  height: calc(100vh - 20rem);
+  font-size: 2rem;
+  padding-top: 20rem;
+}
 .container {
   width: calc(100vw - 2rem);
   max-width: 1000px;

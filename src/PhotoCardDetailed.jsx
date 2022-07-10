@@ -6,6 +6,7 @@ import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
 import { images } from './images';
 import Toolbar from './Toolbar';
+import Error from './Error';
 import './styles/PhotoCardDetailed.css';
 
 const PhotoCardDetailed = ({
@@ -149,6 +150,8 @@ const PhotoCardDetailed = ({
         </div>
       </div>
     );
+  } else {
+    return <Error />;
   }
 };
 
