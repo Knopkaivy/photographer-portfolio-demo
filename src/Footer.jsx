@@ -9,7 +9,12 @@ const Footer = () => {
           <p>© 2023 by Amanda Willman.</p>
           <p>
             Demo only, inspired by{' '}
-            <a href="#" className="Footer__copyrightLink">
+            <a
+              href="https://www.wix.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="Footer__copyrightLink"
+            >
               Wix.com
             </a>
           </p>
