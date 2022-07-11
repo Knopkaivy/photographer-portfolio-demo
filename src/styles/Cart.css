@@ -20,6 +20,7 @@
   width: 100vw;
   max-width: 64rem;
   height: 100vh;
+  max-height: 100vh;
   background-color: var(--color-white);
   position: fixed;
   top: 0;
