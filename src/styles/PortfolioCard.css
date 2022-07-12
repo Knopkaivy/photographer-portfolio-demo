@@ -1,6 +1,7 @@
 .PortfolioCard {
   font-size: 1.2rem;
   flex-basis: calc(50% - 5rem);
+  cursor: pointer;
 }
 .PortfolioCard__Index {
   margin-bottom: 0.8rem;
