@@ -1,7 +1,6 @@
 .PortfolioCard {
   font-size: 1.2rem;
   flex-basis: calc(50% - 5rem);
-  cursor: pointer;
 }
 .PortfolioCard__Index {
   margin-bottom: 0.8rem;
@@ -13,6 +12,7 @@
 }
 .PortfolioCard__Image {
   width: 100%;
+  cursor: pointer;
 }
 .PortfolioCard__Header {
   font-size: 2.4rem;
