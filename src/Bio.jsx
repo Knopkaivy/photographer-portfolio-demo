@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { images } from './images';
 import ContactForm from './ContactForm';
 import './styles/Bio.css';
 
 const Bio = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   let exhibitions = [
     {
       name: 'Landscape On The Edge',
