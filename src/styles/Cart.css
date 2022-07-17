@@ -84,7 +84,7 @@
   justify-content: space-between;
   margin-bottom: 2rem;
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
   .Cart__menu {
     max-width: 56.25rem;
     right: -56.25rem;
