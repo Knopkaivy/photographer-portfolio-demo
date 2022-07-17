@@ -78,7 +78,7 @@ const PurchaseForm = ({
       <h3 className="PurchaseForm__header">Select License</h3>
       <div className="PurchaseForm__radioGroup">{purchaseList}</div>
       <div className="PurchaseForm__buttonContainer">
-        <button type="submit" className="btn">
+        <button type="submit" className="PurchaseForm__button btn">
           Add to Cart
         </button>
       </div>
