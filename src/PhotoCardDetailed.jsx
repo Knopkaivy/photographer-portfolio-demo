@@ -58,7 +58,7 @@ const PhotoCardDetailed = ({
   const [photosCount, setPhotosCount] = useState(gallery.photos.length);
 
   let calculateInd = () => {
-    return params.imageId.replace(/^\D+/g, '');
+    return Number(params.imageId.replace(/^\D+/g, ''));
   };
 
   const [ind, setInd] = useState(calculateInd());
@@ -79,20 +79,26 @@ const PhotoCardDetailed = ({
   }, [params]);
 
   let navigateLeft = () => {
+    let indPrev;
     if (ind > 1) {
-      let indPrev = ind - 1;
-      let photoIdPrev = `${photo.photoId.split('-')[0]}-${indPrev}`;
-      let url = `/portfolio/${params.galleryId}/${photoIdPrev}`;
-      navigate(url);
+      indPrev = ind - 1;
+    } else if (ind === 1) {
+      indPrev = photosCount;
     }
+    let photoIdPrev = `${photo.photoId.split('-')[0]}-${indPrev}`;
+    let url = `/portfolio/${params.galleryId}/${photoIdPrev}`;
+    navigate(url);
   };
   let navigateRight = () => {
+    let indNext;
     if (ind < photosCount) {
-      let indNext = Number(ind) + 1;
-      let photoIdNext = `${photo.photoId.split('-')[0]}-${indNext}`;
-      let url = `/portfolio/${params.galleryId}/${photoIdNext}`;
-      navigate(url);
+      indNext = ind + 1;
+    } else if (ind === photosCount) {
+      indNext = 1;
     }
+    let photoIdNext = `${photo.photoId.split('-')[0]}-${indNext}`;
+    let url = `/portfolio/${params.galleryId}/${photoIdNext}`;
+    navigate(url);
   };
 
   if (gallery && photo) {
@@ -112,31 +118,6 @@ const PhotoCardDetailed = ({
           purchaseItems={purchaseItems}
         />
         <div className="PhotoCardDetailed__main">
-          {/* <div className="PhotoCardDetailed__imageAndNavigationContainer">
-            <div className="PhotoCardDetailed__imageContainer">
-              <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">
-                {ind > 1 && (
-                  <BsChevronLeft
-                    className="PhotoCardDetailed__navigationIcon icon"
-                    onClick={navigateLeft}
-                  />
-                )}
-              </div>
-              <img
-                src={images[imageUrl]}
-                alt="title"
-                className="PhotoCardDetailed__image"
-              />
-              <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-right">
-                {ind < photosCount && (
-                  <BsChevronRight
-                    className="PhotoCardDetailed__navigationIcon icon"
-                    onClick={navigateRight}
-                  />
-                )}
-              </div>
-            </div>
-          </div> */}
           <PhotoCardImage
             ind={ind}
             navigateLeft={navigateLeft}
