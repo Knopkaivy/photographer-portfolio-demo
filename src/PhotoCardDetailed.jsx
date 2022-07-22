@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { BsChevronLeft } from 'react-icons/bs';
-import { BsChevronRight } from 'react-icons/bs';
+
 import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
-import { images } from './images';
+
+import PhotoCardImage from './PhotoCardImage';
 import Toolbar from './Toolbar';
 import './styles/PhotoCardDetailed.css';
 
@@ -79,16 +79,20 @@ const PhotoCardDetailed = ({
   }, [params]);
 
   let navigateLeft = () => {
-    let indPrev = ind - 1;
-    let photoIdPrev = `${photo.photoId.split('-')[0]}-${indPrev}`;
-    let url = `/portfolio/${params.galleryId}/${photoIdPrev}`;
-    navigate(url);
+    if (ind > 1) {
+      let indPrev = ind - 1;
+      let photoIdPrev = `${photo.photoId.split('-')[0]}-${indPrev}`;
+      let url = `/portfolio/${params.galleryId}/${photoIdPrev}`;
+      navigate(url);
+    }
   };
   let navigateRight = () => {
-    let indNext = Number(ind) + 1;
-    let photoIdNext = `${photo.photoId.split('-')[0]}-${indNext}`;
-    let url = `/portfolio/${params.galleryId}/${photoIdNext}`;
-    navigate(url);
+    if (ind < photosCount) {
+      let indNext = Number(ind) + 1;
+      let photoIdNext = `${photo.photoId.split('-')[0]}-${indNext}`;
+      let url = `/portfolio/${params.galleryId}/${photoIdNext}`;
+      navigate(url);
+    }
   };
 
   if (gallery && photo) {
@@ -108,7 +112,7 @@ const PhotoCardDetailed = ({
           purchaseItems={purchaseItems}
         />
         <div className="PhotoCardDetailed__main">
-          <div className="PhotoCardDetailed__imageAndNavigationContainer">
+          {/* <div className="PhotoCardDetailed__imageAndNavigationContainer">
             <div className="PhotoCardDetailed__imageContainer">
               <div className="PhotoCardDetailed__navigation PhotoCardDetailed__navigation-left">
                 {ind > 1 && (
@@ -132,8 +136,14 @@ const PhotoCardDetailed = ({
                 )}
               </div>
             </div>
-          </div>
-
+          </div> */}
+          <PhotoCardImage
+            ind={ind}
+            navigateLeft={navigateLeft}
+            navigateRight={navigateRight}
+            imageUrl={imageUrl}
+            photosCount={photosCount}
+          />
           <div className="PhotoCardDetailed__descriptionContainer">
             <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
             <div className="PhotoCardDetailed__description">
