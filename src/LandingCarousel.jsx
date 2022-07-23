@@ -2,7 +2,7 @@ import React from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import { images } from './images';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import './styles/Carousel.css';
+import './styles/LandingCarousel.css';
 
 const items = [
   <img src={images.Landing1} role="presentation" />,
@@ -13,7 +13,7 @@ const items = [
   <img src={images.Landing6} role="presentation" />,
 ];
 
-const Carousel = () => {
+const LandingCarousel = () => {
   return (
     <AliceCarousel
       animationDuration={800}
@@ -26,9 +26,9 @@ const Carousel = () => {
       disableDotsControls
       infinite
       items={items}
-      className="Carousel"
+      className="LandingCarousel"
     />
   );
 };
 
-export default Carousel;
+export default LandingCarousel;

@@ -42,8 +42,9 @@
 }
 .PhotoCardDetailed__imageAndNavigationContainer {
   flex-basis: 65%;
+  overflow: hidden;
 }
-.PhotoCardDetailed__navigation {
+/* .PhotoCardDetailed__navigation {
   position: absolute;
   top: calc(50%-4rem);
   color: var(--color-primary);
@@ -75,16 +76,16 @@
   flex: 1 1 84%;
   display: flex;
   align-items: center;
-}
-.PhotoCardDetailed__imageContainer:hover .PhotoCardDetailed__navigation {
+} */
+/* .PhotoCardDetailed__imageContainer:hover .PhotoCardDetailed__navigation {
   opacity: 1;
-}
-.PhotoCardDetailed__image {
+} */
+/* .PhotoCardDetailed__image {
   width: 100%;
   height: auto;
   max-height: 85vh;
   object-fit: contain;
-}
+} */
 .PhotoCardDetailed__descriptionContainer {
   width: 100%;
   flex-basis: 35%;
@@ -111,9 +112,14 @@
     height: auto;
     flex-direction: column;
     align-items: center;
+    /* overflow-x: hidden; */
   }
   .PhotoCardDetailed__title {
     text-align: center;
+  }
+  .PhotoCardDetailed__imageAndNavigationContainer {
+    width: 100vw;
+    height: auto;
   }
 }
 @media screen and (max-width: 450px) {

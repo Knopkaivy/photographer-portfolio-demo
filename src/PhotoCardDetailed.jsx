@@ -5,6 +5,7 @@ import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
 
 import PhotoCardImage from './PhotoCardImage';
+import PhotoCarousel from './PhotoCarousel';
 import Toolbar from './Toolbar';
 import './styles/PhotoCardDetailed.css';
 
@@ -118,13 +119,16 @@ const PhotoCardDetailed = ({
           purchaseItems={purchaseItems}
         />
         <div className="PhotoCardDetailed__main">
-          <PhotoCardImage
+          {/* <PhotoCardImage
             ind={ind}
             navigateLeft={navigateLeft}
             navigateRight={navigateRight}
             imageUrl={imageUrl}
             photosCount={photosCount}
-          />
+          /> */}
+          <div className="PhotoCardDetailed__imageAndNavigationContainer">
+            <PhotoCarousel gallery={gallery} ind={ind} />
+          </div>
           <div className="PhotoCardDetailed__descriptionContainer">
             <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
             <div className="PhotoCardDetailed__description">
