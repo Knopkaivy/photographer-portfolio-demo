@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { images } from './images';
+import { images } from './utilities/images';
 import ContactForm from './ContactForm';
 import './styles/Bio.css';
 

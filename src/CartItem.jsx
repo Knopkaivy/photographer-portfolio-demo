@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
-import { images } from './images';
-import { licenseOptions } from './licenseOption';
+import { images } from './utilities/images';
+import { licenseOptions } from './utilities/licenseOption';
 import './styles/CartItem.css';
 
 const CartItem = ({

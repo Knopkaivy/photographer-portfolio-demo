@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { RiShareForwardLine } from 'react-icons/ri';
-import { images } from './images';
+import { images } from './utilities/images';
 import './styles/PhotoCard.css';
 
 const PhotoCard = ({

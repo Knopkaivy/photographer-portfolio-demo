@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import { starter } from './starter';
-import { licenseOptions } from './licenseOption';
+import { starter } from './utilities/starter';
+import { licenseOptions } from './utilities/licenseOption';
 import Header from './Header';
 import Cart from './Cart';
 import Footer from './Footer';

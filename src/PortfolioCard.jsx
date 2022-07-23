@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { images } from './images';
+import { images } from './utilities/images';
 import './styles/PortfolioCard.css';
 
 const PortfolioCard = ({ category, image, index }) => {

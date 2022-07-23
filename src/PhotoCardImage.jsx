@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsChevronLeft } from 'react-icons/bs';
 import { BsChevronRight } from 'react-icons/bs';
-import { images } from './images';
+import { images } from './utilities/images';
 
 const PhotoCardImage = ({
   ind,

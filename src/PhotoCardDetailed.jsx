@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-
 import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
-
-import PhotoCardImage from './PhotoCardImage';
 import PhotoCarousel from './PhotoCarousel';
 import Toolbar from './Toolbar';
+import {
+  calculateInd,
+  findGallery,
+  findPhoto,
+  generateImageUrl,
+} from './utilities/helpers';
 import './styles/PhotoCardDetailed.css';
 
 const PhotoCardDetailed = ({
@@ -26,56 +29,35 @@ const PhotoCardDetailed = ({
 
   let navigate = useNavigate();
 
-  let findGallery = () => {
-    for (let gal of portfolio.categories) {
-      if (gal.categoryId === params.galleryId) {
-        return gal;
-      }
-    }
-    return portfolio.categories[0];
-  };
+  const [gallery, setGallery] = useState(
+    findGallery(portfolio.categories, params.galleryId)
+  );
 
-  const [gallery, setGallery] = useState(findGallery());
+  const [photo, setPhoto] = useState(
+    findPhoto(gallery.photos, gallery.categoryId, params.imageId)
+  );
 
-  let findPhoto = () => {
-    for (let pht of gallery.photos) {
-      if (pht.photoId === params.imageId) {
-        return pht;
-      }
-    }
-    navigate(`/portfolio/${gallery.categoryId}`, { replace: true });
-  };
-
-  const [photo, setPhoto] = useState(findPhoto());
-
-  let generateImageUrl = () => {
-    let newImageUrl = `${params.imageId.charAt(0).toUpperCase()}${params.imageId
-      .slice(1)
-      .replace('-', '')}lg`;
-    return newImageUrl;
-  };
-
-  const [imageUrl, setImageUrl] = useState(generateImageUrl());
+  const [imageUrl, setImageUrl] = useState(generateImageUrl(params.imageId));
   const [photosCount, setPhotosCount] = useState(gallery.photos.length);
 
-  let calculateInd = () => {
-    return Number(params.imageId.replace(/^\D+/g, ''));
-  };
-
-  const [ind, setInd] = useState(calculateInd());
+  const [ind, setInd] = useState(calculateInd(params.imageId));
 
   useEffect(() => {
     if (!gallery || params.galleryId !== gallery.categoryId) {
-      let newGal = findGallery();
+      let newGal = findGallery(portfolio.categories, params.galleryId);
       setGallery(newGal);
       setPhotosCount(newGal.photos.length);
     }
     if (!photo || params.imageId !== photo.photoId) {
-      let newPht = findPhoto();
+      let newPht = findPhoto(
+        gallery.photos,
+        gallery.categoryId,
+        params.imageId
+      );
       setPhoto(newPht);
-      let newImageUrl = generateImageUrl();
+      let newImageUrl = generateImageUrl(params.imageId);
       setImageUrl(newImageUrl);
-      setInd(calculateInd());
+      setInd(calculateInd(params.imageId));
     }
   }, [params]);
 
@@ -119,13 +101,6 @@ const PhotoCardDetailed = ({
           purchaseItems={purchaseItems}
         />
         <div className="PhotoCardDetailed__main">
-          {/* <PhotoCardImage
-            ind={ind}
-            navigateLeft={navigateLeft}
-            navigateRight={navigateRight}
-            imageUrl={imageUrl}
-            photosCount={photosCount}
-          /> */}
           <div className="PhotoCardDetailed__imageAndNavigationContainer">
             <PhotoCarousel gallery={gallery} ind={ind} />
           </div>
