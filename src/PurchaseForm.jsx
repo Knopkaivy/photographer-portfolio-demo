@@ -41,6 +41,7 @@ const PurchaseForm = ({
 
   useEffect(() => {
     setCurrentOption(licenseOptions[0]);
+    // console.log('PurchaseForm rerendered');
   }, [photoId]);
 
   const purchaseList = licenseOptions.map((option) => {

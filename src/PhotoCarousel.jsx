@@ -1,25 +1,18 @@
 import React from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import { images } from './utilities/images';
+import { generateImageUrl } from './utilities/helpers';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import './styles/PhotoCarousel.css';
 
-const PhotoCarousel = ({ gallery, ind, navigateLeft, navigateRight }) => {
+const PhotoCarousel = ({ gallery, ind, updatePhoto }) => {
   let changePhoto = (e) => {
-    let oldItem = ind - 1;
-    let newItem = e.item;
-    if (oldItem - newItem === 1 || oldItem - newItem < -1) {
-      navigateLeft();
-    } else if (oldItem - newItem === -1 || oldItem - newItem > 1) {
-      navigateRight();
-    }
+    updatePhoto(e.slide, gallery.photos[e.slide].photoId);
   };
   let items = gallery.photos.map((photo) => {
-    let imageUrl = `${photo.photoId.charAt(0).toUpperCase()}${photo.photoId
-      .slice(1)
-      .replace('-', '')}lg`;
+    let imageUrl = generateImageUrl(photo.photoId);
     return (
-      <img src={images[imageUrl]} role="presentation" key={photo.photoId} />
+      <img src={images[imageUrl]} alt={photo.photoTitle} key={photo.photoId} />
     );
   });
   return (

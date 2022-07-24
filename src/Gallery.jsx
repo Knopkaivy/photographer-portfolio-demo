@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ShareOverlay from './ShareOverlay';
 import PhotoCard from './PhotoCard';
-
+import { findGallery } from './utilities/helpers';
 import './styles/Gallery.css';
 
 const Gallery = ({
@@ -16,19 +16,16 @@ const Gallery = ({
   let navigate = useNavigate();
   let params = useParams();
 
-  let findGallery = () => {
-    for (let gal of portfolio.categories) {
-      if (gal.categoryId === params.galleryId) {
-        return gal;
-      }
-    }
-    return portfolio.categories[0];
-  };
-
-  const [gallery, setGallery] = useState(findGallery());
+  const [gallery, setGallery] = useState(undefined);
   useEffect(() => {
     if (!gallery || gallery.categoryId !== params.galleryId) {
-      setGallery(findGallery());
+      let newGal = findGallery(portfolio.categories, params.galleryId);
+      if (newGal === undefined) {
+        console.log('Gallery newGal is undefined, redirecting');
+        navigate(`/portfolio/`, { replace: true });
+      } else {
+        setGallery(newGal);
+      }
     }
     window.scrollTo(0, 0);
   }, [params.galleryId]);

@@ -4,12 +4,7 @@ import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
 import PhotoCarousel from './PhotoCarousel';
 import Toolbar from './Toolbar';
-import {
-  calculateInd,
-  findGallery,
-  findPhoto,
-  generateImageUrl,
-} from './utilities/helpers';
+import { calculateInd, findGallery, findPhoto } from './utilities/helpers';
 import './styles/PhotoCardDetailed.css';
 
 const PhotoCardDetailed = ({
@@ -28,55 +23,45 @@ const PhotoCardDetailed = ({
   let navigate = useNavigate();
 
   const [gallery, setGallery] = useState(
-    findGallery(portfolio.categories, params.galleryId)
+    findGallery(portfolio.categories, params.galleryId) ||
+      portfolio.categories[0]
   );
+
   const [photo, setPhoto] = useState(
-    findPhoto(gallery.photos, gallery.categoryId, params.imageId)
+    findPhoto(gallery.photos, gallery.categoryId, params.imageId) ||
+      gallery.photos[0]
   );
-  const [imageUrl, setImageUrl] = useState(generateImageUrl(params.imageId));
   const [photosCount, setPhotosCount] = useState(gallery.photos.length);
   const [ind, setInd] = useState(calculateInd(params.imageId));
 
   useEffect(() => {
+    let newGal = gallery;
     if (!gallery || params.galleryId !== gallery.categoryId) {
-      let newGal = findGallery(portfolio.categories, params.galleryId);
-      setGallery(newGal);
-      setPhotosCount(newGal.photos.length);
+      newGal = findGallery(portfolio.categories, params.galleryId);
+      if (newGal === undefined) {
+        navigate(`/portfolio/`, { replace: true });
+      } else {
+        setGallery(newGal);
+        setPhotosCount(newGal.photos.length);
+      }
     }
     if (!photo || params.imageId !== photo.photoId) {
-      let newPht = findPhoto(
-        gallery.photos,
-        gallery.categoryId,
-        params.imageId
-      );
-      setPhoto(newPht);
-      let newImageUrl = generateImageUrl(params.imageId);
-      setImageUrl(newImageUrl);
-      setInd(calculateInd(params.imageId));
+      let newPht = findPhoto(newGal.photos, newGal.categoryId, params.imageId);
+      if (newPht === undefined) {
+        navigate(`/portfolio/${newGal.categoryId}`, { replace: true });
+      } else {
+        setPhoto(newPht);
+        let newInd = calculateInd(params.imageId);
+        if (ind !== newInd) {
+          setInd(newInd);
+        }
+      }
     }
   }, [params]);
 
-  let navigateLeft = () => {
-    let indPrev;
-    if (ind > 1) {
-      indPrev = ind - 1;
-    } else if (ind === 1) {
-      indPrev = photosCount;
-    }
-    let photoIdPrev = `${photo.photoId.split('-')[0]}-${indPrev}`;
-    let url = `/portfolio/${params.galleryId}/${photoIdPrev}`;
-    navigate(url);
-  };
-  let navigateRight = () => {
-    let indNext;
-    if (ind < photosCount) {
-      indNext = ind + 1;
-    } else if (ind === photosCount) {
-      indNext = 1;
-    }
-    let photoIdNext = `${photo.photoId.split('-')[0]}-${indNext}`;
-    let url = `/portfolio/${params.galleryId}/${photoIdNext}`;
-    navigate(url);
+  let updatePhoto = (newInd, newPhotoId) => {
+    setInd(newInd + 1);
+    navigate(`/portfolio/${params.galleryId}/${newPhotoId}`);
   };
 
   if (gallery && photo) {
@@ -100,8 +85,7 @@ const PhotoCardDetailed = ({
             <PhotoCarousel
               gallery={gallery}
               ind={ind}
-              navigateLeft={navigateLeft}
-              navigateRight={navigateRight}
+              updatePhoto={updatePhoto}
             />
           </div>
           <div className="PhotoCardDetailed__descriptionContainer">
