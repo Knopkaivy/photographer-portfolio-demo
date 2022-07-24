@@ -24,22 +24,17 @@ const PhotoCardDetailed = ({
   goToCheckout,
 }) => {
   let params = useParams();
-
   let location = useLocation();
-
   let navigate = useNavigate();
 
   const [gallery, setGallery] = useState(
     findGallery(portfolio.categories, params.galleryId)
   );
-
   const [photo, setPhoto] = useState(
     findPhoto(gallery.photos, gallery.categoryId, params.imageId)
   );
-
   const [imageUrl, setImageUrl] = useState(generateImageUrl(params.imageId));
   const [photosCount, setPhotosCount] = useState(gallery.photos.length);
-
   const [ind, setInd] = useState(calculateInd(params.imageId));
 
   useEffect(() => {
@@ -102,7 +97,12 @@ const PhotoCardDetailed = ({
         />
         <div className="PhotoCardDetailed__main">
           <div className="PhotoCardDetailed__imageAndNavigationContainer">
-            <PhotoCarousel gallery={gallery} ind={ind} />
+            <PhotoCarousel
+              gallery={gallery}
+              ind={ind}
+              navigateLeft={navigateLeft}
+              navigateRight={navigateRight}
+            />
           </div>
           <div className="PhotoCardDetailed__descriptionContainer">
             <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
