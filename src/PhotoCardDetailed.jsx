@@ -81,10 +81,11 @@ const PhotoCardDetailed = ({
           purchaseItems={purchaseItems}
         />
         <div className="PhotoCardDetailed__main">
-          <div className="PhotoCardDetailed__imageAndNavigationContainer">
+          <div className="">
             <PhotoCarousel
               gallery={gallery}
               ind={ind}
+              photosCount={photosCount}
               updatePhoto={updatePhoto}
             />
           </div>

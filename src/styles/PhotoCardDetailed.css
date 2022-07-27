@@ -43,6 +43,13 @@
 .PhotoCardDetailed__imageAndNavigationContainer {
   flex-basis: 65%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.PhotoCardDetailed__navigationIcon {
+  width: 8rem;
+  height: 8rem;
+  padding: 2rem;
 }
 /* .PhotoCardDetailed__navigation {
   position: absolute;
