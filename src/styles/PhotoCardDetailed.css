@@ -51,7 +51,7 @@
   height: 8rem;
   padding: 2rem;
 }
-/* .PhotoCardDetailed__navigation {
+.PhotoCardDetailed__navigation {
   position: absolute;
   top: calc(50%-4rem);
   color: var(--color-primary);
@@ -83,16 +83,16 @@
   flex: 1 1 84%;
   display: flex;
   align-items: center;
-} */
-/* .PhotoCardDetailed__imageContainer:hover .PhotoCardDetailed__navigation {
+}
+.PhotoCardDetailed__imageContainer:hover .PhotoCardDetailed__navigation {
   opacity: 1;
-} */
-/* .PhotoCardDetailed__image {
+}
+.PhotoCardDetailed__image {
   width: 100%;
   height: auto;
   max-height: 85vh;
   object-fit: contain;
-} */
+}
 .PhotoCardDetailed__descriptionContainer {
   width: 100%;
   flex-basis: 35%;

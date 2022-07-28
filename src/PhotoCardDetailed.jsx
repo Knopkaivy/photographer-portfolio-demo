@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
-import PhotoCarousel from './PhotoCarousel';
+import PhotoCardImage from './PhotoCardImage';
 import Toolbar from './Toolbar';
-import { calculateInd, findGallery, findPhoto } from './utilities/helpers';
+import {
+  calculateInd,
+  findGallery,
+  findPhoto,
+  generateImageUrl,
+} from './utilities/helpers';
 import './styles/PhotoCardDetailed.css';
 
 const PhotoCardDetailed = ({
@@ -56,6 +61,7 @@ const PhotoCardDetailed = ({
         navigate(`/portfolio/${newGal.categoryId}`, { replace: true });
       } else {
         setPhoto(newPht);
+        setImageUrl(generateImageUrl(params.imageId));
         let newInd = calculateInd(params.imageId);
         if (ind !== newInd) {
           setInd(newInd);
@@ -64,8 +70,8 @@ const PhotoCardDetailed = ({
     }
   }, [params]);
 
-  let updatePhoto = (newInd, newPhotoId) => {
-    setInd(newInd + 1);
+  let updatePhoto = (newInd) => {
+    let newPhotoId = gallery.photos[newInd - 1].photoId;
     navigate(`/portfolio/${params.galleryId}/${newPhotoId}`);
   };
 
@@ -86,9 +92,12 @@ const PhotoCardDetailed = ({
           purchaseItems={purchaseItems}
         />
         <div className="PhotoCardDetailed__main">
-          <div className="PhotoCardDetailed__imageAndNavigationContainer">
-            <PhotoCarousel gallery={gallery} ind={ind} />
-          </div>
+          <PhotoCardImage
+            ind={ind}
+            updatePhoto={updatePhoto}
+            imageUrl={imageUrl}
+            photosCount={photosCount}
+          />
           <div className="PhotoCardDetailed__descriptionContainer">
             <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
             <div className="PhotoCardDetailed__description">
