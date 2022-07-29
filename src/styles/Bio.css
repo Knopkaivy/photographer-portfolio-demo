@@ -100,6 +100,12 @@
   }
 }
 @media screen and (max-width: 450px) {
+  .Bio {
+    padding-bottom: 0;
+  }
+  .Bio__sectionContent {
+    height: auto;
+  }
   .Bio__sectionContent-list {
     flex-direction: column;
     flex-wrap: nowrap;
