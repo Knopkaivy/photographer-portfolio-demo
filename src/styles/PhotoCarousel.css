@@ -1,0 +1,50 @@
+.PhotoCarousel__container {
+  flex-basis: 65%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: salmon;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.PhotoCarousel {
+  overflow: hidden;
+  width: 100%;
+  background-color: teal;
+  display: flex;
+}
+.PhotoCarousel__inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+  background-color: aquamarine;
+}
+.PhotoCarousel__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.PhotoCarousel__image {
+  width: 100%;
+  height: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+.PhotoCarousel__btn {
+  width: 10rem;
+}
+.PhotoCarousel__icon {
+  width: 8rem;
+  height: 8rem;
+  padding: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .PhotoCarousel__btn {
+    display: none;
+  }
+  .PhotoCarousel__image {
+    max-height: 35vh;
+  }
+}

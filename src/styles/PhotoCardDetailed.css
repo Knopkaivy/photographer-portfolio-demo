@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  background-color: magenta;
 }
 .PhotoCardDetailed:fullscreen {
   padding: 0;
@@ -39,6 +40,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: plum;
 }
 .PhotoCardDetailed__imageAndNavigationContainer {
   flex-basis: 65%;
@@ -71,11 +73,7 @@
 .PhotoCardDetailed__navigation-right {
   right: 4rem;
 }
-.PhotoCardDetailed__navigationIcon {
-  width: 8rem;
-  height: 8rem;
-  padding: 2rem;
-}
+
 .PhotoCardDetailed__imageContainer {
   position: relative;
   width: 100%;
@@ -115,6 +113,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .PhotoCardDetailed {
+    height: auto;
+  }
   .PhotoCardDetailed__main {
     height: auto;
     flex-direction: column;

@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
 import PhotoCardImage from './PhotoCardImage';
+import PhotoCarousel from './PhotoCarousel';
 import Toolbar from './Toolbar';
 import {
   calculateInd,
@@ -92,12 +93,18 @@ const PhotoCardDetailed = ({
           purchaseItems={purchaseItems}
         />
         <div className="PhotoCardDetailed__main">
-          <PhotoCardImage
+          <PhotoCarousel
+            photoList={gallery.photos}
+            ind={ind}
+            photosCount={photosCount}
+            updatePhoto={updatePhoto}
+          />
+          {/* <PhotoCardImage
             ind={ind}
             updatePhoto={updatePhoto}
             imageUrl={imageUrl}
             photosCount={photosCount}
-          />
+          /> */}
           <div className="PhotoCardDetailed__descriptionContainer">
             <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
             <div className="PhotoCardDetailed__description">
