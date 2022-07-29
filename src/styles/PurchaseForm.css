@@ -4,7 +4,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: bisque;
 }
 .PurchaseForm__header {
   font-size: 2rem;

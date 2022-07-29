@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  background-color: magenta;
 }
 .PhotoCardDetailed:fullscreen {
   padding: 0;
@@ -24,11 +23,11 @@
 .PhotoCardDetailed:fullscreen .PhotoCardDetailed__main {
   padding: 0;
 }
-.PhotoCardDetailed:fullscreen .PhotoCardDetailed__imageContainer {
+/* .PhotoCardDetailed:fullscreen .PhotoCardDetailed__imageContainer {
   max-width: 90vw;
   max-height: 100vh;
   margin: 0 auto;
-}
+} */
 
 .PhotoCardDetailed:fullscreen .PhotoCardDetailed__descriptionContainer {
   display: none;
@@ -40,20 +39,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: plum;
 }
-.PhotoCardDetailed__imageAndNavigationContainer {
+/* .PhotoCardDetailed__imageAndNavigationContainer {
   flex-basis: 65%;
   overflow: hidden;
   display: flex;
   align-items: center;
-}
-.PhotoCardDetailed__navigationIcon {
+} */
+/* .PhotoCardDetailed__navigationIcon {
   width: 8rem;
   height: 8rem;
   padding: 2rem;
-}
-.PhotoCardDetailed__navigation {
+} */
+/* .PhotoCardDetailed__navigation {
   position: absolute;
   top: calc(50%-4rem);
   color: var(--color-primary);
@@ -63,34 +61,34 @@
   opacity: 0;
   transition: all 0.5s ease;
   cursor: pointer;
-}
-.PhotoCardDetailed__navigation:hover {
+} */
+/* .PhotoCardDetailed__navigation:hover {
   background-color: rgba(255, 255, 255, 0.6);
-}
-.PhotoCardDetailed__navigation-left {
+} */
+/* .PhotoCardDetailed__navigation-left {
   left: 4rem;
-}
-.PhotoCardDetailed__navigation-right {
+} */
+/* .PhotoCardDetailed__navigation-right {
   right: 4rem;
-}
+} */
 
-.PhotoCardDetailed__imageContainer {
+/* .PhotoCardDetailed__imageContainer {
   position: relative;
   width: 100%;
   max-width: 120rem;
   flex: 1 1 84%;
   display: flex;
   align-items: center;
-}
-.PhotoCardDetailed__imageContainer:hover .PhotoCardDetailed__navigation {
+} */
+/* .PhotoCardDetailed__imageContainer:hover .PhotoCardDetailed__navigation {
   opacity: 1;
-}
-.PhotoCardDetailed__image {
+} */
+/* .PhotoCardDetailed__image {
   width: 100%;
   height: auto;
   max-height: 85vh;
   object-fit: contain;
-}
+} */
 .PhotoCardDetailed__descriptionContainer {
   width: 100%;
   flex-basis: 35%;
