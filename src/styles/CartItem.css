@@ -41,7 +41,7 @@
   flex-grow: 1;
 }
 
-.CartItem__licenseSelect {
+/* .CartItem__licenseSelect {
   width: 100%;
   height: 4rem;
   font-family: inherit;
@@ -52,7 +52,7 @@
   margin-top: auto;
   box-sizing: border-box;
   outline: none;
-}
+} */
 @media screen and (max-width: 992px) {
   .CartItem {
     height: 9.6rem;
