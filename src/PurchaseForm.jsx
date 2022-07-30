@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { licenseOptions } from './utilities/licenseOption';
+import RadioGroup from './RadioGroup';
 import './styles/PurchaseForm.css';
 
 const PurchaseForm = ({
@@ -13,8 +14,7 @@ const PurchaseForm = ({
 }) => {
   const [currentOption, setCurrentOption] = useState(licenseOptions[0]);
 
-  let handleChangeOption = (event) => {
-    let newId = event.target.id;
+  let changeOption = (newId) => {
     let newOption = {};
     for (let option of licenseOptions) {
       if (option.licenseId === newId) {
@@ -41,40 +41,12 @@ const PurchaseForm = ({
 
   useEffect(() => {
     setCurrentOption(licenseOptions[0]);
-    console.log('PurchaseForm currentOption should be 0', photoId);
   }, [photoId]);
 
-  const purchaseList = licenseOptions.map((option) => {
-    return (
-      <div className="PurchaseForm__radioItem" key={option.licenseId}>
-        <input
-          type="radio"
-          id={option.licenseId}
-          name="license"
-          checked={
-            currentOption !== null &&
-            option.licenseId === currentOption.licenseId
-          }
-          onChange={handleChangeOption}
-        />
-        <div className="PurchaseForm__radioItemDescription">
-          <label
-            className="PurchaseForm__radioItemLabel"
-            htmlFor={option.licenseId}
-          >
-            {option.label}
-            <div className="PurchaseForm__radioItemMemo">{option.memo}</div>
-          </label>
-          <p>{option.detail}</p>
-        </div>
-        <div className="PurchaseForm__radioItemPrice">{`$${option.price}.00`}</div>
-      </div>
-    );
-  });
   return (
     <form className="PurchaseForm" onSubmit={handleSubmitPurchase}>
       <h3 className="PurchaseForm__header">Select License</h3>
-      <div className="PurchaseForm__radioGroup">{purchaseList}</div>
+      <RadioGroup currentOption={currentOption} changeOption={changeOption} />
       <div className="PurchaseForm__buttonContainer">
         <button type="submit" className="PurchaseForm__button btn">
           Add to Cart

@@ -9,42 +9,7 @@
   font-size: 2rem;
   font-weight: 600;
 }
-.PurchaseForm__radioItem {
-  min-height: 8rem;
-  padding: 2rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.PurchaseForm__radioItem:not(:last-child) {
-  border-bottom: var(--border-gray-light);
-}
-.PurchaseForm__radioItemDescription {
-  flex-grow: 1;
-  margin-left: 2rem;
-  line-height: 1.6;
-}
-.PurchaseForm__radioItemDescription p {
-  color: var(--color-gray);
-}
-.PurchaseForm__radioItemLabel {
-  position: relative;
-}
-.PurchaseForm__radioItemMemo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 36rem;
-  font-weight: 300;
-  background-color: var(--color-white);
-  border: var(--border-gray-light);
-  padding: 2rem;
-  display: none;
-}
-.PurchaseForm__radioItemLabel:hover .PurchaseForm__radioItemMemo {
-  display: block;
-}
+
 .PurchaseForm__buttonContainer {
   flex-grow: 1;
   display: flex;

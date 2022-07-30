@@ -1,0 +1,38 @@
+.RadioGroup {
+}
+.RadioGroup__item {
+  min-height: 8rem;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.RadioGroup__item:not(:last-child) {
+  border-bottom: var(--border-gray-light);
+}
+.RadioGroup__itemDescription {
+  flex-grow: 1;
+  margin-left: 2rem;
+  line-height: 1.6;
+}
+.RadioGroup__itemDescription p {
+  color: var(--color-gray);
+}
+.RadioGroup__itemLabel {
+  position: relative;
+}
+.RadioGroup__itemMemo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 36rem;
+  font-weight: 300;
+  background-color: var(--color-white);
+  border: var(--border-gray-light);
+  padding: 2rem;
+  display: none;
+}
+.RadioGroup__itemLabel:hover .RadioGroup__itemMemo {
+  display: block;
+}
