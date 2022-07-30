@@ -56,6 +56,7 @@ const CartItem = ({
         <SelectLicense
           currentOption={currentOption}
           updateOption={updateOption}
+          parent="Cart"
         />
         {/* <div className="CartItem__licenseMenu">
           <select

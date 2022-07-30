@@ -4,6 +4,7 @@ import './styles/RadioGroup.css';
 
 const RadioGroup = ({ currentOption, changeOption }) => {
   let handleChangeOption = (event) => {
+    console.log(event.target.id);
     changeOption(event.target.id);
   };
   const optionList = licenseOptions.map((option) => {

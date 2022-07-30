@@ -1,4 +1,5 @@
 .RadioGroup {
+  display: block;
 }
 .RadioGroup__item {
   min-height: 8rem;
@@ -35,4 +36,9 @@
 }
 .RadioGroup__itemLabel:hover .RadioGroup__itemMemo {
   display: block;
+}
+@media screen and (max-width: 768px) {
+  .RadioGroup {
+    display: none;
+  }
 }
