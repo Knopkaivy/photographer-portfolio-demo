@@ -12,6 +12,9 @@
   width: 100%;
   display: flex;
 }
+.PhotoCarousel:focus {
+  outline: none;
+}
 .PhotoCarousel__inner {
   white-space: nowrap;
   transition: transform 0.5s;

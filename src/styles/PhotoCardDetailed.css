@@ -40,55 +40,7 @@
   justify-content: center;
   align-items: center;
 }
-/* .PhotoCardDetailed__imageAndNavigationContainer {
-  flex-basis: 65%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-} */
-/* .PhotoCardDetailed__navigationIcon {
-  width: 8rem;
-  height: 8rem;
-  padding: 2rem;
-} */
-/* .PhotoCardDetailed__navigation {
-  position: absolute;
-  top: calc(50%-4rem);
-  color: var(--color-primary);
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.4);
-  border-radius: 50px;
-  opacity: 0;
-  transition: all 0.5s ease;
-  cursor: pointer;
-} */
-/* .PhotoCardDetailed__navigation:hover {
-  background-color: rgba(255, 255, 255, 0.6);
-} */
-/* .PhotoCardDetailed__navigation-left {
-  left: 4rem;
-} */
-/* .PhotoCardDetailed__navigation-right {
-  right: 4rem;
-} */
 
-/* .PhotoCardDetailed__imageContainer {
-  position: relative;
-  width: 100%;
-  max-width: 120rem;
-  flex: 1 1 84%;
-  display: flex;
-  align-items: center;
-} */
-/* .PhotoCardDetailed__imageContainer:hover .PhotoCardDetailed__navigation {
-  opacity: 1;
-} */
-/* .PhotoCardDetailed__image {
-  width: 100%;
-  height: auto;
-  max-height: 85vh;
-  object-fit: contain;
-} */
 .PhotoCardDetailed__descriptionContainer {
   width: 100%;
   flex-basis: 35%;

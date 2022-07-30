@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { BsChevronLeft } from 'react-icons/bs';
 import { BsChevronRight } from 'react-icons/bs';
@@ -9,6 +9,12 @@ import './styles/PhotoCarousel.css';
 
 const PhotoCarousel = ({ photoList, ind, photosCount, updatePhoto }) => {
   const [activeIndex, setActiveIndex] = useState(ind - 1);
+  const mainRef = useRef(null);
+
+  useEffect(() => {
+    mainRef.current.focus();
+  }, [mainRef]);
+
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
       newIndex = 0;
@@ -22,6 +28,15 @@ const PhotoCarousel = ({ photoList, ind, photosCount, updatePhoto }) => {
     onSwipedLeft: () => updateIndex(activeIndex + 1),
     onSwipedRight: () => updateIndex(activeIndex - 1),
   });
+
+  let handleKeyDown = (event) => {
+    if (event.key === 'ArrowRight') {
+      updateIndex(activeIndex + 1);
+    } else if (event.key === 'ArrowLeft') {
+      updateIndex(activeIndex - 1);
+    }
+  };
+
   let items = photoList.map((photo, index) => {
     let imageUrl = generateImageUrl(photo.photoId);
     return (
@@ -50,7 +65,12 @@ const PhotoCarousel = ({ photoList, ind, photosCount, updatePhoto }) => {
           />
         )}
       </div>
-      <div className="PhotoCarousel">
+      <div
+        className="PhotoCarousel"
+        ref={mainRef}
+        tabIndex="-1"
+        onKeyDown={handleKeyDown}
+      >
         <div
           className="PhotoCarousel__inner"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
