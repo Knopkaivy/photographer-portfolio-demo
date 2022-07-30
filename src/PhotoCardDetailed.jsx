@@ -70,6 +70,9 @@ const PhotoCardDetailed = ({
       }
     }
   }, [params]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   let updatePhoto = (newInd) => {
     let newPhotoId = gallery.photos[newInd - 1].photoId;
@@ -99,12 +102,7 @@ const PhotoCardDetailed = ({
             photosCount={photosCount}
             updatePhoto={updatePhoto}
           />
-          {/* <PhotoCardImage
-            ind={ind}
-            updatePhoto={updatePhoto}
-            imageUrl={imageUrl}
-            photosCount={photosCount}
-          /> */}
+
           <div className="PhotoCardDetailed__descriptionContainer">
             <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
             <div className="PhotoCardDetailed__description">

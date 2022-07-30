@@ -41,7 +41,7 @@ const PurchaseForm = ({
 
   useEffect(() => {
     setCurrentOption(licenseOptions[0]);
-    // console.log('PurchaseForm rerendered');
+    console.log('PurchaseForm currentOption should be 0', photoId);
   }, [photoId]);
 
   const purchaseList = licenseOptions.map((option) => {
@@ -51,10 +51,11 @@ const PurchaseForm = ({
           type="radio"
           id={option.licenseId}
           name="license"
-          defaultChecked={
+          checked={
             currentOption !== null &&
             option.licenseId === currentOption.licenseId
           }
+          onChange={handleChangeOption}
         />
         <div className="PurchaseForm__radioItemDescription">
           <label
@@ -71,11 +72,7 @@ const PurchaseForm = ({
     );
   });
   return (
-    <form
-      className="PurchaseForm"
-      onChange={handleChangeOption}
-      onSubmit={handleSubmitPurchase}
-    >
+    <form className="PurchaseForm" onSubmit={handleSubmitPurchase}>
       <h3 className="PurchaseForm__header">Select License</h3>
       <div className="PurchaseForm__radioGroup">{purchaseList}</div>
       <div className="PurchaseForm__buttonContainer">
