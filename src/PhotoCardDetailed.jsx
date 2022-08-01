@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
-import PhotoCardImage from './PhotoCardImage';
 import PhotoCarousel from './PhotoCarousel';
 import Toolbar from './Toolbar';
 import {
@@ -45,6 +44,8 @@ const PhotoCardDetailed = ({
 
   const [ind, setInd] = useState(calculateInd(params.imageId));
 
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
   useEffect(() => {
     let newGal = gallery;
     if (!gallery || params.galleryId !== gallery.categoryId) {
@@ -79,6 +80,27 @@ const PhotoCardDetailed = ({
     navigate(`/portfolio/${params.galleryId}/${newPhotoId}`);
   };
 
+  let handleRequestFullscreen = () => {
+    document.querySelector('.PhotoCardDetailed').requestFullscreen();
+    setIsFullscreen(true);
+  };
+
+  let handleExitFullscreen = () => {
+    document.exitFullscreen();
+    setIsFullscreen(false);
+  };
+
+  useEffect(() => {
+    function onFullscreenChange() {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    }
+
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+
+    return () =>
+      document.removeEventListener('fullscreenchange', onFullscreenChange);
+  }, []);
+
   if (gallery && photo) {
     return (
       <div className="PhotoCardDetailed">
@@ -94,6 +116,9 @@ const PhotoCardDetailed = ({
           openOverlay={openOverlay}
           openCart={openCart}
           purchaseItems={purchaseItems}
+          isFullscreen={isFullscreen}
+          handleRequestFullscreen={handleRequestFullscreen}
+          handleExitFullscreen={handleExitFullscreen}
         />
         <div className="PhotoCardDetailed__main">
           <PhotoCarousel
@@ -101,6 +126,7 @@ const PhotoCardDetailed = ({
             ind={ind}
             photosCount={photosCount}
             updatePhoto={updatePhoto}
+            isFullscreen={isFullscreen}
           />
 
           <div className="PhotoCardDetailed__descriptionContainer">

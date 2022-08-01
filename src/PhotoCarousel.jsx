@@ -7,14 +7,20 @@ import { generateImageUrl } from './utilities/helpers';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import './styles/PhotoCarousel.css';
 
-const PhotoCarousel = ({ photoList, ind, photosCount, updatePhoto }) => {
+const PhotoCarousel = ({
+  photoList,
+  ind,
+  photosCount,
+  updatePhoto,
+  isFullscreen,
+}) => {
   const [activeIndex, setActiveIndex] = useState(ind - 1);
   const [trans, setTrans] = useState(activeIndex * 100);
   const mainRef = useRef(null);
 
   useEffect(() => {
     mainRef.current.focus();
-  }, [mainRef]);
+  }, [mainRef, isFullscreen]);
 
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {

@@ -15,37 +15,17 @@ const Toolbar = ({
   openOverlay,
   openCart,
   purchaseItems,
+  isFullscreen,
+  handleRequestFullscreen,
+  handleExitFullscreen,
 }) => {
   let location = useLocation();
   let navigate = useNavigate();
   let params = useParams();
 
-  const [isFullscreen, setIsFullscreen] = useState(false);
-
-  let handleRequestFullscreen = () => {
-    document.querySelector('.PhotoCardDetailed').requestFullscreen();
-    setIsFullscreen(true);
-  };
-
-  let handleExitFullscreen = () => {
-    document.exitFullscreen();
-    setIsFullscreen(false);
-  };
-
   let handleOpenOverlay = () => {
     openOverlay(location.pathname);
   };
-
-  useEffect(() => {
-    function onFullscreenChange() {
-      setIsFullscreen(Boolean(document.fullscreenElement));
-    }
-
-    document.addEventListener('fullscreenchange', onFullscreenChange);
-
-    return () =>
-      document.removeEventListener('fullscreenchange', onFullscreenChange);
-  }, []);
 
   let handleLike = () => {
     toggleLike(params.galleryId, params.imageId);
