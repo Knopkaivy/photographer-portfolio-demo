@@ -17,13 +17,14 @@
 }
 .PhotoCarousel__inner {
   white-space: nowrap;
-  transition: transform 0.25s ease-in;
+  transition: transform 1.2s ease-in-out;
 }
 .PhotoCarousel__item {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 0 1rem;
 }
 .PhotoCarousel__image {
   width: 100%;
@@ -52,6 +53,9 @@
 @media screen and (max-width: 768px) {
   .PhotoCarousel__btn {
     display: none;
+  }
+  .PhotoCarousel__inner {
+    transition: transform 0.25s ease-in;
   }
   .PhotoCarousel__image {
     max-height: 50vh;
