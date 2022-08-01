@@ -17,7 +17,7 @@
 }
 .PhotoCarousel__inner {
   white-space: nowrap;
-  transition: transform 1s ease-in;
+  transition: transform 0.3s ease-in;
 }
 .PhotoCarousel__item {
   display: inline-flex;

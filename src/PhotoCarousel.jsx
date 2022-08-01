@@ -9,11 +9,15 @@ import './styles/PhotoCarousel.css';
 
 const PhotoCarousel = ({ photoList, ind, photosCount, updatePhoto }) => {
   const [activeIndex, setActiveIndex] = useState(ind - 1);
+  const [trans, setTrans] = useState(activeIndex * 100);
   const mainRef = useRef(null);
 
   useEffect(() => {
     mainRef.current.focus();
   }, [mainRef]);
+  useEffect(() => {
+    console.log('ref.current is', mainRef.current.offsetWidth);
+  }, [mainRef.current]);
 
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
@@ -22,11 +26,20 @@ const PhotoCarousel = ({ photoList, ind, photosCount, updatePhoto }) => {
       newIndex = photosCount - 1;
     }
     setActiveIndex(newIndex);
+    setTrans(newIndex * 100);
     updatePhoto(newIndex + 1);
   };
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex(activeIndex + 1),
     onSwipedRight: () => updateIndex(activeIndex - 1),
+    onSwiping: (event) => {
+      let base = activeIndex * 100;
+      let movement =
+        Math.floor((event.deltaX * 100) / mainRef.current.offsetWidth / 5) * 5;
+      if (trans !== base - movement) {
+        setTrans(base - movement);
+      }
+    },
   });
 
   let handleKeyDown = (event) => {
@@ -73,7 +86,7 @@ const PhotoCarousel = ({ photoList, ind, photosCount, updatePhoto }) => {
       >
         <div
           className="PhotoCarousel__inner"
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          style={{ transform: `translateX(-${trans}%)` }}
         >
           {items}
         </div>
