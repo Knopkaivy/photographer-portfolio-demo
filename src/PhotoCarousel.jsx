@@ -15,9 +15,6 @@ const PhotoCarousel = ({ photoList, ind, photosCount, updatePhoto }) => {
   useEffect(() => {
     mainRef.current.focus();
   }, [mainRef]);
-  useEffect(() => {
-    console.log('ref.current is', mainRef.current.offsetWidth);
-  }, [mainRef.current]);
 
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {

@@ -17,7 +17,7 @@
 }
 .PhotoCarousel__inner {
   white-space: nowrap;
-  transition: transform 0.3s ease-in;
+  transition: transform 0.25s ease-in;
 }
 .PhotoCarousel__item {
   display: inline-flex;
@@ -40,14 +40,6 @@
   padding: 2rem;
 }
 
-@media screen and (max-width: 768px) {
-  .PhotoCarousel__btn {
-    display: none;
-  }
-  .PhotoCarousel__image {
-    max-height: 35vh;
-  }
-}
 .PhotoCardDetailed:fullscreen .PhotoCarousel__image {
   max-width: 90vw;
   max-height: 100vh;
@@ -55,4 +47,13 @@
 }
 .PhotoCardDetailed:fullscreen .PhotoCarousel__container {
   flex-basis: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .PhotoCarousel__btn {
+    display: none;
+  }
+  .PhotoCarousel__image {
+    max-height: 50vh;
+  }
 }
