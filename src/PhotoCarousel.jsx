@@ -54,7 +54,8 @@ const PhotoCarousel = ({
   };
 
   let items = photoList.map((photo, index) => {
-    let imageUrl = generateImageUrl(photo.photoId);
+    let size = isFullscreen ? 'lg' : 'md';
+    let imageUrl = generateImageUrl(photo.photoId, size);
     return (
       <div
         className="PhotoCarousel__item"

@@ -14,10 +14,10 @@ export const findPhoto = (photos, categoryId, imageId) => {
   }
 };
 
-export const generateImageUrl = (imageId) => {
+export const generateImageUrl = (imageId, size = 'md') => {
   let newImageUrl = `${imageId.charAt(0).toUpperCase()}${imageId
     .slice(1)
-    .replace('-', '')}lg`;
+    .replace('-', '')}${size}`;
   return newImageUrl;
 };
 
