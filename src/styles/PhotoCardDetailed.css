@@ -23,11 +23,6 @@
 .PhotoCardDetailed:fullscreen .PhotoCardDetailed__main {
   padding: 0;
 }
-/* .PhotoCardDetailed:fullscreen .PhotoCardDetailed__imageContainer {
-  max-width: 90vw;
-  max-height: 100vh;
-  margin: 0 auto;
-} */
 
 .PhotoCardDetailed:fullscreen .PhotoCardDetailed__descriptionContainer {
   display: none;
@@ -70,10 +65,10 @@
     height: auto;
     flex-direction: column;
     align-items: center;
-    /* overflow-x: hidden; */
   }
   .PhotoCardDetailed__title {
     text-align: center;
+    margin: 2rem 0 1rem 0;
   }
   .PhotoCardDetailed__imageAndNavigationContainer {
     width: 100vw;

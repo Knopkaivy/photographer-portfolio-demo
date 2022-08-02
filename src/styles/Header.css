@@ -36,3 +36,13 @@
   fill: var(--color-secondary);
   /* margin-right: 4px; */
 }
+@media screen and (max-width: 450px) {
+  .Header__Fixed {
+    position: relative;
+    width: 100vw;
+    z-index: 3;
+  }
+  .Header {
+    height: 10rem;
+  }
+}

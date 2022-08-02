@@ -1,7 +1,6 @@
 .Gallery {
   width: 100%;
   min-height: 100vh;
-  /* padding: 12rem 4rem; */
   padding: 12rem 4vw;
 }
 .Gallery__headingSection {
@@ -36,5 +35,10 @@
   }
   .Gallery__headingSection {
     margin-top: 4rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .Gallery {
+    padding: 2rem 4vw;
   }
 }
