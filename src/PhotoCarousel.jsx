@@ -38,7 +38,8 @@ const PhotoCarousel = ({
     onSwiping: (event) => {
       let base = activeIndex * 100;
       let movement =
-        Math.floor((event.deltaX * 100) / mainRef.current.offsetWidth / 5) * 5;
+        // Math.floor((event.deltaX * 100) / mainRef.current.offsetWidth / 5) * 5;
+        Math.round((event.deltaX * 100) / mainRef.current.offsetWidth);
       if (trans !== base - movement) {
         setTrans(base - movement);
       }
