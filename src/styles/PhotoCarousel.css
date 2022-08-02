@@ -18,6 +18,7 @@
 .PhotoCarousel__inner {
   white-space: nowrap;
   transition: transform 1.2s ease-in-out;
+  backface-visibility: hidden;
 }
 .PhotoCarousel__item {
   display: inline-flex;
@@ -64,7 +65,7 @@
 
 @media screen and (max-width: 450px) {
   .PhotoCarousel__item {
-    transition: transform 0.25s ease-in;
+    transition: transform ease-in;
     padding: 0 2px;
   }
 }
