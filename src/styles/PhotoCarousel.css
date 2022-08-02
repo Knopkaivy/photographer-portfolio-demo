@@ -58,7 +58,7 @@
     transition: transform 0.25s ease-in;
   }
   .PhotoCarousel__image {
-    max-height: 45vh;
+    max-height: 40vh;
   }
 }
 
