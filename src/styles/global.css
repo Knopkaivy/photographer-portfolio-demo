@@ -28,8 +28,6 @@ body {
   line-height: 1.6;
   color: var(--color-primary);
 }
-.App {
-}
 
 .container {
   width: calc(100vw - 2rem);

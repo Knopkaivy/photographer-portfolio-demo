@@ -31,5 +31,9 @@
   }
   .PurchaseForm__buttonContainer {
     margin: 2.4rem 0;
+    flex-grow: 0;
+  }
+  .PurchaseForm__checkoutLink {
+    margin: 1rem 0;
   }
 }

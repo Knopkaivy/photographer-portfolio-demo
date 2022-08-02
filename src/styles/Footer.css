@@ -35,9 +35,13 @@
   transform: scale(1.05);
 }
 @media screen and (max-width: 576px) {
+  .Footer {
+    height: 16rem;
+  }
   .Footer__content {
     flex-direction: column-reverse;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 2.5rem;
   }
   .Footer__linkList {
     width: 100%;

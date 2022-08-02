@@ -15,5 +15,6 @@
   .Portfolio {
     flex-direction: column;
     flex-wrap: nowrap;
+    padding: 8rem 2rem;
   }
 }

@@ -61,3 +61,10 @@
     max-height: 50vh;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .PhotoCarousel__item {
+    transition: transform 0.25s ease-in;
+    padding: 0 2px;
+  }
+}
