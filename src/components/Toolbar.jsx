@@ -7,7 +7,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { RiShareForwardLine } from 'react-icons/ri';
 import { IoMdClose } from 'react-icons/io';
-import './styles/Toolbar.css';
+import '../styles/Toolbar.css';
 
 const Toolbar = ({
   photo,

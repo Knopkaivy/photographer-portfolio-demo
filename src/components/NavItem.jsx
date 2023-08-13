@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './styles/NavItem.css';
+import '../styles/NavItem.css';
 
 const NavItem = ({ item, portfolio }) => {
   let menuList;

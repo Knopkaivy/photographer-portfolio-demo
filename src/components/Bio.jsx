@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { images } from './utilities/images';
+import { images } from '../utilities/images';
 import ContactForm from './ContactForm';
-import './styles/Bio.css';
+import '../styles/Bio.css';
 
 const Bio = () => {
   useEffect(() => {

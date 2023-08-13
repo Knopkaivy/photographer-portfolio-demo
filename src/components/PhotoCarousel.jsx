@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { BsChevronLeft } from 'react-icons/bs';
 import { BsChevronRight } from 'react-icons/bs';
-import { images } from './utilities/images';
-import { generateImageUrl } from './utilities/helpers';
+import { images } from '../utilities/images';
+import { generateImageUrl } from '../utilities/helpers';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import './styles/PhotoCarousel.css';
+import '../styles/PhotoCarousel.css';
 
 const PhotoCarousel = ({
   photoList,

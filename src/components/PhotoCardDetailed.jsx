@@ -9,8 +9,8 @@ import {
   findGallery,
   findPhoto,
   generateImageUrl,
-} from './utilities/helpers';
-import './styles/PhotoCardDetailed.css';
+} from '../utilities/helpers';
+import '../styles/PhotoCardDetailed.css';
 
 const PhotoCardDetailed = ({
   portfolio,

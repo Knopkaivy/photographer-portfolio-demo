@@ -1,6 +1,6 @@
 import React from 'react';
-import { images } from './utilities/images';
-import './styles/CheckoutList.css';
+import { images } from '../utilities/images';
+import '../styles/CheckoutList.css';
 
 const CheckoutList = ({ purchaseItems, cartSubtotal, editCart }) => {
   let itemList = purchaseItems.map((item) => {

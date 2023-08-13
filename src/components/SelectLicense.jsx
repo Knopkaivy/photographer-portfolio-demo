@@ -1,6 +1,6 @@
 import React from 'react';
-import { licenseOptions } from './utilities/licenseOption';
-import './styles/SelectLicense.css';
+import { licenseOptions } from '../utilities/licenseOption';
+import '../styles/SelectLicense.css';
 
 const SelectLicense = ({
   currentOption,

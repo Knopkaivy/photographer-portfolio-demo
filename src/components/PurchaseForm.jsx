@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { licenseOptions } from './utilities/licenseOption';
+import { licenseOptions } from '../utilities/licenseOption';
 import RadioGroup from './RadioGroup';
 import SelectLicense from './SelectLicense';
-import './styles/PurchaseForm.css';
+import '../styles/PurchaseForm.css';
 
 const PurchaseForm = ({
   photoId,

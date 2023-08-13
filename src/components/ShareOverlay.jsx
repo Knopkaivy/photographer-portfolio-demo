@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { BsFacebook } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
@@ -8,8 +8,7 @@ import { MdEmail } from 'react-icons/md';
 import { FiCopy } from 'react-icons/fi';
 import { FiCheck } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
-import './styles/ShareOverlay.css';
-import { useState } from 'react';
+import '../styles/ShareOverlay.css';
 
 const ShareOverlay = ({ location, closeOverlay }) => {
   const [copied, setCopied] = useState(false);

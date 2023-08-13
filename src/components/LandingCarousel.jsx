@@ -1,8 +1,8 @@
 import React from 'react';
 import AliceCarousel from 'react-alice-carousel';
-import { images } from './utilities/images';
+import { images } from '../utilities/images';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import './styles/LandingCarousel.css';
+import '../styles/LandingCarousel.css';
 
 const items = [
   <img src={images.Landing1} role="presentation" />,

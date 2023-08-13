@@ -1,6 +1,6 @@
 import React from 'react';
-import { licenseOptions } from './utilities/licenseOption';
-import './styles/RadioGroup.css';
+import { licenseOptions } from '../utilities/licenseOption';
+import '../styles/RadioGroup.css';
 
 const RadioGroup = ({ currentOption, changeOption }) => {
   let handleChangeOption = (event) => {

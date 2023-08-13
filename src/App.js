@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { starter } from './utilities/starter';
 import { licenseOptions } from './utilities/licenseOption';
-import Header from './Header';
-import Cart from './Cart';
-import Footer from './Footer';
-import Home from './Home';
-import Portfolio from './Portfolio';
-import Gallery from './Gallery';
-import PhotoCardDetailed from './PhotoCardDetailed';
-import Checkout from './Checkout';
-import Bio from './Bio';
+import Header from './components/Header';
+import Cart from './components/Cart';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import Portfolio from './components/Portfolio';
+import Gallery from './components/Gallery';
+import PhotoCardDetailed from './components/PhotoCardDetailed';
+import Checkout from './components/Checkout';
+import Bio from './components/Bio';
 
 import './styles/global.css';
 

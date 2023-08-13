@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PortfolioCard from './PortfolioCard';
 
-import './styles/Portfolio.css';
+import '../styles/Portfolio.css';
 
 const Portfolio = ({ portfolio }) => {
   useEffect(() => {

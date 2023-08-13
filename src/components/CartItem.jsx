@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
-import { images } from './utilities/images';
+import { images } from '../utilities/images';
 import SelectLicense from './SelectLicense';
-import { licenseOptions } from './utilities/licenseOption';
-import './styles/CartItem.css';
+import { licenseOptions } from '../utilities/licenseOption';
+import '../styles/CartItem.css';
 
 const CartItem = ({
   imageUrl,

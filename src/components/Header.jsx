@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsBag } from 'react-icons/bs';
 import NavItem from './NavItem';
-import './styles/Header.css';
+import '../styles/Header.css';
 
 const Header = ({ portfolio, openCart, purchaseItems }) => {
   const menu = portfolio.categories.map((cat) => {

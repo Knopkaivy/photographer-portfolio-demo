@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ShareOverlay from './ShareOverlay';
 import PhotoCard from './PhotoCard';
-import { findGallery } from './utilities/helpers';
-import './styles/Gallery.css';
+import { findGallery } from '../utilities/helpers';
+import '../styles/Gallery.css';
 
 const Gallery = ({
   portfolio,
