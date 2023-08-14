@@ -1,8 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { images } from '../utilities/images';
 import '../styles/CheckoutList.css';
 
-const CheckoutList = ({ purchaseItems, cartSubtotal, editCart }) => {
+const CheckoutList = ({ cartSubtotal, editCart }) => {
+  const purchaseItems = useSelector((state) => state.cart.purchaseItems);
+  const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
   let itemList = purchaseItems.map((item) => {
     return (
       <div className="CheckoutList__item" key={item.id}>
@@ -32,15 +35,13 @@ const CheckoutList = ({ purchaseItems, cartSubtotal, editCart }) => {
     <div className="CheckoutList">
       <div className="CheckoutList__headerSection">
         <h3 className="CheckoutList__header">
-          {`Order Items (${purchaseItems.length})`}
+          {`Order Items (${purchaseCount})`}
         </h3>
         <div className="CheckoutList__editLink link" onClick={editCart}>
           Edit Cart
         </div>
       </div>
-      <div className="CheckoutList__list">
-        {purchaseItems.length > 0 && itemList}
-      </div>
+      <div className="CheckoutList__list">{purchaseCount > 0 && itemList}</div>
       <div className="CheckoutList__totalSection">
         <div className="CheckoutList__totalHeader">Total</div>
         <div className="CheckoutList__totalAmount">{`$${cartSubtotal}.00`}</div>

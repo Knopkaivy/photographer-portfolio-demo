@@ -19,8 +19,8 @@ const PhotoCardDetailed = ({
   openOverlay,
   closeOverlay,
   openCart,
-  purchaseItems,
-  addItemToCart,
+  // purchaseItems,
+  // addItemToCart,
   goToCheckout,
 }) => {
   let params = useParams();
@@ -115,7 +115,7 @@ const PhotoCardDetailed = ({
           toggleLike={toggleLike}
           openOverlay={openOverlay}
           openCart={openCart}
-          purchaseItems={purchaseItems}
+          // purchaseItems={purchaseItems}
           isFullscreen={isFullscreen}
           handleRequestFullscreen={handleRequestFullscreen}
           handleExitFullscreen={handleExitFullscreen}
@@ -136,8 +136,8 @@ const PhotoCardDetailed = ({
                 photoId={photo.photoId}
                 photoTitle={photo.photoTitle}
                 openCart={openCart}
-                purchaseItems={purchaseItems}
-                addItemToCart={addItemToCart}
+                // purchaseItems={purchaseItems}
+                // addItemToCart={addItemToCart}
                 goToCheckout={goToCheckout}
               />
             </div>

@@ -1,34 +1,25 @@
 import React, { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
+import { useDispatch } from 'react-redux';
+import { remove, update } from '../features/cart/cartSlice';
 import { images } from '../utilities/images';
 import SelectLicense from './SelectLicense';
 import { licenseOptions } from '../utilities/licenseOption';
 import '../styles/CartItem.css';
 
-const CartItem = ({
-  imageUrl,
-  name,
-  label,
-  detail,
-  id,
-  removeItemFromCart,
-  updateItemInCart,
-}) => {
+const CartItem = ({ imageUrl, name, label, detail, id }) => {
   const [currentOption, setCurrentOption] = useState(label);
+  const dispatch = useDispatch();
 
   let handleRemoveItemFromCart = () => {
-    removeItemFromCart(id);
+    dispatch(remove(id));
   };
 
   let updateOption = (newVal) => {
     setCurrentOption(newVal);
-    let newLicenseId;
-    for (let option of licenseOptions) {
-      if (option.label === newVal) {
-        newLicenseId = option.licenseId;
-      }
-    }
-    updateItemInCart(id, newLicenseId);
+    let newLicense = licenseOptions.find((option) => option.label === newVal);
+    let newItem = { ...newLicense, id, imageUrl, name };
+    dispatch(update({ id, newItem }));
   };
 
   // let optionsList = licenseOptions.map((item) => {

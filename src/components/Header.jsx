@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { BsBag } from 'react-icons/bs';
 import NavItem from './NavItem';
 import '../styles/Header.css';
 
-const Header = ({ portfolio, openCart, purchaseItems }) => {
+const Header = ({ portfolio, openCart }) => {
+  const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
+
   const menu = portfolio.categories.map((cat) => {
     return cat.categoryName;
   });
@@ -31,7 +34,7 @@ const Header = ({ portfolio, openCart, purchaseItems }) => {
           onClick={openCart}
         >
           <BsBag className="Header__ListItem-cartIcon" />{' '}
-          <span>{purchaseItems.length}</span>
+          <span>{purchaseCount}</span>
         </div>
       </nav>
     </div>

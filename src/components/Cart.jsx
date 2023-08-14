@@ -1,17 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { BsChevronRight } from 'react-icons/bs';
 import CartItem from './CartItem';
 import '../styles/Cart.css';
 
-const Cart = ({
-  cartSubtotal,
-  cartIsOpen,
-  closeCart,
-  purchaseItems,
-  removeItemFromCart,
-  updateItemInCart,
-  goToCheckout,
-}) => {
+const Cart = ({ cartSubtotal, cartIsOpen, closeCart, goToCheckout }) => {
+  const purchaseItems = useSelector((state) => state.cart.purchaseItems);
+  const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
+
   let handleCloseCart = (event) => {
     event.stopPropagation();
     closeCart();
@@ -34,8 +30,6 @@ const Cart = ({
         licenseId={item.licenseId}
         detail={item.detail}
         id={item.id}
-        removeItemFromCart={removeItemFromCart}
-        updateItemInCart={updateItemInCart}
       />
     );
   });
@@ -52,11 +46,9 @@ const Cart = ({
           <div className="Cart__close" onClick={handleCloseCart}>
             <BsChevronRight />
           </div>
-          <h2 className="Cart__header">{`Cart (${purchaseItems.length})`}</h2>
+          <h2 className="Cart__header">{`Cart (${purchaseCount})`}</h2>
         </div>
-        <div className="Cart__list">
-          {purchaseItems.length > 0 && purchaseList}
-        </div>
+        <div className="Cart__list">{purchaseCount > 0 && purchaseList}</div>
 
         <div className="Cart__checkoutSection">
           <div className="Cart__subtotal">

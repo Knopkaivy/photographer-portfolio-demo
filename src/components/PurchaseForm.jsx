@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector, useDispatch } from 'react-redux';
+import { add } from '../features/cart/cartSlice';
 import { licenseOptions } from '../utilities/licenseOption';
 import RadioGroup from './RadioGroup';
 import SelectLicense from './SelectLicense';
@@ -9,11 +11,13 @@ const PurchaseForm = ({
   photoId,
   photoTitle,
   openCart,
-  purchaseItems,
-  addItemToCart,
+  // purchaseItems,
+  // addItemToCart,
   goToCheckout,
 }) => {
   const [currentOption, setCurrentOption] = useState(licenseOptions[0]);
+  const dispatch = useDispatch();
+  const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
 
   let changeOption = (newId) => {
     let newOption = {};
@@ -35,7 +39,9 @@ const PurchaseForm = ({
       item.imageUrl = `${photoId.charAt(0).toUpperCase()}${photoId
         .slice(1)
         .replace('-', '')}md`;
-      addItemToCart(item);
+      // ****************
+      dispatch(add(item));
+      // addItemToCart(item);
       openCart();
     }
   };
@@ -59,8 +65,7 @@ const PurchaseForm = ({
         </button>
       </div>
       <div className="PurchaseForm__checkoutLink link" onClick={goToCheckout}>
-        {purchaseItems.length > 0 &&
-          `Continue to Checkout (${purchaseItems.length})`}
+        {purchaseCount > 0 && `Continue to Checkout (${purchaseCount})`}
       </div>
     </form>
   );

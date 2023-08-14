@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { MdOpenInFull } from 'react-icons/md';
 import { MdCloseFullscreen } from 'react-icons/md';
 import { BsBag } from 'react-icons/bs';
@@ -14,7 +15,7 @@ const Toolbar = ({
   toggleLike,
   openOverlay,
   openCart,
-  purchaseItems,
+  // purchaseItems,
   isFullscreen,
   handleRequestFullscreen,
   handleExitFullscreen,
@@ -22,6 +23,7 @@ const Toolbar = ({
   let location = useLocation();
   let navigate = useNavigate();
   let params = useParams();
+  const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
 
   let handleOpenOverlay = () => {
     openOverlay(location.pathname);
@@ -58,7 +60,7 @@ const Toolbar = ({
             onClick={openCart}
           />{' '}
           <span className="Toolbar__icon-secondary Toolbar__icon-span">
-            {purchaseItems.length}
+            {purchaseCount}
           </span>
         </div>
         <div className="Toolbar__iconContainer">

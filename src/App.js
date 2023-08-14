@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { starter } from './utilities/starter';
-import { licenseOptions } from './utilities/licenseOption';
 import Header from './components/Header';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
@@ -41,41 +40,6 @@ function App() {
         setCartSubtotal(newSubtotal);
       }
     }
-  };
-
-  let addItemToCart = (item) => {
-    let newState = [...purchaseItems, item];
-    setPurchaseItems(newState);
-    localStorage.setItem('cart', JSON.stringify(newState));
-  };
-
-  let removeItemFromCart = (itemId) => {
-    let newList = purchaseItems.filter((item) => item.id !== itemId);
-    setPurchaseItems(newList);
-    localStorage.setItem('cart', JSON.stringify(newList));
-  };
-
-  let updateItemInCart = (itemId, newLicenseId) => {
-    let newList = [...purchaseItems];
-    let newLicense;
-    for (let license of licenseOptions) {
-      if (license.licenseId === newLicenseId) {
-        newLicense = license;
-        break;
-      }
-    }
-    for (let item of newList) {
-      if (item.id === itemId) {
-        item.licenseId = newLicense.licenseId;
-        item.label = newLicense.label;
-        item.detail = newLicense.detail;
-        item.price = newLicense.price;
-        item.memo = newLicense.memo;
-        break;
-      }
-    }
-    setPurchaseItems(newList);
-    localStorage.setItem('cart', JSON.stringify(newList));
   };
 
   useEffect(() => {
@@ -126,15 +90,11 @@ function App() {
         cartIsOpen={cartIsOpen}
         openCart={openCart}
         closeCart={closeCart}
-        purchaseItems={purchaseItems}
       />
       <Cart
         cartSubtotal={cartSubtotal}
         cartIsOpen={cartIsOpen}
         closeCart={closeCart}
-        purchaseItems={purchaseItems}
-        removeItemFromCart={removeItemFromCart}
-        updateItemInCart={updateItemInCart}
         goToCheckout={goToCheckout}
       />
       <Routes>
@@ -168,8 +128,6 @@ function App() {
               openOverlay={openOverlay}
               closeOverlay={closeOverlay}
               openCart={openCart}
-              purchaseItems={purchaseItems}
-              addItemToCart={addItemToCart}
               goToCheckout={goToCheckout}
             />
           }
@@ -177,13 +135,7 @@ function App() {
         <Route path="bio" element={<Bio />} />
         <Route
           path="checkout"
-          element={
-            <Checkout
-              purchaseItems={purchaseItems}
-              cartSubtotal={cartSubtotal}
-              openCart={openCart}
-            />
-          }
+          element={<Checkout cartSubtotal={cartSubtotal} openCart={openCart} />}
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

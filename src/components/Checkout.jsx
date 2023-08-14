@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import CheckoutList from './CheckoutList';
 import '../styles/Checkout.css';
 
@@ -34,7 +35,7 @@ const Checkout = ({ purchaseItems, cartSubtotal, openCart }) => {
           touch to complete your purchase.
         </div>
         <CheckoutList
-          purchaseItems={purchaseItems}
+          // purchaseItems={purchaseItems}
           cartSubtotal={cartSubtotal}
           editCart={editCart}
         />
