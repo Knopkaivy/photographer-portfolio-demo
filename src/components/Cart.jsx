@@ -4,9 +4,12 @@ import { BsChevronRight } from 'react-icons/bs';
 import CartItem from './CartItem';
 import '../styles/Cart.css';
 
-const Cart = ({ cartSubtotal, cartIsOpen, closeCart, goToCheckout }) => {
+const Cart = ({ cartIsOpen, closeCart, goToCheckout }) => {
   const purchaseItems = useSelector((state) => state.cart.purchaseItems);
   const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
+  const cartSubtotal = useSelector((state) =>
+    state.cart.purchaseItems.reduce((acc, item) => (acc += item.price), 0)
+  );
 
   let handleCloseCart = (event) => {
     event.stopPropagation();

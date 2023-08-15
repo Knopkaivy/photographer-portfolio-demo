@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { starter } from './utilities/starter';
 import Header from './components/Header';
@@ -15,36 +15,11 @@ import './styles/global.css';
 
 function App() {
   const [portfolio, setPortfolio] = useState(starter);
-
-  const [purchaseItems, setPurchaseItems] = useState(() => {
-    const saved = localStorage.getItem('cart');
-    const initialValue = JSON.parse(saved);
-    return initialValue || [];
-  });
-  const [cartSubtotal, setCartSubtotal] = useState(0);
-
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
   const [overlayInputVal, setOverlayInputVal] = useState('/');
+  const [cartIsOpen, setCartIsOpen] = useState(false);
 
   let navigate = useNavigate();
-
-  let calculateSubtotal = () => {
-    if (purchaseItems.length === 0) {
-      setCartSubtotal(0);
-    } else if (purchaseItems.length > 0) {
-      let newSubtotal = 0;
-      purchaseItems.forEach((item) => {
-        newSubtotal = newSubtotal + item.price;
-      });
-      if (cartSubtotal !== newSubtotal) {
-        setCartSubtotal(newSubtotal);
-      }
-    }
-  };
-
-  useEffect(() => {
-    calculateSubtotal();
-  }, [purchaseItems]);
 
   let goToCheckout = () => {
     closeCart();
@@ -60,7 +35,6 @@ function App() {
     setOverlayInputVal('/');
     setOverlayIsOpen(false);
   };
-  const [cartIsOpen, setCartIsOpen] = useState(false);
 
   let openCart = () => {
     setCartIsOpen(true);
@@ -92,7 +66,6 @@ function App() {
         closeCart={closeCart}
       />
       <Cart
-        cartSubtotal={cartSubtotal}
         cartIsOpen={cartIsOpen}
         closeCart={closeCart}
         goToCheckout={goToCheckout}
@@ -133,10 +106,7 @@ function App() {
           }
         />
         <Route path="bio" element={<Bio />} />
-        <Route
-          path="checkout"
-          element={<Checkout cartSubtotal={cartSubtotal} openCart={openCart} />}
-        />
+        <Route path="checkout" element={<Checkout openCart={openCart} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

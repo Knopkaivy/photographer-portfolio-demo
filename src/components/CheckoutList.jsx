@@ -3,9 +3,12 @@ import { useSelector } from 'react-redux';
 import { images } from '../utilities/images';
 import '../styles/CheckoutList.css';
 
-const CheckoutList = ({ cartSubtotal, editCart }) => {
+const CheckoutList = ({ editCart }) => {
   const purchaseItems = useSelector((state) => state.cart.purchaseItems);
   const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
+  const cartSubtotal = useSelector((state) =>
+    state.cart.purchaseItems.reduce((acc, item) => (acc += item.price), 0)
+  );
   let itemList = purchaseItems.map((item) => {
     return (
       <div className="CheckoutList__item" key={item.id}>

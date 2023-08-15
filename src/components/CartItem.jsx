@@ -22,17 +22,6 @@ const CartItem = ({ imageUrl, name, label, detail, id }) => {
     dispatch(update({ id, newItem }));
   };
 
-  // let optionsList = licenseOptions.map((item) => {
-  //   return (
-  //     <option
-  //       className="CartItem__licenseOption"
-  //       value={item.label}
-  //       key={item.licenseId}
-  //     >
-  //       {`${item.label} - $${item.price}.00`}
-  //     </option>
-  //   );
-  // });
   return (
     <div className="CartItem">
       <div className="CartItem__imageContainer">
@@ -49,17 +38,6 @@ const CartItem = ({ imageUrl, name, label, detail, id }) => {
           updateOption={updateOption}
           parent="Cart"
         />
-        {/* <div className="CartItem__licenseMenu">
-          <select
-            name="license"
-            id="licenseSelect"
-            defaultValue={currentLicenseOption}
-            className="CartItem__licenseSelect"
-            onChange={handleUpdateLicenseOption}
-          >
-            {optionsList}
-          </select>
-        </div> */}
       </div>
     </div>
   );
