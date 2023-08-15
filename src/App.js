@@ -69,7 +69,6 @@ function App() {
           element={
             <PhotoCardDetailed
               overlayIsOpen={overlayIsOpen}
-              overlayInputVal={overlayInputVal}
               openOverlay={openOverlay}
               closeOverlay={closeOverlay}
               openCart={openCart}

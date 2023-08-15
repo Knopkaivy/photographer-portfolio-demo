@@ -12,13 +12,16 @@ const PhotoCard = ({
   imageId,
   imageURL,
   imageTitle,
-  isLiked,
   openOverlay,
   galleryId,
 }) => {
   let location = useLocation();
   let shareUrl = `${location.pathname}/${imageId}`;
   const dispatch = useDispatch();
+  const gallery = useSelector((state) =>
+    state.portfolio.categories.find((cat) => cat.categoryId === galleryId)
+  );
+  const image = gallery.photos.find((item) => item.photoId === imageId);
 
   let handleToggleLike = () => {
     dispatch(toggleLike({ galleryId, imageId }));
@@ -32,7 +35,7 @@ const PhotoCard = ({
       <Link to={imageId} className="PhotoCard__overlay"></Link>
       <div className="PhotoCard__iconContainer">
         <div className="PhotoCard__icon" onClick={handleToggleLike}>
-          {isLiked ? (
+          {image.liked ? (
             <div className="PhotoCard__icon-like-container">
               <AiFillHeart className="icon-like" />
               <span className="PhotoCard__icon-span">1</span>

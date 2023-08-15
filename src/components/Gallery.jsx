@@ -40,7 +40,6 @@ const Gallery = ({
           imageURL={url}
           imageTitle={item.photoTitle}
           imageDescription={item.photoDescription}
-          isLiked={item.liked}
           key={item.photoId}
           openOverlay={openOverlay}
           galleryName={gallery.categoryName}

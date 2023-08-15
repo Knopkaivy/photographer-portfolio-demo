@@ -21,9 +21,7 @@ const PhotoCardDetailed = ({
   goToCheckout,
 }) => {
   let params = useParams();
-
   let location = useLocation();
-
   let navigate = useNavigate();
 
   const categories = useSelector((state) => state.portfolio.categories);
@@ -106,7 +104,6 @@ const PhotoCardDetailed = ({
           />
         )}
         <Toolbar
-          photo={photo}
           openOverlay={openOverlay}
           openCart={openCart}
           isFullscreen={isFullscreen}

@@ -12,7 +12,6 @@ import { IoMdClose } from 'react-icons/io';
 import '../styles/Toolbar.css';
 
 const Toolbar = ({
-  photo,
   openOverlay,
   openCart,
   isFullscreen,
@@ -22,15 +21,20 @@ const Toolbar = ({
   let location = useLocation();
   let navigate = useNavigate();
   let params = useParams();
+  const { galleryId, imageId } = params;
   const dispatch = useDispatch();
   const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
+
+  const gallery = useSelector((state) =>
+    state.portfolio.categories.find((cat) => cat.categoryId === galleryId)
+  );
+  const image = gallery.photos.find((item) => item.photoId === imageId);
 
   let handleOpenOverlay = () => {
     openOverlay(location.pathname);
   };
 
   let handleLike = () => {
-    const { galleryId, imageId } = params;
     dispatch(toggleLike({ galleryId, imageId }));
   };
 
@@ -71,7 +75,7 @@ const Toolbar = ({
           />
         </div>
         <div className="Toolbar__iconContainer" onClick={handleLike}>
-          {photo.liked ? (
+          {image.liked ? (
             <React.Fragment>
               <AiFillHeart className="Toolbar__icon Toolbar__icon-secondary icon icon-like" />
               <span className="Toolbar__icon-span">1</span>
