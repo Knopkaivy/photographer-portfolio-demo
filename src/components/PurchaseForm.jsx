@@ -7,14 +7,7 @@ import RadioGroup from './RadioGroup';
 import SelectLicense from './SelectLicense';
 import '../styles/PurchaseForm.css';
 
-const PurchaseForm = ({
-  photoId,
-  photoTitle,
-  openCart,
-  // purchaseItems,
-  // addItemToCart,
-  goToCheckout,
-}) => {
+const PurchaseForm = ({ photoId, photoTitle, openCart, goToCheckout }) => {
   const [currentOption, setCurrentOption] = useState(licenseOptions[0]);
   const dispatch = useDispatch();
   const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
@@ -39,9 +32,7 @@ const PurchaseForm = ({
       item.imageUrl = `${photoId.charAt(0).toUpperCase()}${photoId
         .slice(1)
         .replace('-', '')}md`;
-      // ****************
       dispatch(add(item));
-      // addItemToCart(item);
       openCart();
     }
   };

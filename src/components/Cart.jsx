@@ -24,17 +24,7 @@ const Cart = ({ cartIsOpen, closeCart, goToCheckout }) => {
   };
 
   let purchaseList = purchaseItems.map((item) => {
-    return (
-      <CartItem
-        key={item.id}
-        imageUrl={item.imageUrl}
-        name={item.name}
-        label={item.label}
-        licenseId={item.licenseId}
-        detail={item.detail}
-        id={item.id}
-      />
-    );
+    return <CartItem key={item.id} item={item} />;
   });
 
   return (

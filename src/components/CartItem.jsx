@@ -7,7 +7,8 @@ import SelectLicense from './SelectLicense';
 import { licenseOptions } from '../utilities/licenseOption';
 import '../styles/CartItem.css';
 
-const CartItem = ({ imageUrl, name, label, detail, id }) => {
+const CartItem = ({ item }) => {
+  const { imageUrl, name, label, detail, id } = item;
   const [currentOption, setCurrentOption] = useState(label);
   const dispatch = useDispatch();
 
