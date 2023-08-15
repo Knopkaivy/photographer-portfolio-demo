@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleLike } from '../features/portfolio/portfolioSlice';
 import { MdOpenInFull } from 'react-icons/md';
 import { MdCloseFullscreen } from 'react-icons/md';
 import { BsBag } from 'react-icons/bs';
@@ -12,10 +13,8 @@ import '../styles/Toolbar.css';
 
 const Toolbar = ({
   photo,
-  toggleLike,
   openOverlay,
   openCart,
-  // purchaseItems,
   isFullscreen,
   handleRequestFullscreen,
   handleExitFullscreen,
@@ -23,6 +22,7 @@ const Toolbar = ({
   let location = useLocation();
   let navigate = useNavigate();
   let params = useParams();
+  const dispatch = useDispatch();
   const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
 
   let handleOpenOverlay = () => {
@@ -30,7 +30,8 @@ const Toolbar = ({
   };
 
   let handleLike = () => {
-    toggleLike(params.galleryId, params.imageId);
+    const { galleryId, imageId } = params;
+    dispatch(toggleLike({ galleryId, imageId }));
   };
 
   let handleCloseDetail = () => {

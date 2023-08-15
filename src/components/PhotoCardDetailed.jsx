@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
 import PhotoCarousel from './PhotoCarousel';
@@ -13,14 +14,10 @@ import {
 import '../styles/PhotoCardDetailed.css';
 
 const PhotoCardDetailed = ({
-  portfolio,
-  toggleLike,
   overlayIsOpen,
   openOverlay,
   closeOverlay,
   openCart,
-  // purchaseItems,
-  // addItemToCart,
   goToCheckout,
 }) => {
   let params = useParams();
@@ -29,9 +26,9 @@ const PhotoCardDetailed = ({
 
   let navigate = useNavigate();
 
+  const categories = useSelector((state) => state.portfolio.categories);
   const [gallery, setGallery] = useState(
-    findGallery(portfolio.categories, params.galleryId) ||
-      portfolio.categories[0]
+    findGallery(categories, params.galleryId) || categories[0]
   );
 
   const [photo, setPhoto] = useState(
@@ -41,15 +38,13 @@ const PhotoCardDetailed = ({
 
   const [imageUrl, setImageUrl] = useState(generateImageUrl(params.imageId));
   const [photosCount, setPhotosCount] = useState(gallery.photos.length);
-
   const [ind, setInd] = useState(calculateInd(params.imageId));
-
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     let newGal = gallery;
     if (!gallery || params.galleryId !== gallery.categoryId) {
-      newGal = findGallery(portfolio.categories, params.galleryId);
+      newGal = findGallery(categories, params.galleryId);
       if (newGal === undefined) {
         navigate(`/portfolio/`, { replace: true });
       } else {
@@ -112,10 +107,8 @@ const PhotoCardDetailed = ({
         )}
         <Toolbar
           photo={photo}
-          toggleLike={toggleLike}
           openOverlay={openOverlay}
           openCart={openCart}
-          // purchaseItems={purchaseItems}
           isFullscreen={isFullscreen}
           handleRequestFullscreen={handleRequestFullscreen}
           handleExitFullscreen={handleExitFullscreen}
@@ -136,8 +129,6 @@ const PhotoCardDetailed = ({
                 photoId={photo.photoId}
                 photoTitle={photo.photoTitle}
                 openCart={openCart}
-                // purchaseItems={purchaseItems}
-                // addItemToCart={addItemToCart}
                 goToCheckout={goToCheckout}
               />
             </div>

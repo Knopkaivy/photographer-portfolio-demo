@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ShareOverlay from './ShareOverlay';
 import PhotoCard from './PhotoCard';
 import { findGallery } from '../utilities/helpers';
 import '../styles/Gallery.css';
 
 const Gallery = ({
-  portfolio,
-  toggleLike,
   overlayIsOpen,
   overlayInputVal,
   openOverlay,
   closeOverlay,
 }) => {
+  const [gallery, setGallery] = useState(undefined);
   let navigate = useNavigate();
   let params = useParams();
+  const categories = useSelector((state) => state.portfolio.categories);
 
-  const [gallery, setGallery] = useState(undefined);
   useEffect(() => {
     if (!gallery || gallery.categoryId !== params.galleryId) {
-      let newGal = findGallery(portfolio.categories, params.galleryId);
+      let newGal = findGallery(categories, params.galleryId);
       if (newGal === undefined) {
-        console.log('Gallery newGal is undefined, redirecting');
         navigate(`/portfolio/`, { replace: true });
       } else {
         setGallery(newGal);
@@ -44,7 +43,6 @@ const Gallery = ({
           isLiked={item.liked}
           key={item.photoId}
           openOverlay={openOverlay}
-          toggleLike={toggleLike}
           galleryName={gallery.categoryName}
           galleryId={gallery.categoryId}
         />

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleLike } from '../features/portfolio/portfolioSlice';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { RiShareForwardLine } from 'react-icons/ri';
@@ -13,13 +15,13 @@ const PhotoCard = ({
   isLiked,
   openOverlay,
   galleryId,
-  toggleLike,
 }) => {
   let location = useLocation();
   let shareUrl = `${location.pathname}/${imageId}`;
+  const dispatch = useDispatch();
 
   let handleToggleLike = () => {
-    toggleLike(galleryId, imageId);
+    dispatch(toggleLike({ galleryId, imageId }));
   };
   let handleOpenOverlay = (event) => {
     event.stopPropagation();

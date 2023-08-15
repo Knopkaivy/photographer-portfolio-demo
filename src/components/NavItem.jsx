@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import '../styles/NavItem.css';
 
-const NavItem = ({ item, portfolio }) => {
+const NavItem = ({ item }) => {
+  const categories = useSelector((state) => state.portfolio.categories);
   let menuList;
   let gallery;
   if (item.menu) {
     menuList = item.menu.map((menuItem) => {
       let linkName = menuItem.toLowerCase().replace(/\s/g, '');
-      for (let gal of portfolio.categories) {
+      for (let gal of categories) {
         if (gal.categoryName === menuItem) {
           gallery = gal;
         }

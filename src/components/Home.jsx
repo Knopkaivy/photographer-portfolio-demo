@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import Landing from './Landing';
 import Portfolio from './Portfolio';
 
-const Home = ({ portfolio }) => {
+const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <React.Fragment>
       <Landing />
-      <Portfolio portfolio={portfolio} />
+      <Portfolio />
     </React.Fragment>
   );
 };
