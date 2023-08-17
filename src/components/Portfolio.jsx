@@ -9,14 +9,14 @@ const Portfolio = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const categoryList = categories.map((element, index) => {
+  const categoryList = categories.map((item, index) => {
     const ind = `0${index + 1}`;
     return (
       <PortfolioCard
-        category={element.categoryName}
-        image={element.categoryCover}
+        category={item.categoryName}
+        image={item.categoryCover}
         index={ind}
-        link={element.link}
+        link={item.link}
         key={ind}
       />
     );
