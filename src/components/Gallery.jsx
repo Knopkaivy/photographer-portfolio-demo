@@ -6,16 +6,12 @@ import PhotoCard from './PhotoCard';
 import { findGallery } from '../utilities/helpers';
 import '../styles/Gallery.css';
 
-const Gallery = ({
-  overlayIsOpen,
-  overlayInputVal,
-  openOverlay,
-  closeOverlay,
-}) => {
+const Gallery = () => {
   const [gallery, setGallery] = useState(undefined);
   let navigate = useNavigate();
   let params = useParams();
   const categories = useSelector((state) => state.portfolio.categories);
+  const shareOverlayIsOpen = useSelector((state) => state.shareOverlay.isOpen);
 
   useEffect(() => {
     if (!gallery || gallery.categoryId !== params.galleryId) {
@@ -41,7 +37,6 @@ const Gallery = ({
           imageTitle={item.photoTitle}
           imageDescription={item.photoDescription}
           key={item.photoId}
-          openOverlay={openOverlay}
           galleryName={gallery.categoryName}
           galleryId={gallery.categoryId}
         />
@@ -50,12 +45,7 @@ const Gallery = ({
 
     return (
       <div className="Gallery">
-        {overlayIsOpen && (
-          <ShareOverlay
-            closeOverlay={closeOverlay}
-            location={overlayInputVal}
-          />
-        )}
+        {shareOverlayIsOpen && <ShareOverlay />}
         <div className="Gallery__headingSection">
           <h2 className="Gallery__header">{gallery.categoryName}</h2>
           <p className="Gallery__sub">{gallery.categoryDescription}</p>

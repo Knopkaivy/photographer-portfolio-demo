@@ -2,19 +2,14 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleLike } from '../features/portfolio/portfolioSlice';
+import { open } from '../features/shareOverlay/shareOverlaySlice';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { RiShareForwardLine } from 'react-icons/ri';
 import { images } from '../utilities/images';
 import '../styles/PhotoCard.css';
 
-const PhotoCard = ({
-  imageId,
-  imageURL,
-  imageTitle,
-  openOverlay,
-  galleryId,
-}) => {
+const PhotoCard = ({ imageId, imageURL, imageTitle, galleryId }) => {
   let location = useLocation();
   let shareUrl = `${location.pathname}/${imageId}`;
   const dispatch = useDispatch();
@@ -28,7 +23,7 @@ const PhotoCard = ({
   };
   let handleOpenOverlay = (event) => {
     event.stopPropagation();
-    openOverlay(shareUrl);
+    dispatch(open({ val: shareUrl }));
   };
   return (
     <div to={imageId} className="PhotoCard">

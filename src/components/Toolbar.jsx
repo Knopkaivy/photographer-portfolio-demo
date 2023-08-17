@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { open } from '../features/shareOverlay/shareOverlaySlice';
 import { toggleLike } from '../features/portfolio/portfolioSlice';
 import { MdOpenInFull } from 'react-icons/md';
 import { MdCloseFullscreen } from 'react-icons/md';
@@ -12,7 +13,6 @@ import { IoMdClose } from 'react-icons/io';
 import '../styles/Toolbar.css';
 
 const Toolbar = ({
-  openOverlay,
   openCart,
   isFullscreen,
   handleRequestFullscreen,
@@ -31,7 +31,8 @@ const Toolbar = ({
   const image = gallery.photos.find((item) => item.photoId === imageId);
 
   let handleOpenOverlay = () => {
-    openOverlay(location.pathname);
+    // openOverlay(location.pathname);
+    dispatch(open({ val: location.pathname }));
   };
 
   let handleLike = () => {

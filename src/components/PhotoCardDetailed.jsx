@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
@@ -13,17 +13,11 @@ import {
 } from '../utilities/helpers';
 import '../styles/PhotoCardDetailed.css';
 
-const PhotoCardDetailed = ({
-  overlayIsOpen,
-  openOverlay,
-  closeOverlay,
-  openCart,
-  goToCheckout,
-}) => {
+const PhotoCardDetailed = ({ openCart, goToCheckout }) => {
   let params = useParams();
-  let location = useLocation();
   let navigate = useNavigate();
 
+  const shareOverlayIsOpen = useSelector((state) => state.shareOverlay.isOpen);
   const categories = useSelector((state) => state.portfolio.categories);
   const [gallery, setGallery] = useState(
     findGallery(categories, params.galleryId) || categories[0]
@@ -97,14 +91,8 @@ const PhotoCardDetailed = ({
   if (gallery && photo) {
     return (
       <div className="PhotoCardDetailed">
-        {overlayIsOpen && (
-          <ShareOverlay
-            location={location.pathname}
-            closeOverlay={closeOverlay}
-          />
-        )}
+        {shareOverlayIsOpen && <ShareOverlay />}
         <Toolbar
-          openOverlay={openOverlay}
           openCart={openCart}
           isFullscreen={isFullscreen}
           handleRequestFullscreen={handleRequestFullscreen}

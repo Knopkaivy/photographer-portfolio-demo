@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useDispatch, useSelector } from 'react-redux';
+import { close } from '../features/shareOverlay/shareOverlaySlice';
 import { BsFacebook } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
 import { BsPinterest } from 'react-icons/bs';
@@ -10,7 +12,9 @@ import { FiCheck } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 import '../styles/ShareOverlay.css';
 
-const ShareOverlay = ({ location, closeOverlay }) => {
+const ShareOverlay = () => {
+  const dispatch = useDispatch();
+  const linkVal = useSelector((state) => state.shareOverlay.linkVal);
   const [copied, setCopied] = useState(false);
 
   let handleCopy = () => {
@@ -22,11 +26,11 @@ const ShareOverlay = ({ location, closeOverlay }) => {
 
   let handleCloseOverlay = (event) => {
     event.stopPropagation();
-    closeOverlay();
+    dispatch(close());
   };
   let clickAway = (event) => {
     if (event.target.id === 'ShareOverlay') {
-      closeOverlay();
+      dispatch(close());
     }
     return;
   };
@@ -47,9 +51,9 @@ const ShareOverlay = ({ location, closeOverlay }) => {
           <MdEmail className="ShareOverlay__icon icon" />
         </div>
         <div className="ShareOverlay__linkContainer">
-          <p className="ShareOverlay__link">{`https://photographer-portfolio-demo.web.app${location}`}</p>
+          <p className="ShareOverlay__link">{`https://photographer-portfolio-demo.web.app${linkVal}`}</p>
           <CopyToClipboard
-            text={`https://photographer-portfolio-demo.web.app${location}`}
+            text={`https://photographer-portfolio-demo.web.app${linkVal}`}
             onCopy={handleCopy}
           >
             <button className="ShareOverlay__copyBtn">

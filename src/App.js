@@ -12,8 +12,6 @@ import Bio from './components/Bio';
 import './styles/global.css';
 
 function App() {
-  const [overlayIsOpen, setOverlayIsOpen] = useState(false);
-  const [overlayInputVal, setOverlayInputVal] = useState('/');
   const [cartIsOpen, setCartIsOpen] = useState(false);
 
   let navigate = useNavigate();
@@ -21,16 +19,6 @@ function App() {
   let goToCheckout = () => {
     closeCart();
     navigate('checkout');
-  };
-
-  let openOverlay = (val) => {
-    setOverlayInputVal(val);
-    setOverlayIsOpen(true);
-  };
-
-  let closeOverlay = () => {
-    setOverlayInputVal('/');
-    setOverlayIsOpen(false);
   };
 
   let openCart = () => {
@@ -52,25 +40,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="portfolio" element={<Portfolio />}></Route>
-        <Route
-          path="portfolio/:galleryId"
-          element={
-            <Gallery
-              overlayIsOpen={overlayIsOpen}
-              overlayInputVal={overlayInputVal}
-              openOverlay={openOverlay}
-              closeOverlay={closeOverlay}
-            />
-          }
-        />
+        <Route path="portfolio/:galleryId" element={<Gallery />} />
 
         <Route
           path="portfolio/:galleryId/:imageId"
           element={
             <PhotoCardDetailed
-              overlayIsOpen={overlayIsOpen}
-              openOverlay={openOverlay}
-              closeOverlay={closeOverlay}
               openCart={openCart}
               goToCheckout={goToCheckout}
             />
