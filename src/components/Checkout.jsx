@@ -12,7 +12,7 @@ const Checkout = () => {
     navigate(-1);
   };
 
-  let editCart = () => {
+  const editCart = () => {
     navigate(-1);
     dispatch(openCart());
   };

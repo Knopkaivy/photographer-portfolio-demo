@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
-import { add, openCart } from '../features/cart/cartSlice';
+import { add, closeCart, openCart } from '../features/cart/cartSlice';
 import { licenseOptions } from '../utilities/licenseOption';
 import RadioGroup from './RadioGroup';
 import SelectLicense from './SelectLicense';
 import '../styles/PurchaseForm.css';
 
-const PurchaseForm = ({ photoId, photoTitle, goToCheckout }) => {
+const PurchaseForm = ({ photoId, photoTitle }) => {
+  const navigate = useNavigate();
   const [currentOption, setCurrentOption] = useState(licenseOptions[0]);
   const dispatch = useDispatch();
   const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
 
-  let changeOption = (newId) => {
+  const changeOption = (newId) => {
     let newOption = {};
     for (let option of licenseOptions) {
       if (option.licenseId === newId) {
@@ -23,7 +25,12 @@ const PurchaseForm = ({ photoId, photoTitle, goToCheckout }) => {
     }
   };
 
-  let handleSubmitPurchase = (event) => {
+  const goToCheckout = () => {
+    dispatch(closeCart());
+    navigate('/checkout');
+  };
+
+  const handleSubmitPurchase = (event) => {
     event.preventDefault();
     if (currentOption !== null) {
       let item = { ...currentOption };

@@ -13,7 +13,7 @@ import {
 } from '../utilities/helpers';
 import '../styles/PhotoCardDetailed.css';
 
-const PhotoCardDetailed = ({ goToCheckout }) => {
+const PhotoCardDetailed = () => {
   let params = useParams();
   let navigate = useNavigate();
 
@@ -112,7 +112,6 @@ const PhotoCardDetailed = ({ goToCheckout }) => {
               <PurchaseForm
                 photoId={photo.photoId}
                 photoTitle={photo.photoTitle}
-                goToCheckout={goToCheckout}
               />
             </div>
           </div>

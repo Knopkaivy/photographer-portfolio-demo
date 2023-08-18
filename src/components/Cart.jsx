@@ -1,11 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeCart } from '../features/cart/cartSlice';
 import { BsChevronRight } from 'react-icons/bs';
 import CartItem from './CartItem';
 import '../styles/Cart.css';
 
-const Cart = ({ goToCheckout }) => {
+const Cart = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartIsOpen = useSelector((state) => state.cart.isOpen);
   const purchaseItems = useSelector((state) => state.cart.purchaseItems);
@@ -14,16 +16,21 @@ const Cart = ({ goToCheckout }) => {
     state.cart.purchaseItems.reduce((acc, item) => (acc += item.price), 0)
   );
 
-  let handleCloseCart = (event) => {
-    event.stopPropagation();
-    dispatch(closeCart());
-  };
-
-  let clickAway = (event) => {
+  const clickAway = (event) => {
     if (event.target.id === 'Cart__backdrop') {
       dispatch(closeCart());
     }
     return;
+  };
+
+  const goToCheckout = () => {
+    dispatch(closeCart());
+    navigate('checkout');
+  };
+
+  const handleCloseCart = (event) => {
+    event.stopPropagation();
+    dispatch(closeCart());
   };
 
   let purchaseList = purchaseItems.map((item) => {
