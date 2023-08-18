@@ -1,18 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { openCart } from '../features/cart/cartSlice';
 import CheckoutList from './CheckoutList';
 import '../styles/Checkout.css';
 
-const Checkout = ({ openCart }) => {
+const Checkout = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   let continueShopping = () => {
     navigate(-1);
   };
 
   let editCart = () => {
     navigate(-1);
-    openCart();
+    dispatch(openCart());
   };
 
   return (

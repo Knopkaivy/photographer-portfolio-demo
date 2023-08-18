@@ -1,7 +1,8 @@
 import React from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { open } from '../features/shareOverlay/shareOverlaySlice';
+import { openCart } from '../features/cart/cartSlice';
+import { openShareOverlay } from '../features/shareOverlay/shareOverlaySlice';
 import { toggleLike } from '../features/portfolio/portfolioSlice';
 import { MdOpenInFull } from 'react-icons/md';
 import { MdCloseFullscreen } from 'react-icons/md';
@@ -13,7 +14,6 @@ import { IoMdClose } from 'react-icons/io';
 import '../styles/Toolbar.css';
 
 const Toolbar = ({
-  openCart,
   isFullscreen,
   handleRequestFullscreen,
   handleExitFullscreen,
@@ -30,16 +30,18 @@ const Toolbar = ({
   );
   const image = gallery.photos.find((item) => item.photoId === imageId);
 
-  let handleOpenOverlay = () => {
-    // openOverlay(location.pathname);
-    dispatch(open({ val: location.pathname }));
+  const handleOpenCart = () => {
+    dispatch(openCart());
+  };
+  const handleOpenOverlay = () => {
+    dispatch(openShareOverlay({ val: location.pathname }));
   };
 
-  let handleLike = () => {
+  const handleLike = () => {
     dispatch(toggleLike({ galleryId, imageId }));
   };
 
-  let handleCloseDetail = () => {
+  const handleCloseDetail = () => {
     let url = `/portfolio/${params.galleryId}`;
     navigate(url);
   };
@@ -63,7 +65,7 @@ const Toolbar = ({
         <div className="Toolbar__iconContainer">
           <BsBag
             className="Toolbar__icon Toolbar__icon-secondary icon"
-            onClick={openCart}
+            onClick={handleOpenCart}
           />{' '}
           <span className="Toolbar__icon-secondary Toolbar__icon-span">
             {purchaseCount}

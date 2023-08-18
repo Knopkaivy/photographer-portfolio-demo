@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Cart from './components/Cart';
@@ -10,33 +10,21 @@ import PhotoCardDetailed from './components/PhotoCardDetailed';
 import Checkout from './components/Checkout';
 import Bio from './components/Bio';
 import './styles/global.css';
+import { useDispatch } from 'react-redux';
+import { closeCart } from './features/cart/cartSlice';
 
 function App() {
-  const [cartIsOpen, setCartIsOpen] = useState(false);
-
   let navigate = useNavigate();
-
+  const dispatch = useDispatch();
   let goToCheckout = () => {
-    closeCart();
+    dispatch(closeCart());
     navigate('checkout');
-  };
-
-  let openCart = () => {
-    setCartIsOpen(true);
-  };
-
-  let closeCart = () => {
-    setCartIsOpen(false);
   };
 
   return (
     <div className="App">
-      <Header openCart={openCart} />
-      <Cart
-        cartIsOpen={cartIsOpen}
-        closeCart={closeCart}
-        goToCheckout={goToCheckout}
-      />
+      <Header />
+      <Cart goToCheckout={goToCheckout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="portfolio" element={<Portfolio />}></Route>
@@ -44,15 +32,10 @@ function App() {
 
         <Route
           path="portfolio/:galleryId/:imageId"
-          element={
-            <PhotoCardDetailed
-              openCart={openCart}
-              goToCheckout={goToCheckout}
-            />
-          }
+          element={<PhotoCardDetailed goToCheckout={goToCheckout} />}
         />
         <Route path="bio" element={<Bio />} />
-        <Route path="checkout" element={<Checkout openCart={openCart} />} />
+        <Route path="checkout" element={<Checkout />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

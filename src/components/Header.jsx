@@ -1,13 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { openCart } from '../features/cart/cartSlice';
 import { Link } from 'react-router-dom';
 import { BsBag } from 'react-icons/bs';
 import { navList } from '../utilities/navList';
 import NavItem from './NavItem';
 import '../styles/Header.css';
 
-const Header = ({ openCart }) => {
+const Header = () => {
+  const dispatch = useDispatch();
   const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
+
+  const handleOpenCart = () => {
+    dispatch(openCart());
+  };
 
   const listItems = navList.map((item) => {
     return <NavItem item={item} key={item.name} />;
@@ -21,7 +27,7 @@ const Header = ({ openCart }) => {
         {listItems}
         <div
           className="Header__ListItem Header__ListItem-cart"
-          onClick={openCart}
+          onClick={handleOpenCart}
         >
           <BsBag className="Header__ListItem-cartIcon" />{' '}
           <span>{purchaseCount}</span>

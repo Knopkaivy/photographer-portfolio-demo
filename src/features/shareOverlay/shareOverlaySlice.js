@@ -7,16 +7,17 @@ export const shareOverlaySlice = createSlice({
     linkVal: '/',
   },
   reducers: {
-    close: (state) => {
+    closeShareOverlay: (state) => {
       state.isOpen = false;
       state.linkVal = '/';
     },
-    open: (state, action) => {
+    openShareOverlay: (state, action) => {
       state.isOpen = true;
       state.linkVal = action.payload.val;
     },
   },
 });
 
-export const { close, open } = shareOverlaySlice.actions;
+export const { closeShareOverlay, openShareOverlay } =
+  shareOverlaySlice.actions;
 export default shareOverlaySlice.reducer;

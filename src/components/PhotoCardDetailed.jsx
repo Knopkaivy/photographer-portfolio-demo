@@ -13,7 +13,7 @@ import {
 } from '../utilities/helpers';
 import '../styles/PhotoCardDetailed.css';
 
-const PhotoCardDetailed = ({ openCart, goToCheckout }) => {
+const PhotoCardDetailed = ({ goToCheckout }) => {
   let params = useParams();
   let navigate = useNavigate();
 
@@ -93,7 +93,6 @@ const PhotoCardDetailed = ({ openCart, goToCheckout }) => {
       <div className="PhotoCardDetailed">
         {shareOverlayIsOpen && <ShareOverlay />}
         <Toolbar
-          openCart={openCart}
           isFullscreen={isFullscreen}
           handleRequestFullscreen={handleRequestFullscreen}
           handleExitFullscreen={handleExitFullscreen}
@@ -113,7 +112,6 @@ const PhotoCardDetailed = ({ openCart, goToCheckout }) => {
               <PurchaseForm
                 photoId={photo.photoId}
                 photoTitle={photo.photoTitle}
-                openCart={openCart}
                 goToCheckout={goToCheckout}
               />
             </div>

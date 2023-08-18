@@ -1,10 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeCart } from '../features/cart/cartSlice';
 import { BsChevronRight } from 'react-icons/bs';
 import CartItem from './CartItem';
 import '../styles/Cart.css';
 
-const Cart = ({ cartIsOpen, closeCart, goToCheckout }) => {
+const Cart = ({ goToCheckout }) => {
+  const dispatch = useDispatch();
+  const cartIsOpen = useSelector((state) => state.cart.isOpen);
   const purchaseItems = useSelector((state) => state.cart.purchaseItems);
   const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
   const cartSubtotal = useSelector((state) =>
@@ -13,12 +16,12 @@ const Cart = ({ cartIsOpen, closeCart, goToCheckout }) => {
 
   let handleCloseCart = (event) => {
     event.stopPropagation();
-    closeCart();
+    dispatch(closeCart());
   };
 
   let clickAway = (event) => {
     if (event.target.id === 'Cart__backdrop') {
-      closeCart();
+      dispatch(closeCart());
     }
     return;
   };

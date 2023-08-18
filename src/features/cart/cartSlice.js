@@ -4,6 +4,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     purchaseItems: [],
+    isOpen: false,
   },
   reducers: {
     add: (state, action) => {
@@ -23,8 +24,14 @@ export const cartSlice = createSlice({
         }
       });
     },
+    closeCart: (state) => {
+      state.isOpen = false;
+    },
+    openCart: (state) => {
+      state.isOpen = true;
+    },
   },
 });
 
-export const { add, remove, update } = cartSlice.actions;
+export const { add, remove, update, closeCart, openCart } = cartSlice.actions;
 export default cartSlice.reducer;

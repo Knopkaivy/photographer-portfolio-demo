@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
-import { add } from '../features/cart/cartSlice';
+import { add, openCart } from '../features/cart/cartSlice';
 import { licenseOptions } from '../utilities/licenseOption';
 import RadioGroup from './RadioGroup';
 import SelectLicense from './SelectLicense';
 import '../styles/PurchaseForm.css';
 
-const PurchaseForm = ({ photoId, photoTitle, openCart, goToCheckout }) => {
+const PurchaseForm = ({ photoId, photoTitle, goToCheckout }) => {
   const [currentOption, setCurrentOption] = useState(licenseOptions[0]);
   const dispatch = useDispatch();
   const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
@@ -33,7 +33,7 @@ const PurchaseForm = ({ photoId, photoTitle, openCart, goToCheckout }) => {
         .slice(1)
         .replace('-', '')}md`;
       dispatch(add(item));
-      openCart();
+      dispatch(openCart());
     }
   };
 

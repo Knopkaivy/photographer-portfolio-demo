@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useDispatch, useSelector } from 'react-redux';
-import { close } from '../features/shareOverlay/shareOverlaySlice';
+import { closeShareOverlay } from '../features/shareOverlay/shareOverlaySlice';
 import { BsFacebook } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
 import { BsPinterest } from 'react-icons/bs';
@@ -26,11 +26,11 @@ const ShareOverlay = () => {
 
   let handleCloseOverlay = (event) => {
     event.stopPropagation();
-    dispatch(close());
+    dispatch(closeShareOverlay());
   };
   let clickAway = (event) => {
     if (event.target.id === 'ShareOverlay') {
-      dispatch(close());
+      dispatch(closeShareOverlay());
     }
     return;
   };
