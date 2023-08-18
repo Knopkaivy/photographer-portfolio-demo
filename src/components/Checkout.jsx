@@ -1,20 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { openCart } from '../features/cart/cartSlice';
 import CheckoutList from './CheckoutList';
 import '../styles/Checkout.css';
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  let continueShopping = () => {
+  const continueShopping = () => {
     navigate(-1);
-  };
-
-  const editCart = () => {
-    navigate(-1);
-    dispatch(openCart());
   };
 
   return (
@@ -35,7 +27,7 @@ const Checkout = () => {
           We are unable to accept online payments at this time. Please get in
           touch to complete your purchase.
         </div>
-        <CheckoutList editCart={editCart} />
+        <CheckoutList />
       </div>
     </div>
   );

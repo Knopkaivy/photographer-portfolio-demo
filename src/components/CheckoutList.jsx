@@ -1,14 +1,24 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { openCart } from '../features/cart/cartSlice';
 import { images } from '../utilities/images';
 import '../styles/CheckoutList.css';
 
-const CheckoutList = ({ editCart }) => {
+const CheckoutList = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const purchaseItems = useSelector((state) => state.cart.purchaseItems);
   const purchaseCount = useSelector((state) => state.cart.purchaseItems.length);
   const cartSubtotal = useSelector((state) =>
     state.cart.purchaseItems.reduce((acc, item) => (acc += item.price), 0)
   );
+
+  const editCart = () => {
+    navigate(-1);
+    dispatch(openCart());
+  };
+
   let itemList = purchaseItems.map((item) => {
     return (
       <div className="CheckoutList__item" key={item.id}>
