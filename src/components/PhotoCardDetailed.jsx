@@ -9,7 +9,7 @@ import {
   calculateInd,
   findGallery,
   findPhoto,
-  generateImageUrl,
+  // generateImageUrl,
 } from '../utilities/helpers';
 import '../styles/PhotoCardDetailed.css';
 
@@ -28,7 +28,7 @@ const PhotoCardDetailed = () => {
       gallery.photos[0]
   );
 
-  const [imageUrl, setImageUrl] = useState(generateImageUrl(params.imageId));
+  // const [imageUrl, setImageUrl] = useState(generateImageUrl(params.imageId));
   const [photosCount, setPhotosCount] = useState(gallery.photos.length);
   const [ind, setInd] = useState(calculateInd(params.imageId));
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -50,13 +50,14 @@ const PhotoCardDetailed = () => {
         navigate(`/portfolio/${newGal.categoryId}`, { replace: true });
       } else {
         setPhoto(newPht);
-        setImageUrl(generateImageUrl(params.imageId));
+        // setImageUrl(generateImageUrl(params.imageId));
         let newInd = calculateInd(params.imageId);
         if (ind !== newInd) {
           setInd(newInd);
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
   useEffect(() => {
     window.scrollTo(0, 0);
