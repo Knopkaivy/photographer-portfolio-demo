@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-// import { logRoles } from '@testing-library/dom';
 import ContactForm from './ContactForm';
 
 describe('ContactForm input elements are on the page', () => {
@@ -63,11 +62,52 @@ describe('ContactForm data entry capability', () => {
   });
 });
 
-// describe('ContactForm validations', () => {
-//   test('ContactForm submit without name entry throws error', async () => {
-//     const user = userEvent.setup();
-//     render(<ContactForm />);
-//     await user.click(screen.getByRole('button'));
-//     expect(screen.getByLabelText(/^Name/i));
-//   });
-// });
+describe('ContactForm validations', () => {
+  test('form submit not working without name entry', async () => {
+    const user = userEvent.setup();
+    render(<ContactForm />);
+    await user.click(screen.getByRole('button'));
+    expect(screen.queryByText(/^Thank you/i)).not.toBeInTheDocument();
+  });
+  test('form submit not working without email entry', async () => {
+    const user = userEvent.setup();
+    render(<ContactForm />);
+    await user.click(screen.getByLabelText(/^Name/i));
+    await user.keyboard('Jane');
+    await user.click(screen.getByRole('button'));
+    expect(screen.queryByText(/^Thank you/i)).not.toBeInTheDocument();
+  });
+  test('form submit not working with mismatching email entry', async () => {
+    const user = userEvent.setup();
+    render(<ContactForm />);
+    await user.click(screen.getByLabelText(/^Name/i));
+    await user.keyboard('Jane');
+    await user.click(screen.getByLabelText(/^Email/i));
+    await user.keyboard('jane@jane');
+    await user.click(screen.getByRole('button'));
+    expect(screen.queryByText(/^Thank you/i)).not.toBeInTheDocument();
+  });
+  test('form submit is working without message entry', async () => {
+    const user = userEvent.setup();
+    render(<ContactForm />);
+    await user.click(screen.getByLabelText(/^Name/i));
+    await user.keyboard('Jane');
+    await user.click(screen.getByLabelText(/^Email/i));
+    await user.keyboard('jane@jane.com');
+    await user.click(screen.getByRole('button'));
+    expect(screen.queryByText(/^Thank you/i)).not.toBeInTheDocument();
+  });
+  test('form can be submitted with matching input values', async () => {
+    const user = userEvent.setup();
+    render(<ContactForm />);
+    await user.click(screen.getByLabelText(/^Name/i));
+    await user.keyboard('Jane');
+    await user.click(screen.getByLabelText(/^Email/i));
+    await user.keyboard('jane@jane.com');
+    await user.click(screen.getByLabelText(/^Message/i));
+    await user.keyboard('Test message');
+    await user.click(screen.getByRole('button'));
+    const confirmation = await screen.findByText(/^Thank you/i);
+    expect(confirmation).toBeInTheDocument();
+  });
+});
