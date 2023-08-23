@@ -5,12 +5,12 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import '../styles/LandingCarousel.css';
 
 const items = [
-  <img src={images.Landing1} role="presentation" />,
-  <img src={images.Landing2} role="presentation" />,
-  <img src={images.Landing3} role="presentation" />,
-  <img src={images.Landing4} role="presentation" />,
-  <img src={images.Landing5} role="presentation" />,
-  <img src={images.Landing6} role="presentation" />,
+  <img src={images.Landing1} aria-hidden="true" alt="" />,
+  <img src={images.Landing2} aria-hidden="true" alt="" />,
+  <img src={images.Landing3} aria-hidden="true" alt="" />,
+  <img src={images.Landing4} aria-hidden="true" alt="" />,
+  <img src={images.Landing5} aria-hidden="true" alt="" />,
+  <img src={images.Landing6} aria-hidden="true" alt="" />,
 ];
 
 const LandingCarousel = () => {
