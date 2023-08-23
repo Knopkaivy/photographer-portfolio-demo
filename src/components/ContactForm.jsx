@@ -52,7 +52,8 @@ const ContactForm = () => {
         </label>
         <input
           id="email"
-          type="email"
+          type="text"
+          pattern="^.+@[\w]+\.[A-Za-z]{2,3}(?:\.[A-Za-z]{0,3})?$"
           required
           className="ContactForm__itemInput"
           value={formEmail}
@@ -81,7 +82,8 @@ const ContactForm = () => {
       <div className="ContactForm__item">
         {showSubmittedMessage && (
           <div className="ContactForm__successMessage">
-            Thank you for submitting!
+            Thank you for reaching out. Our team will get back to you within 2
+            business days.
           </div>
         )}
       </div>
