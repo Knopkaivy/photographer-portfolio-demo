@@ -5,12 +5,7 @@ import ShareOverlay from './ShareOverlay';
 import PurchaseForm from './PurchaseForm';
 import PhotoCarousel from './PhotoCarousel';
 import Toolbar from './Toolbar';
-import {
-  calculateInd,
-  findGallery,
-  findPhoto,
-  // generateImageUrl,
-} from '../utilities/helpers';
+import { calculateInd, findGallery, findPhoto } from '../utilities/helpers';
 import '../styles/PhotoCardDetailed.css';
 
 const PhotoCardDetailed = () => {
@@ -28,8 +23,6 @@ const PhotoCardDetailed = () => {
       gallery.photos[0]
   );
 
-  // const [imageUrl, setImageUrl] = useState(generateImageUrl(params.imageId));
-  const [photosCount, setPhotosCount] = useState(gallery.photos.length);
   const [ind, setInd] = useState(calculateInd(params.imageId));
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -41,7 +34,6 @@ const PhotoCardDetailed = () => {
         navigate(`/portfolio/`, { replace: true });
       } else {
         setGallery(newGal);
-        setPhotosCount(newGal.photos.length);
       }
     }
     if (!photo || params.imageId !== photo.photoId) {
@@ -50,7 +42,6 @@ const PhotoCardDetailed = () => {
         navigate(`/portfolio/${newGal.categoryId}`, { replace: true });
       } else {
         setPhoto(newPht);
-        // setImageUrl(generateImageUrl(params.imageId));
         let newInd = calculateInd(params.imageId);
         if (ind !== newInd) {
           setInd(newInd);
@@ -98,16 +89,15 @@ const PhotoCardDetailed = () => {
           handleRequestFullscreen={handleRequestFullscreen}
           handleExitFullscreen={handleExitFullscreen}
         />
-        <div className="PhotoCardDetailed__main">
+        <main className="PhotoCardDetailed__main">
           <PhotoCarousel
             photoList={gallery.photos}
             ind={ind}
-            photosCount={photosCount}
             updatePhoto={updatePhoto}
             isFullscreen={isFullscreen}
           />
 
-          <div className="PhotoCardDetailed__descriptionContainer">
+          <section className="PhotoCardDetailed__descriptionContainer">
             <h2 className="PhotoCardDetailed__title">{photo.photoTitle}</h2>
             <div className="PhotoCardDetailed__description">
               <PurchaseForm
@@ -115,8 +105,8 @@ const PhotoCardDetailed = () => {
                 photoTitle={photo.photoTitle}
               />
             </div>
-          </div>
-        </div>
+          </section>
+        </main>
       </div>
     );
   }

@@ -26,9 +26,11 @@ const ContactForm = () => {
     }, 500);
   };
   useEffect(() => {
-    setTimeout(() => {
-      setShowSubmittedMessage(false);
-    }, 2000);
+    if (showSubmittedMessage) {
+      setTimeout(() => {
+        setShowSubmittedMessage(false);
+      }, 2000);
+    }
   }, [showSubmittedMessage]);
 
   return (

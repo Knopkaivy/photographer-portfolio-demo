@@ -7,26 +7,20 @@ import { generateImageUrl } from '../utilities/helpers';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../styles/PhotoCarousel.css';
 
-const PhotoCarousel = ({
-  photoList,
-  ind,
-  photosCount,
-  updatePhoto,
-  isFullscreen,
-}) => {
+const PhotoCarousel = ({ photoList, ind, updatePhoto, isFullscreen }) => {
   const [activeIndex, setActiveIndex] = useState(ind - 1);
   const [trans, setTrans] = useState(activeIndex * 100);
   const mainRef = useRef(null);
 
   useEffect(() => {
     mainRef.current.focus();
-  }, [mainRef, isFullscreen]);
+  }, [activeIndex, mainRef, isFullscreen]);
 
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
       newIndex = 0;
-    } else if (newIndex >= photosCount) {
-      newIndex = photosCount - 1;
+    } else if (newIndex >= photoList.length) {
+      newIndex = photoList.length - 1;
     }
     setActiveIndex(newIndex);
     setTrans(newIndex * 100);
@@ -37,9 +31,9 @@ const PhotoCarousel = ({
     onSwipedRight: () => updateIndex(activeIndex - 1),
     onSwiping: (event) => {
       let base = activeIndex * 100;
-      let movement =
-        // Math.floor((event.deltaX * 100) / mainRef.current.offsetWidth / 5) * 5;
-        Math.round((event.deltaX * 100) / mainRef.current.offsetWidth);
+      let movement = Math.round(
+        (event.deltaX * 100) / mainRef.current.offsetWidth
+      );
       if (trans !== base - movement) {
         setTrans(base - movement);
       }
@@ -54,7 +48,7 @@ const PhotoCarousel = ({
     }
   };
 
-  let items = photoList.map((photo, index) => {
+  let items = photoList.map((photo) => {
     let size = isFullscreen ? 'lg' : 'md';
     let imageUrl = generateImageUrl(photo.photoId, size);
     return (
@@ -97,7 +91,7 @@ const PhotoCarousel = ({
         </div>
       </div>
       <div className="PhotoCarousel__btn">
-        {activeIndex < photosCount - 1 && (
+        {activeIndex < photoList.length - 1 && (
           <BsChevronRight
             className="PhotoCarousel__icon icon"
             onClick={() => {
