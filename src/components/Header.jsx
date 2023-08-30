@@ -28,8 +28,13 @@ const Header = () => {
         <div
           className="Header__ListItem Header__ListItem-cart"
           onClick={handleOpenCart}
+          role="button"
+          tabIndex={0}
         >
-          <BsBag className="Header__ListItem-cartIcon" />{' '}
+          <BsBag
+            className="Header__ListItem-cartIcon"
+            aria-label={`shopping cart with ${purchaseCount} items in it`}
+          />{' '}
           <span>{purchaseCount}</span>
         </div>
       </nav>

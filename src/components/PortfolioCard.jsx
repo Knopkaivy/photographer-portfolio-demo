@@ -22,7 +22,11 @@ const PortfolioCard = ({ category, image, index }) => {
       </div>
       <h2 className="PortfolioCard__Header">{category}</h2>
       <div className="PortfolioCard__LinkContainer">
-        <Link to={`/portfolio/${linkName}`} className="PortfolioCard__Link">
+        <Link
+          to={`/portfolio/${linkName}`}
+          className="PortfolioCard__Link"
+          aria-label={`${linkName} gallery`}
+        >
           See More
         </Link>
       </div>

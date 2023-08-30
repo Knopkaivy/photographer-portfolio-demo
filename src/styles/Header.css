@@ -12,9 +12,10 @@
   font-family: 'Nunito Sans', sans-serif;
 }
 .Header__Logo {
-  flex: 1;
+  margin-right: auto;
   font-size: 2.4rem;
   font-weight: 700;
+  padding: 0 1rem;
 }
 .Header__ListItem {
   font-size: 1.2rem;

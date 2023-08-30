@@ -34,6 +34,10 @@
 .Footer__link:focus {
   transform: scale(1.05);
 }
+.Footer__link a {
+  color: inherit;
+  text-decoration: none;
+}
 @media screen and (max-width: 576px) {
   .Footer {
     height: 16rem;

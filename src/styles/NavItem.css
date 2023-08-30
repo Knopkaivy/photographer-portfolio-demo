@@ -1,7 +1,8 @@
 .NavItem {
   font-size: 1.2rem;
+  line-height: 1.8rem;
+  padding: 0.5rem 1.6rem;
   text-transform: uppercase;
-  padding: 0 1.6rem;
 }
 .NavItem:link,
 .NavItem:visited {
@@ -17,7 +18,8 @@
 .NavItem__menuContainer {
   position: relative;
 }
-.NavItem__menuContainer:hover .NavItem__menu {
+.NavItem__menuContainer:hover .NavItem__menu,
+.NavItem__menuContainer:focus-within .NavItem__menu {
   transform: translateY(0);
 }
 .NavItem__menu {
@@ -33,7 +35,4 @@
 }
 .NavItem__menu-closed {
   display: none;
-}
-.NavItem__menuItem {
-  line-height: 2.8rem;
 }

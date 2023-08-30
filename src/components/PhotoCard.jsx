@@ -27,9 +27,19 @@ const PhotoCard = ({ imageId, imageURL, imageTitle, galleryId }) => {
   };
   return (
     <div to={imageId} className="PhotoCard">
-      <Link to={imageId} className="PhotoCard__overlay"></Link>
+      <Link
+        to={imageId}
+        className="PhotoCard__overlay"
+        aria-label={`${imageId}`}
+      ></Link>
       <div className="PhotoCard__iconContainer">
-        <div className="PhotoCard__icon" onClick={handleToggleLike}>
+        <div
+          role="button"
+          className="PhotoCard__icon"
+          onClick={handleToggleLike}
+          title="like"
+          tabIndex={0}
+        >
           {image.liked ? (
             <div className="PhotoCard__icon-like-container">
               <AiFillHeart className="icon-like" />
@@ -40,8 +50,11 @@ const PhotoCard = ({ imageId, imageURL, imageTitle, galleryId }) => {
           )}
         </div>
         <div
+          role="button"
           className="PhotoCard__icon PhotoCard__icon-share"
           onClick={handleOpenOverlay}
+          title="share"
+          tabIndex={0}
         >
           <RiShareForwardLine />
         </div>

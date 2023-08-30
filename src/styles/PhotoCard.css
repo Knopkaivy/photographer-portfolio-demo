@@ -74,6 +74,7 @@
 .PhotoCard:hover .PhotoCard__iconContainer {
   opacity: 1;
 }
+
 @media screen and (max-width: 576px) {
   .PhotoCard {
     flex-basis: auto;

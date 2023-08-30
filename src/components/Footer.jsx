@@ -20,9 +20,15 @@ const Footer = () => {
           </p>
         </div>
         <ul className="Footer__linkList">
-          <li className="Footer__link">Facebook</li>
-          <li className="Footer__link">Instagram</li>
-          <li className="Footer__link">Twitter</li>
+          <li className="Footer__link">
+            <a href="https://www.facebook.com/">Facebook</a>
+          </li>
+          <li className="Footer__link">
+            <a href="https://www.instagram.com/">Instagram</a>
+          </li>
+          <li className="Footer__link">
+            <a href="https://twitter.com/">Twitter</a>
+          </li>
         </ul>
       </div>
     </footer>
