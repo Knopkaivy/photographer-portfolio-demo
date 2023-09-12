@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { images } from '../utilities/images';
 import '../styles/PortfolioCard.css';
 
-const PortfolioCard = ({ category, image, index }) => {
+const PortfolioCard = ({ category, height, image, index, width }) => {
   let navigate = useNavigate();
   let linkName = category.toLowerCase().replace(/\s/g, '');
 
@@ -18,6 +18,8 @@ const PortfolioCard = ({ category, image, index }) => {
           src={images[image]}
           alt={`${category} cover`}
           className="PortfolioCard__Image"
+          width={width}
+          height={height}
         />
       </div>
       <h2 className="PortfolioCard__Header">{category}</h2>

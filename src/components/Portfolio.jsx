@@ -18,6 +18,8 @@ const Portfolio = () => {
         index={ind}
         link={item.link}
         key={ind}
+        width={item.width}
+        height={item.height}
       />
     );
   });

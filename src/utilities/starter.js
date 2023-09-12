@@ -6,6 +6,8 @@ export const starter = {
       categoryDescription:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus nostrum laborum adipisci alias fuga culpa.',
       categoryCover: 'DesertCover',
+      width: '430',
+      height: '417',
       photos: [
         {
           photoId: 'desert-1',
@@ -51,6 +53,8 @@ export const starter = {
       categoryDescription:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus nostrum laborum adipisci alias fuga culpa.',
       categoryCover: 'SierraCover',
+      width: '430',
+      height: '582',
       photos: [
         {
           photoId: 'sierra-1',
@@ -108,6 +112,8 @@ export const starter = {
       categoryDescription:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus nostrum laborum adipisci alias fuga culpa.',
       categoryCover: 'BeachCover',
+      width: '430',
+      height: '500',
       photos: [
         {
           photoId: 'beach-1',
@@ -153,6 +159,8 @@ export const starter = {
       categoryDescription:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus nostrum laborum adipisci alias fuga culpa.',
       categoryCover: 'ForestCover',
+      width: '430',
+      height: '459',
       photos: [
         {
           photoId: 'forest-1',
