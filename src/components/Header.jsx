@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <div className="Header__Fixed">
       <nav className="Header container">
-        <Link to="/" className="Header__Logo" aria-label="Home page">
+        <Link to="/" className="Header__Logo" aria-label="A-W logo, home page">
           A-W
         </Link>
         {listItems}

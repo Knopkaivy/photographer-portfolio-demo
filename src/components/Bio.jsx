@@ -85,6 +85,8 @@ const Bio = () => {
       <div className="Bio__imageContainer">
         <img
           src={images.Self}
+          width="995"
+          height="931"
           alt="portrait of photographer"
           className="Bio__image"
         />

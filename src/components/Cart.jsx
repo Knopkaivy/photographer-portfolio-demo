@@ -38,7 +38,7 @@ const Cart = () => {
   });
 
   return (
-    <div className="Cart" onClick={clickAway}>
+    <div className="Cart" onClick={clickAway} aria-hidden={!cartIsOpen}>
       <div
         id="Cart__backdrop"
         className={`Cart__backdrop ${cartIsOpen && 'Cart__backdrop-isOpen'}`}

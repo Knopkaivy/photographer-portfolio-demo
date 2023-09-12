@@ -46,6 +46,7 @@ const SelectLicense = ({
         defaultValue={currentOption}
         className="SelectLicense"
         onChange={handleUpdateOption}
+        aria-label="selected license option"
       >
         {optionsList}
       </select>

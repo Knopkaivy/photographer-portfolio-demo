@@ -27,7 +27,7 @@ const PortfolioCard = ({ category, height, image, index, width }) => {
         <Link
           to={`/portfolio/${linkName}`}
           className="PortfolioCard__Link"
-          aria-label={`${linkName} gallery`}
+          aria-label={`see more of ${linkName} gallery`}
         >
           See More
         </Link>

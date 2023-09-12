@@ -59,6 +59,8 @@ const PhotoCarousel = ({ photoList, ind, updatePhoto, isFullscreen }) => {
       >
         <img
           src={images[imageUrl]}
+          width={photo.width}
+          height={photo.height}
           alt={photo.photoTitle}
           className="PhotoCarousel__image"
         />

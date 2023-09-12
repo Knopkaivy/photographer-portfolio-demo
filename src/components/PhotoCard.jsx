@@ -62,6 +62,8 @@ const PhotoCard = ({ imageId, imageURL, imageTitle, galleryId }) => {
       <div className="PhotoCard__imageContainer">
         <img
           src={images[imageURL]}
+          width={image.width}
+          height={image.height}
           alt={imageTitle}
           className="PhotoCard__image"
         />
